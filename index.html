@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PUMA India - Forever Faster. Shop the latest sneakers, apparel and accessories.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40'%3E%3Cpath fill='%23171717' d='M7 25.5c8.2-1.6 15.7-5.8 22.6-12.5 4-3.9 7.6-6.1 10.8-6.5-2.7 2.1-4.1 4.7-4.2 7.6 2.7 1.6 7.2 2.4 13.3 2.4 5.3 0 10.2-.8 14.7-2.4-2.5 4.6-7.1 7.4-13.8 8.3-7.9 1.1-14.9-.5-20.9-4.6C22 23.5 14.5 26.1 7 25.5Z'/%3E%3C/svg%3E">
+  <title>PUMA India | Forever Faster</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --ink: #171717;
+      --muted: #6d6d6d;
+      --line: #e8e8e8;
+      --soft: #f5f5f3;
+      --lime: #b7ee36;
+      --orange: #ff5a30;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--white); font-family: 'DM Sans', Arial, sans-serif; overflow-x: hidden; }
+    main { display: flex; flex-direction: column; }
+    body.no-scroll { overflow: hidden; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    .announcement { background: #fff; color: var(--ink); font-size: 16px; font-weight: 700; padding: 11px 20px; text-align: center; text-transform: uppercase; }
+    .announcement span { display: none; }
+    .site-header { background: var(--ink); border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 20; }
+    .nav { align-items: center; display: flex; height: 80px; justify-content: space-between; margin: auto; max-width: 1440px; padding: 0 28px; position: relative; }
+    .logo { display: flex; align-items: center; }
+    .logo svg { height: 31px; width: 62px; }
+    .site-header .logo { color: #fff; }
+    .main-nav { display: flex; gap: 21px; margin-left: 29px; margin-right: auto; }
+    .nav-item { align-items: center; display: flex; height: 80px; position: static; }
+    .main-nav a { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: .03em; position: relative; text-transform: uppercase; }
+    .main-nav a:after { background: #fff; bottom: -8px; content: ''; height: 2px; left: 0; position: absolute; transform: scaleX(0); transform-origin: left; transition: transform .2s; width: 100%; }
+    .main-nav a:hover:after { transform: scaleX(1); }
+    .mega-menu { background: #fff; box-shadow: 0 12px 18px rgba(0, 0, 0, .14); display: grid; gap: 42px; grid-template-columns: 1fr 1fr 2fr; left: 0; opacity: 0; padding: 46px 50px 68px; pointer-events: none; position: absolute; top: 71px; transform: translateY(-8px); transition: opacity .2s, transform .2s; visibility: hidden; width: 100vw; z-index: 19; }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+    .mega-menu-column { display: flex; flex-direction: column; gap: 9px; }
+    .mega-menu a { color: var(--muted); font-size: 14px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+    .mega-menu a:after { display: none; }
+    .mega-menu a:hover { color: var(--ink); }
+    .sports-menu { gap: 22px; grid-template-columns: repeat(7, 220px); max-width: 100vw; overflow-x: auto; padding: 38px 35px 42px; }
+    .sports-menu .mega-menu-column { gap: 7px; }
+    .sports-menu a { font-size: 15px; }
+    .sports-menu strong { border-bottom: 1px solid var(--ink); font-size: 17px; margin-bottom: 5px; padding-bottom: 10px; }
+    .catalog-menu { gap: 22px; grid-template-columns: repeat(7, 220px); max-width: 100vw; overflow-x: auto; padding: 38px 35px 42px; }
+    .catalog-menu .mega-menu-column { gap: 7px; }
+    .catalog-menu strong { border-bottom: 1px solid var(--ink); font-size: 17px; margin-bottom: 5px; padding-bottom: 10px; }
+    .catalog-menu a { font-size: 15px; }
+    .catalog-menu .featured a { color: #565d66; font-size: 16px; font-weight: 700; }
+    .catalog-menu .featured a:first-child { color: #b29151; }
+    .catalog-menu .featured a:nth-child(2) { color: #d33a2c; }
+    .simple-menu { grid-template-columns: repeat(3, 220px); }
+    .nav-actions { align-items: center; display: flex; gap: 7px; }
+    .icon-button { align-items: center; background: transparent; border: 0; border-radius: 50%; display: flex; height: 40px; justify-content: center; padding: 8px; position: relative; transition: background .2s; width: 40px; }
+    .icon-button:hover { background: #333; }
+    .site-header .icon-button { color: #fff; }
+    .nav-actions .icon-button:first-child { border: 1px solid #666; border-radius: 0; gap: 8px; padding: 7px 15px; width: auto; }
+    .icon-button svg { height: 19px; width: 19px; }
+    .cart-count { align-items: center; background: var(--orange); border-radius: 20px; color: white; display: flex; font-size: 9px; font-weight: 700; height: 16px; justify-content: center; position: absolute; right: 0; top: 0; width: 16px; }
+    .menu-button { display: none; }
+
+    .hero { background: #918a4c; min-height: 465px; overflow: hidden; position: relative; }
+    .hero { order: 1; }
+    .hero-content { align-items: center; display: flex; flex-direction: column; margin: auto; max-width: 1440px; padding: 159px 3% 60px 67%; position: relative; text-align: center; z-index: 1; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(43px, 4vw, 58px); letter-spacing: -.06em; line-height: .95; margin: 0 0 12px; max-width: 610px; text-transform: uppercase; }
+    .hero h1 em { color: #fff; font-style: normal; }
+    .hero-copy { color: #fff; font-size: 20px; line-height: 1.3; margin: 0 0 19px; max-width: 340px; text-transform: uppercase; }
+    .button { align-items: center; border: 1px solid var(--ink); display: inline-flex; font-size: 12px; font-weight: 700; gap: 14px; justify-content: center; letter-spacing: .1em; padding: 15px 20px; text-transform: uppercase; transition: .2s; }
+    .button.dark { background: #fff; border-color: #fff; color: var(--ink); }
+    .button.dark:hover { background: rgb(170, 171, 171); border-color: var(--ink); }
+    .button.light { background: #fff; }
+    .button.light:hover { background: var(--lime); }
+    .hero-art { filter: saturate(.72); height: 100%; inset: 0; object-fit: cover; object-position: center; position: absolute; width: 100%; }
+    .hero-shape { background: linear-gradient(90deg, transparent 38%, rgba(116, 117, 56, .12) 100%); inset: 0; position: absolute; z-index: 1; }
+
+    .benefits { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin: 0 auto; max-width: 1440px; padding: 22px 42px; }
+    .benefits { order: 6; width: 100%; }
+    .benefit { align-items: center; border-right: 1px solid var(--line); display: flex; gap: 13px; justify-content: center; padding: 4px; }
+    .benefit:last-child { border: 0; }
+    .benefit svg { height: 22px; width: 22px; }
+    .benefit strong { display: block; font-size: 12px; letter-spacing: .04em; }
+    .benefit small { color: var(--muted); display: block; font-size: 11px; margin-top: 3px; }
+
+    .section { margin: auto; max-width: 1440px; padding: 42px 28px; }
+    #sport { order: 3; width: 100%; }
+    .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 27px; }
+    .section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 25px; letter-spacing: -.04em; margin: 0; text-transform: uppercase; }
+    .view-all { border-bottom: 1px solid var(--ink); font-size: 12px; font-weight: 700; letter-spacing: .1em; padding-bottom: 5px; text-transform: uppercase; }
+    .category-grid { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
+    .category-card { background: var(--soft); min-height: 235px; overflow: hidden; position: relative; }
+    .category-card img { height: 100%; object-fit: cover; transition: transform .4s; width: 100%; }
+    .category-card:hover img { transform: scale(1.05); }
+    .category-card div { bottom: 0; color: #fff; left: 0; padding: 20px; position: absolute; text-shadow: 0 1px 5px #000; }
+    .category-card strong { font-family: 'Space Grotesk'; font-size: 22px; text-transform: uppercase; }
+    .category-card span { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; margin-top: 7px; text-transform: uppercase; }
+
+    .product-section { background: #fafafa; }
+    .product-section { order: 2; width: 100%; }
+    .tabs { display: flex; gap: 9px; margin-top: 18px; }
+    .tab { background: transparent; border: 1px solid #d6d6d6; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 9px 16px; text-transform: uppercase; }
+    .tab.active, .tab:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .product-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); }
+    .product-card { min-width: 0; position: relative; }
+    .product-image { background: #ecece8; overflow: hidden; position: relative; }
+    .product-image img { aspect-ratio: 1 / 1.12; display: block; object-fit: cover; transition: transform .35s; width: 100%; }
+    .product-card:hover .product-image img { transform: scale(1.04); }
+    .tag { background: var(--lime); font-size: 10px; font-weight: 700; left: 10px; letter-spacing: .08em; padding: 6px 9px; position: absolute; text-transform: uppercase; top: 10px; }
+    .heart { background: #fff; border: 0; border-radius: 50%; height: 35px; position: absolute; right: 10px; top: 10px; width: 35px; }
+    .heart svg { fill: transparent; height: 17px; stroke: var(--ink); width: 17px; }
+    .heart.active svg { fill: var(--orange); stroke: var(--orange); }
+    .product-info { padding: 14px 2px; }
+    .product-info h3 { font-size: 14px; margin: 0 0 5px; }
+    .product-info p { color: var(--muted); font-size: 12px; margin: 0 0 9px; }
+    .price { font-size: 14px; font-weight: 700; }
+    .old-price { color: var(--muted); font-size: 12px; margin-left: 7px; text-decoration: line-through; }
+
+    .story { align-items: center; background: var(--ink); color: #fff; display: grid; grid-template-columns: 1fr 1fr; min-height: 430px; overflow: hidden; }
+    .story { order: 4; width: 100%; }
+    .story-image { height: 100%; min-height: 430px; object-fit: cover; width: 100%; }
+    .story-copy { padding: 50px 11%; }
+    .story-copy .eyebrow { color: var(--lime); }
+    .story h2 { font-family: 'Space Grotesk'; font-size: clamp(38px, 5vw, 66px); letter-spacing: -.08em; line-height: .9; margin: 20px 0; text-transform: uppercase; }
+    .story p { color: #bababa; font-size: 14px; line-height: 1.6; max-width: 365px; }
+
+    .newsletter { background: var(--lime); padding: 60px 20px; text-align: center; }
+    .newsletter { order: 5; width: 100%; }
+    .newsletter h2 { font-family: 'Space Grotesk'; font-size: 34px; letter-spacing: -.06em; margin: 0 0 10px; text-transform: uppercase; }
+    .newsletter p { font-size: 14px; margin: 0 auto 23px; }
+    .subscribe { display: flex; margin: auto; max-width: 440px; }
+    .subscribe input { border: 1px solid var(--ink); border-right: 0; flex: 1; min-width: 0; padding: 14px; }
+    .subscribe button { background: var(--ink); border: 1px solid var(--ink); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 0 17px; text-transform: uppercase; }
+    .form-message { font-size: 12px; font-weight: 700; margin-top: 15px; }
+    .toast { background: var(--ink); bottom: 24px; color: #fff; font-size: 12px; font-weight: 700; left: 50%; letter-spacing: .03em; opacity: 0; padding: 14px 18px; pointer-events: none; position: fixed; transform: translate(-50%, 16px); transition: opacity .2s, transform .2s; z-index: 40; }
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+    footer { background: #101010; color: #fff; padding: 52px 42px 25px; }
+    .footer-grid { display: grid; gap: 30px; grid-template-columns: 2fr 1fr 1fr 1fr; margin: auto; max-width: 1440px; }
+    footer p { color: #9e9e9e; font-size: 13px; line-height: 1.6; max-width: 235px; }
+    footer h3 { font-size: 12px; letter-spacing: .1em; margin: 5px 0 16px; text-transform: uppercase; }
+    footer li { color: #aaa; font-size: 12px; list-style: none; margin: 11px 0; }
+    footer ul { margin: 0; padding: 0; }
+    .footer-bottom { border-top: 1px solid #303030; color: #777; font-size: 11px; margin: 45px auto 0; max-width: 1440px; padding-top: 20px; }
+
+    .overlay { background: rgba(0,0,0,.45); display: none; inset: 0; position: fixed; z-index: 30; }
+    .overlay.visible { display: block; }
+    .drawer { background: #fff; height: 100%; max-width: 410px; padding: 25px; position: fixed; right: 0; top: 0; transform: translateX(100%); transition: transform .3s ease; width: 100%; z-index: 31; }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 18px; }
+    .drawer-header h2 { font-family: 'Space Grotesk'; font-size: 22px; margin: 0; text-transform: uppercase; }
+    .close { background: none; border: 0; font-size: 27px; line-height: 1; }
+    .empty-cart { color: var(--muted); font-size: 14px; padding: 60px 10px; text-align: center; }
+    .empty-cart strong { color: var(--ink); display: block; font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 9px; text-transform: uppercase; }
+    .search-panel { background: #fff; border-bottom: 1px solid var(--line); display: none; padding: 15px 42px; position: absolute; width: 100%; }
+    .search-panel.open { display: block; }
+    .search-panel input { border: 0; border-bottom: 1px solid var(--ink); font-size: 16px; outline: 0; padding: 11px 0; width: 100%; }
+
+    @media (max-width: 800px) {
+      .nav { height: 64px; padding: 0 18px; }
+      .main-nav { display: none; }
+      .menu-button { display: flex; }
+      .nav-actions { margin-left: auto; }
+      .nav-item { height: auto; }
+      .mega-menu { display: none; }
+      .hero { min-height: 620px; }
+      .hero-content { padding: 70px 23px; }
+      .hero-art { bottom: 0; height: 52%; top: auto; width: 100%; }
+      .hero-shape { height: 350px; right: 4%; top: 42%; width: 350px; }
+      .benefits { grid-template-columns: repeat(2, 1fr); padding: 15px; }
+      .benefit { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); justify-content: flex-start; padding: 13px 10px; }
+      .benefit:nth-child(2) { border-right: 0; }
+      .benefit:nth-child(3), .benefit:nth-child(4) { border-bottom: 0; }
+      .section { padding: 52px 18px; }
+      .section h2 { font-size: 28px; }
+      .category-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-card { min-height: 180px; }
+      .product-grid { gap: 20px 10px; }
+      .story { grid-template-columns: 1fr; }
+      .story-image { min-height: 280px; }
+      .story-copy { padding: 45px 23px 55px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 40px 20px 20px; }
+      .search-panel { padding: 15px 20px; }
+    }
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 48px; }
+      .tabs { overflow-x: auto; }
+      .tab { flex-shrink: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Free returns and exchanges**</div>
+  <header class="site-header">
+    <div class="nav">
+      <button class="icon-button menu-button" aria-label="Open menu" id="menuButton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <a class="logo" href="#" aria-label="Puma home">
+        <svg viewBox="0 0 80 40" fill="none"><path fill="currentColor" d="M7 25.5c8.2-1.6 15.7-5.8 22.6-12.5 4-3.9 7.6-6.1 10.8-6.5-2.7 2.1-4.1 4.7-4.2 7.6 2.7 1.6 7.2 2.4 13.3 2.4 5.3 0 10.2-.8 14.7-2.4-2.5 4.6-7.1 7.4-13.8 8.3-7.9 1.1-14.9-.5-20.9-4.6C22 23.5 14.5 26.1 7 25.5Z"/><path fill="currentColor" d="M58.2 9.2c2.4-2.9 5.4-4.3 9-4.3-1.1 2.4-3 4.3-5.5 5.7l-3.5-1.4Z"/></svg>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <div class="nav-item">
+          <a href="#new">New</a>
+          <div class="mega-menu" aria-label="New arrivals">
+            <div class="mega-menu-column">
+              <a href="#new">Men's New Arrivals</a>
+              <a href="#new">Women's New Arrivals</a>
+              <a href="#new">Kid's New Arrivals</a>
+              <a href="#new">NITRO <span aria-hidden="true">⚡</span></a>
+            </div>
+            <div class="mega-menu-column">
+              <a href="#new">SPEEDCAT</a>
+              <a href="#new">PALERMO</a>
+              <a href="#new">SUEDE</a>
+              <a href="#new">PUMA PROJECT3</a>
+            </div>
+            <div class="mega-menu-column">
+              <a href="#new">PUMA x McLAREN RACING Games Hunt Collection</a>
+              <a href="#new">PUMA x STRANGER THINGS</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#sport">Sports</a>
+          <div class="mega-menu sports-menu" aria-label="Sports">
+            <div class="mega-menu-column">
+              <strong>Running</strong>
+              <a href="#new">Shop All Running</a><a href="#new">NITRO™ ⚡</a><a href="#new">Carbon-Plated-Nitro</a><a href="#new">Road Running</a><a href="#new">Race Day</a><a href="#new">Trail Running</a><a href="#new">Track &amp; Field</a><a href="#new">Clothing</a><a href="#new">Accessories</a><a href="#new">Seasons Collection</a><a href="#new">Run Club</a><a href="#new">PUMA PROJECT3</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Training</strong>
+              <a href="#new">Training Store</a><a href="#new">Gym Wear</a><a href="#new">PUMA x HYROX</a><a href="#new">Shoes</a><a href="#new">Gym Bags &amp; Accessories</a><a href="#new">Yoga</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Football</strong>
+              <a href="#new">Football Store</a><a href="#new">Bengaluru FC</a><a href="#new">Manchester City FC</a><a href="#new">Portugal</a><a href="#new">AC Milan</a><a href="#new">BVB</a><a href="#new">Mumbai City FC</a><a href="#new">Firm/Artificial Ground Boots</a><a href="#new">Turf Trainers</a><a href="#new">Indoor Shoes</a><a href="#new">Clothing</a><a href="#new">Footballs &amp; Accessories</a><a href="#new">National Team Kits</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Cricket</strong>
+              <a href="#new">PUMA x RCB</a><a href="#new">PUMA x DELHI CAPITALS</a><a href="#new">Cricket Shoes - Rubber</a><a href="#new">Cricket Shoes - Spike</a><a href="#new">Clothing</a><a href="#new">Cricket Gear &amp; Accessories</a><a href="#new">Cricket Store</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Basketball</strong>
+              <a href="#new">Shoes</a><a href="#new">Clothing</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Badminton</strong>
+              <a href="#new">Non-marking Shoes</a><a href="#new">Badminton Store</a>
+            </div>
+            <div class="mega-menu-column">
+              <strong>Running Guides</strong>
+              <a href="#new">Select Your First Running Shoes</a><a href="#new">Beginner’s Guide to Running</a><a href="#new">10K Running Guide &amp; Training Plan</a><a href="#new">Marathon Running Shoes Guide</a><a href="#new">Carbon Plate Running Shoes Guide</a><a href="#new">Flat Feet Running Shoes Guide</a><a href="#new">Wide Feet Running Shoes Guide</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="#men">Men</a>
+          <div class="mega-menu catalog-menu" aria-label="Men">
+            <div class="mega-menu-column featured"><a href="#new">New &amp; Trending</a><a href="#new">Sale</a></div>
+            <div class="mega-menu-column"><strong>Highlights</strong><a href="#new">PUMA x RCB</a><a href="#new">Classics</a><a href="#new">Fade Nitro</a><a href="#new">Speedcat</a><a href="#new">Palermo</a><a href="#new">NITRO™</a></div>
+            <div class="mega-menu-column"><strong>Shoes</strong><a href="#new">Sneakers</a><a href="#new">Running</a><a href="#new">Motorsport</a><a href="#new">Walking</a><a href="#new">Training &amp; Gym</a><a href="#new">Slip-ons</a><a href="#new">Sandals &amp; Slides</a><a href="#new">Football</a><a href="#new">Cricket</a><a href="#new">Basketball</a><a href="#new">Badminton</a></div>
+            <div class="mega-menu-column"><strong>Clothing</strong><a href="#new">T-Shirts &amp; Jerseys</a><a href="#new">Pants &amp; Joggers</a><a href="#new">Jackets</a><a href="#new">Sweatshirts</a><a href="#new">Shorts</a><a href="#new">Tracksuits</a><a href="#new">Innerwear</a></div>
+            <div class="mega-menu-column"><strong>Accessories</strong><a href="#new">Bags &amp; Backpacks</a><a href="#new">Caps &amp; Beanies</a><a href="#new">Wallets</a><a href="#new">Socks</a><a href="#new">Gloves</a><a href="#new">Sports Equipment</a></div>
+            <div class="mega-menu-column"><strong>Sports</strong><a href="#sport">Running</a><a href="#sport">Training &amp; Gym</a><a href="#sport">Football</a><a href="#sport">Cricket</a><a href="#sport">Basketball</a><a href="#sport">Badminton</a><a href="#sport">Golf</a><a href="#sport">Yoga</a></div>
+            <div class="mega-menu-column"><strong>Motorsport</strong><a href="#sport">McLaren</a><a href="#sport">Scuderia Ferrari</a><a href="#sport">BMW M Motorsport</a><a href="#sport">Aston Martin Aramco F1® Team</a><a href="#sport">Porsche Design</a><a href="#sport">Porsche Legacy</a><a href="#sport">Formula 1</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#new">Women</a>
+          <div class="mega-menu catalog-menu" aria-label="Women">
+            <div class="mega-menu-column featured"><a href="#new">New &amp; Trending</a><a href="#new">Sale</a></div>
+            <div class="mega-menu-column"><strong>Highlights</strong><a href="#new">Ballet Flats</a><a href="#new">Classics</a><a href="#new">Fade Nitro</a><a href="#new">Speedcat</a><a href="#new">Palermo</a><a href="#new">NITRO™</a></div>
+            <div class="mega-menu-column"><strong>Shoes</strong><a href="#new">Sneakers</a><a href="#new">Running</a><a href="#new">Sandals, Slides &amp; Flip Flops</a><a href="#new">Walking</a><a href="#new">Training &amp; Gym</a><a href="#new">Ballerinas</a><a href="#new">Slip Ons</a></div>
+            <div class="mega-menu-column"><strong>Clothing</strong><a href="#new">T-Shirts &amp; Tops</a><a href="#new">Jackets</a><a href="#new">Sweatshirts</a><a href="#new">Pants &amp; Tights</a><a href="#new">Sports Bras</a><a href="#new">Shorts</a><a href="#new">Dresses &amp; Skirts</a><a href="#new">Tracksuits</a></div>
+            <div class="mega-menu-column"><strong>Accessories</strong><a href="#new">Bags: Gym &amp; Casual</a><a href="#new">Backpacks</a><a href="#new">Caps &amp; Beanies</a><a href="#new">Wallets</a><a href="#new">Socks</a><a href="#new">Water Bottles</a><a href="#new">Gloves</a><a href="#new">Sports Equipment</a></div>
+            <div class="mega-menu-column"><strong>Sports</strong><a href="#sport">Running</a><a href="#sport">Training</a><a href="#sport">Yoga</a><a href="#sport">Badminton</a><a href="#sport">Basketball</a><a href="#sport">Cricket</a><a href="#sport">Football</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#sport">Motorsport</a>
+          <div class="mega-menu catalog-menu simple-menu" aria-label="Motorsport">
+            <div class="mega-menu-column"><a href="#sport">Motorsport Store</a><a href="#sport">Scuderia Ferrari</a><a href="#sport">BMW M Motorsport</a><a href="#sport">McLAREN</a></div>
+            <div class="mega-menu-column"><a href="#sport">FORMULA 1</a><a href="#sport">Aston Martin Aramco F1 Team</a><a href="#sport">Porsche Legacy</a><a href="#sport">Porsche Design</a></div>
+            <div class="mega-menu-column"><a href="#sport">Shoes</a><a href="#sport">Clothing</a><a href="#sport">Accessories</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#sport">Lifestyle</a>
+          <div class="mega-menu catalog-menu simple-menu" aria-label="Lifestyle">
+            <div class="mega-menu-column featured"><a href="#sport">Jersey Culture</a><a href="#sport">Summer Shop</a><a href="#sport">Sneaker Store</a><a href="#sport">Travel Store</a><a href="#sport">Speedcat Style Guide</a><a href="#sport">Shoes</a><a href="#sport">Clothing</a><a href="#sport">Sneaker Finder</a></div>
+            <div class="mega-menu-column"><strong>Icons</strong><a href="#new">Classics</a><a href="#new">Speedcat</a><a href="#new">Palermo</a><a href="#new">Suede</a></div>
+            <div class="mega-menu-column"><strong>Collaborations</strong><a href="#new">PUMA x AHLUWALIA</a><a href="#new">PUMA x SUPERKICKS</a><a href="#new">PUMA x POKEMON</a><a href="#new">PUMA x J.L-A.L</a><a href="#new">PUMA x GABBY'S DOLLHOUSE</a><a href="#new">A$AP ROCKY x PUMA</a><a href="#new">PUMA x ROSÉ</a><a href="#new">PUMA x PAW PATROL</a><a href="#new">PUMA &amp; MADHAPPY</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#sport">Kids</a>
+          <div class="mega-menu catalog-menu" aria-label="Kids">
+            <div class="mega-menu-column featured"><a href="#new">New &amp; Trending</a><a href="#new">Sale</a><a href="#new">School Store</a><a href="#new">SPEEDCAT</a><a href="#new">PUMA x TRANSFORMERS</a><a href="#new">PUMA x DORA THE EXPLORER</a></div>
+            <div class="mega-menu-column"><strong>Shop by age</strong><a href="#new">Babies &amp; Toddlers (0 - 4 yrs)</a><a href="#new">Little Kids &amp; Pre School (4 - 8 yrs)</a><a href="#new">Big Kids &amp; Youth (8 -16 yrs)</a></div>
+            <div class="mega-menu-column"><strong>Shoes</strong><a href="#new">Sneakers</a><a href="#new">Sports Shoes</a><a href="#new">Sandals, Flip-Flops &amp; Slides</a></div>
+            <div class="mega-menu-column"><strong>Clothing</strong><a href="#new">T-Shirts &amp; Tops</a><a href="#new">Pants &amp; Shorts</a><a href="#new">Sweatshirts &amp; Jackets</a><a href="#new">Dresses &amp; Skirts</a></div>
+            <div class="mega-menu-column"><strong>Bags &amp; Accessories</strong><a href="#new">School Bags</a><a href="#new">Caps &amp; Beanies</a><a href="#new">Bottles</a></div>
+            <div class="mega-menu-column"><strong>Sports</strong><a href="#sport">Football</a><a href="#sport">Cricket</a><a href="#sport">Running</a><a href="#sport">Basketball</a><a href="#sport">Indoor Sports</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#new">Sale</a>
+          <div class="mega-menu catalog-menu simple-menu" aria-label="Sale">
+            <div class="mega-menu-column featured"><a href="#new">Gymwear Under ₹2000</a><a href="#new">Sneakers Under ₹3000</a><a href="#new">Running Shoes Under ₹3000</a></div>
+            <div class="mega-menu-column"><strong>Men's Sale</strong><a href="#new">Shoes</a><a href="#new">Clothing</a><a href="#new">Accessories</a></div>
+            <div class="mega-menu-column"><strong>Women's Sale</strong><a href="#new">Shoes</a><a href="#new">Clothing</a><a href="#new">Accessories</a></div>
+            <div class="mega-menu-column"><strong>Kid's Sale</strong><a href="#new">Shoes</a><a href="#new">Clothing</a><a href="#new">Accessories</a></div>
+          </div>
+        </div>
+
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-button" id="searchButton" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
+        <button class="icon-button" id="wishlistButton" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg></button>
+        <button class="icon-button" id="accountButton" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.5 3.1-5.3 7-5.3s6.3 1.8 7 5.3"/></svg></button>
+        <button class="icon-button" id="cartButton" aria-label="Shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="cart-count" id="cartCount">0</span></button>
+      </div>
+    </div>
+    <div class="search-panel" id="searchPanel"><input type="search" placeholder="Search products, styles and more..." aria-label="Search products"></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-shape"></div>
+      <img class="hero-art" src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/2ddcbf0de438249134e27e53436dceb769f46787?_a=BAMAPqkS0" alt="PUMA new season sneakers">
+      <div class="hero-content">
+        <h1>Change of pace</h1>
+        <p class="hero-copy">Gear up for the new season</p>
+        <div><a class="button dark" href="#men">For him</a> <a class="button dark" href="#new">For her</a></div>
+      </div>
+    </section>
+
+    <div class="benefits" aria-label="Shopping benefits">
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7zM7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg><div><strong>Free shipping</strong><small>On orders over ₹2999</small></div></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 5v5h-5"/></svg><div><strong>Easy returns</strong><small>30 day return policy</small></div></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Secure payments</strong><small>100% secure checkout</small></div></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 20v-3a8 8 0 0 1 16 0v3M7 20H4m16 0h-3M12 4a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" transform="translate(0 3)"/></svg><div><strong>Need help?</strong><small>Talk to our experts</small></div></div>
+    </div>
+
+    <section class="section" id="sport">
+      <div class="section-heading"><h2>Shop by category</h2><a class="view-all" href="#new">View all</a></div>
+      <div class="category-grid">
+        <a class="category-card" href="#new"><img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/9f32689a3681b48dea8a6f4b3da188aaeaafbe03?_a=BAMAPqkS0" alt="PUMA lifestyle sneakers"><div><strong>Accessories</strong><span>Explore →</span></div></a>
+        <a class="category-card" href="#new"><img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/313488/01/sv01/fnd/IND/fmt/png/Electrify-NITRO%E2%84%A2-5-Running-Shoes" alt="PUMA running shoes"><div><strong>Running</strong><span>Explore →</span></div></a>
+        <a class="category-card" href="#new"><img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/bee9541ab6daedf7bc69be72263ba1d19d322cc0?_a=BAMAPqkS0" alt="PUMA motorsport apparel"><div><strong>Training</strong><span>Explore →</span></div></a>
+        <a class="category-card" href="#new"><img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/410911/01/sv01/fnd/IND/fmt/png/Speedcat-VTG-Burgundy-x-ROS%C3%89-Sneakers" alt="PUMA Speedcat sneakers"><div><strong>Classics</strong><span>Explore →</span></div></a>
+      </div>
+    </section>
+
+    <section class="product-section" id="new">
+      <div class="section">
+        <div class="section-heading"><div><h2>Fall favorites</h2><div class="tabs"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="men">Men</button><button class="tab" data-filter="women">Women</button></div></div><a class="view-all" href="#">Shop all</a></div>
+        <div class="product-grid">
+          <article class="product-card" data-category="men"><div class="product-image"><span class="tag">New</span><button class="heart" aria-label="Add Velocity Nitro to wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg></button><img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/313488/01/sv01/fnd/IND/fmt/png/Electrify-NITRO%E2%84%A2-5-Running-Shoes" alt="PUMA Electrify Nitro running shoe"></div><div class="product-info"><h3>Velocity Nitro 3</h3><p>Men's Running Shoes</p><span class="price">₹12,999</span></div></article>
+          <article class="product-card" data-category="women"><div class="product-image"><span class="tag">Bestseller</span><button class="heart" aria-label="Add Palermo to wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg></button><img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_300,h_300/global/396463/92/sv01/fnd/IND/fmt/png/Palermo-Sneakers" alt="PUMA Palermo sneakers"></div><div class="product-info"><h3>Palermo</h3><p>Women's Sneakers</p><span class="price">₹7,999</span></div></article>
+          <article class="product-card" data-category="men"><div class="product-image"><button class="heart" aria-label="Add T7 jacket to wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg></button><img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/bee9541ab6daedf7bc69be72263ba1d19d322cc0?_a=BAMAPqkS0" alt="PUMA motorsport jacket"></div><div class="product-info"><h3>T7 Track Jacket</h3><p>Men's Essentials</p><span class="price">₹8,499</span></div></article>
+          <article class="product-card" data-category="women"><div class="product-image"><span class="tag">-30%</span><button class="heart" aria-label="Add Mayze Stack to wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg></button><img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/401287/06/sv01/fnd/IND/fmt/png/Speedcat-Women's-Ballet-Shoes" alt="PUMA Speedcat women's shoes"></div><div class="product-info"><h3>Mayze Stack</h3><p>Women's Sneakers</p><span class="price">₹6,299 <span class="old-price">₹8,999</span></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="men"><img class="story-image" src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/ac9bddb0a31fb69916143d81444a27fac1f2de62?_a=BAMAROkS0" alt="PUMA basketball collection"><div class="story-copy"><div class="eyebrow">Puma training</div><h2>Train<br>louder.</h2><p>From first rep to final set, gear up with the performance pieces that keep you moving. No shortcuts. No excuses.</p><a class="button light" href="#new">Shop training <span>→</span></a></div></section>
+    <section class="newsletter"><h2>Get in the fast lane</h2><p>Sign up for early access, exclusive drops and 10% off your first order.</p><form class="subscribe" id="subscribeForm"><input type="email" placeholder="Your email address" aria-label="Email address" required><button type="submit">Sign me up</button></form><div class="form-message" id="formMessage"></div></section>
+  </main>
+  <footer><div class="footer-grid"><div><a class="logo" href="#" aria-label="Puma home"><svg viewBox="0 0 80 40" fill="none"><path fill="white" d="M7 25.5c8.2-1.6 15.7-5.8 22.6-12.5 4-3.9 7.6-6.1 10.8-6.5-2.7 2.1-4.1 4.7-4.2 7.6 2.7 1.6 7.2 2.4 13.3 2.4 5.3 0 10.2-.8 14.7-2.4-2.5 4.6-7.1 7.4-13.8 8.3-7.9 1.1-14.9-.5-20.9-4.6C22 23.5 14.5 26.1 7 25.5Z"/><path fill="white" d="M58.2 9.2c2.4-2.9 5.4-4.3 9-4.3-1.1 2.4-3 4.3-5.5 5.7l-3.5-1.4Z"/></svg></a><p>Forever Faster. We are here to make a difference in the world through sport and culture.</p></div><div><h3>Help</h3><ul><li>Contact us</li><li>Shipping & returns</li><li>FAQs</li><li>Track order</li></ul></div><div><h3>About PUMA</h3><ul><li>Company</li><li>Careers</li><li>Press</li><li>Store locator</li></ul></div><div><h3>Follow us</h3><ul><li>Instagram</li><li>Facebook</li><li>YouTube</li><li>Twitter</li></ul></div></div><div class="footer-bottom">© 2025 PUMA India. All rights reserved.</div></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart"><div class="drawer-header"><h2>Your bag <span id="drawerCount">(0)</span></h2><button class="close" id="closeDrawer" aria-label="Close bag">×</button></div><div class="empty-cart"><strong>Your bag is empty</strong>Add something fast to get started.</div></aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const overlay = document.getElementById('overlay');
+    const drawer = document.getElementById('cartDrawer');
+    const cartButton = document.getElementById('cartButton');
+    const closeDrawer = document.getElementById('closeDrawer');
+    const cartCount = document.getElementById('cartCount');
+    const drawerCount = document.getElementById('drawerCount');
+    let cartItems = 0;
+
+    function toggleCart(open) {
+      drawer.classList.toggle('open', open);
+      overlay.classList.toggle('visible', open);
+      document.body.classList.toggle('no-scroll', open);
+    }
+    cartButton.addEventListener('click', () => toggleCart(true));
+    closeDrawer.addEventListener('click', () => toggleCart(false));
+    overlay.addEventListener('click', () => toggleCart(false));
+
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const panel = document.getElementById('searchPanel');
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open')) panel.querySelector('input').focus();
+    });
+    document.getElementById('accountButton').addEventListener('click', () => {
+      const toast = document.getElementById('toast');
+      toast.textContent = 'Sign in is coming soon.';
+      toast.classList.add('visible');
+      window.setTimeout(() => toast.classList.remove('visible'), 2200);
+    });
+    document.getElementById('wishlistButton').addEventListener('click', () => {
+      const toast = document.getElementById('toast');
+      toast.textContent = 'Your wishlist is ready for your favorites.';
+      toast.classList.add('visible');
+      window.setTimeout(() => toast.classList.remove('visible'), 2200);
+    });
+    document.getElementById('menuButton').addEventListener('click', () => {
+      const nav = document.querySelector('.main-nav');
+      const isOpen = nav.style.display === 'flex';
+      nav.style.cssText = isOpen ? '' : 'background:#fff;display:flex;flex-direction:column;gap:22px;left:0;padding:24px;position:absolute;top:64px;width:100%;z-index:5;';
+    });
+
+    document.querySelectorAll('.heart').forEach(button => button.addEventListener('click', event => {
+      event.preventDefault();
+      button.classList.toggle('active');
+      button.setAttribute('aria-label', button.classList.contains('active') ? 'Remove from wishlist' : 'Add to wishlist');
+    }));
+    document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(item => item.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = filter === 'all' || card.dataset.category === filter ? '' : 'none';
+      });
+    }));
+    document.querySelectorAll('.product-card').forEach(card => card.addEventListener('click', event => {
+      if (!event.target.closest('.heart')) {
+        cartItems += 1;
+        cartCount.textContent = cartItems;
+        drawerCount.textContent = `(${cartItems})`;
+      }
+    }));
+    document.getElementById('subscribeForm').addEventListener('submit', event => {
+      event.preventDefault();
+      document.getElementById('formMessage').textContent = 'You are on the list. Welcome to the fast lane!';
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
