@@ -1,815 +1,1923 @@
-const PRODUCTS = [
-  {
-    id: 'electrify-nitro-5',
-    name: 'Electrify NITRO™ 5',
-    subtitle: "Men's Running Shoes",
-    category: 'men',
-    tags: ['running', 'nitro', 'men', 'new'],
-    price: 9999,
-    mrp: null,
-    badge: 'NEW',
-    badgeType: 'new',
-    image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/313488/01/sv01/fnd/IND/fmt/png/Electrify-NITRO%E2%84%A2-5-Running-Shoes',
-    rail: ['fall', 'performance']
-  },
-  {
-    id: 'palermo-leather',
-    name: 'Palermo Leather Sneakers',
-    subtitle: 'Unisex Terrace Sneakers',
-    category: 'women',
-    tags: ['sneakers', 'classics', 'palermo', 'women', 'unisex'],
-    price: 6999,
-    mrp: null,
-    badge: 'BESTSELLER',
-    badgeType: 'new',
-    image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/396463/92/sv01/fnd/IND/fmt/png/Palermo-Sneakers',
-    rail: ['fall', 'performance']
-  },
-  {
-    id: 'speedcat-og-fall',
-    name: 'Speedcat OG Motorsport',
-    subtitle: 'Unisex Low-Profile Sneakers',
-    category: 'men',
-    tags: ['sneakers', 'speedcat', 'motorsport', 'men', 'unisex'],
-    price: 9999,
-    mrp: null,
-    badge: 'NEW',
-    badgeType: 'new',
-    image: 'assets/fall-favorite-one.avif',
-    rail: ['fall']
-  },
-  {
-    id: 'speedcat-suede-w',
-    name: "Speedcat Suede Women's",
-    subtitle: "Women's Motorsport Sneakers",
-    category: 'women',
-    tags: ['sneakers', 'speedcat', 'motorsport', 'women', 'sale'],
-    price: 7999,
-    mrp: 9999,
-    badge: '-20%',
-    badgeType: 'sale',
-    image: 'assets/fall-favorite-two.avif',
-    rail: ['fall']
-  },
-  {
-    id: 'speedcat-vtg-rose',
-    name: 'Speedcat VTG x ROSÉ',
-    subtitle: 'Unisex Limited Edition Sneakers',
-    category: 'women',
-    tags: ['sneakers', 'speedcat', 'classics', 'collab', 'women'],
-    price: 10999,
-    mrp: null,
-    badge: 'LIMITED',
-    badgeType: 'new',
-    image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/410911/01/sv01/fnd/IND/fmt/png/Speedcat-VTG-Burgundy-x-ROS%C3%89-Sneakers',
-    rail: ['fall', 'performance']
-  },
-  {
-    id: 'speedcat-ballet',
-    name: 'Speedcat Ballet',
-    subtitle: "Women's Lifestyle Shoes",
-    category: 'women',
-    tags: ['sneakers', 'speedcat', 'women', 'sale'],
-    price: 6999,
-    mrp: 8499,
-    badge: '-18%',
-    badgeType: 'sale',
-    image: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/401287/06/sv01/fnd/IND/fmt/png/Speedcat-Women's-Ballet-Shoes",
-    rail: ['fall', 'performance']
-  },
-  {
-    id: 'velocity-nitro-pro',
-    name: 'Velocity NITRO™ 3 Road',
-    subtitle: "Men's Cushioned Running Shoes",
-    category: 'men',
-    tags: ['running', 'nitro', 'men', 'sale'],
-    price: 8999,
-    mrp: 12999,
-    badge: '-31%',
-    badgeType: 'sale',
-    image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/313488/01/sv01/fnd/IND/fmt/png/Electrify-NITRO%E2%84%A2-5-Running-Shoes',
-    rail: ['performance']
-  },
-  {
-    id: 'palermo-vintage-club',
-    name: 'Palermo Vintage Club',
-    subtitle: "Men's Classics Sneakers",
-    category: 'men',
-    tags: ['sneakers', 'palermo', 'classics', 'men', 'sale'],
-    price: 5599,
-    mrp: 7999,
-    badge: '-30%',
-    badgeType: 'sale',
-    image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/396463/92/sv01/fnd/IND/fmt/png/Palermo-Sneakers',
-    rail: ['performance']
-  }
-];
+/**
+ * PUMA India — Official Storefront Clone Script
+ * Comprehensive interactive module supporting:
+ * - Cart Drawer with live badge, free shipping meter, quantity controls, and checkout
+ * - Wishlist Drawer with heart icons on cards, sync across modals, and move-to-bag
+ * - Product Quick-View Modal with full UK sizing (UK 6 - UK 11)
+ * - User Account Modal with sign-in, join PUMA, and sign-out persistence
+ * - Live Header Search with instant visual suggestions
+ * - Smooth Carousel Navigation for Fall Favorites, New & Featured, and Trending Now
+ * - Cross-page support for index.html, new-season.html, and sports.html
+ */
 
-const UK_SIZES = ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'];
-const FREE_SHIPPING_THRESHOLD = 1999;
+(function () {
+  'use strict';
 
-const FALLBACK_IMG =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='Arial' font-size='18'%3EPUMA INDIA%3C/text%3E%3C/svg%3E";
-
-const ANNOUNCEMENTS = [
-  'FREE RETURNS AND EXCHANGES',
-  'EXTRA 5% OFF ON ALL PREPAID ORDERS',
-  'FREE SHIPPING ON ORDERS ABOVE ₹1,999'
-];
-
-// State
-let cart = loadStorage('puma_cart', []);
-let wishlist = loadStorage('puma_wishlist', []);
-let user = loadStorage('puma_user', null);
-let activeQuickViewProduct = null;
-let selectedQuickViewSize = 'UK 8';
-let toastTimer = null;
-
-function loadStorage(key, fallback) {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function saveStorage(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // Ignore storage quota errors in private browsing
-  }
-}
-
-function formatINR(amount) {
-  return '₹' + Number(amount).toLocaleString('en-IN');
-}
-
-function escapeHTML(str) {
-  return String(str).replace(/[&<>"']/g, ch => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;'
-  }[ch]));
-}
-
-// DOM References
-const overlay = document.getElementById('overlay');
-const cartDrawer = document.getElementById('cartDrawer');
-const wishlistDrawer = document.getElementById('wishlistDrawer');
-const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
-const productModal = document.getElementById('productModal');
-const accountModal = document.getElementById('accountModal');
-const searchPanel = document.getElementById('searchPanel');
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-const toastEl = document.getElementById('toast');
-
-// Toast Manager (race-condition free)
-function showToast(message) {
-  toastEl.textContent = message;
-  toastEl.classList.add('visible');
-  window.clearTimeout(toastTimer);
-  toastTimer = window.setTimeout(() => {
-    toastEl.classList.remove('visible');
-  }, 2600);
-}
-
-// Rotating Announcement Bar
-function initAnnouncementBar() {
-  const el = document.getElementById('announcementText');
-  if (!el) return;
-  let index = 0;
-  window.setInterval(() => {
-    el.classList.add('fade');
-    window.setTimeout(() => {
-      index = (index + 1) % ANNOUNCEMENTS.length;
-      el.textContent = ANNOUNCEMENTS[index];
-      el.classList.remove('fade');
-    }, 260);
-  }, 4200);
-}
-
-// Product Card Renderer
-function createProductCardHTML(product) {
-  const isSaved = wishlist.includes(product.id);
-  const badgeHTML = product.badge
-    ? `<span class="tag ${product.badgeType === 'sale' ? 'sale' : ''}">${escapeHTML(product.badge)}</span>`
-    : '';
-  const priceHTML = product.mrp
-    ? `<span class="price is-sale">${formatINR(product.price)}</span><span class="old-price">${formatINR(product.mrp)}</span>`
-    : `<span class="price">${formatINR(product.price)}</span>`;
-
-  return `
-    <article class="product-card" data-id="${product.id}" data-category="${product.category}" data-tags="${product.tags.join(',')}" tabindex="0" role="button" aria-label="View ${escapeHTML(product.name)}">
-      <div class="product-image">
-        ${badgeHTML}
-        <button class="heart ${isSaved ? 'active' : ''}" type="button" data-wishlist="${product.id}" aria-label="${isSaved ? 'Remove' : 'Add'} ${escapeHTML(product.name)} ${isSaved ? 'from' : 'to'} wishlist" aria-pressed="${isSaved}">
-          <svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg>
-        </button>
-        <img src="${product.image}" alt="${escapeHTML(product.name)}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
-        <button class="quick-add" type="button" data-quick-add="${product.id}">+ Quick Add (UK 8)</button>
-      </div>
-      <div class="product-info">
-        <div class="product-info-top">
-          <h3>${escapeHTML(product.name)}</h3>
-          <div class="price-block">${priceHTML}</div>
-        </div>
-        <p>${escapeHTML(product.subtitle)}</p>
-      </div>
-    </article>
-  `;
-}
-
-function renderRails() {
-  const fallGrid = document.getElementById('fallFavoritesRail');
-  const perfGrid = document.getElementById('performanceRail');
-
-  if (fallGrid) {
-    fallGrid.innerHTML = PRODUCTS.filter(p => p.rail.includes('fall')).map(createProductCardHTML).join('');
-  }
-  if (perfGrid) {
-    perfGrid.innerHTML = PRODUCTS.filter(p => p.rail.includes('performance')).map(createProductCardHTML).join('');
-  }
-}
-
-// Overlay & Drawer/Modal Management
-function closeAllPanels() {
-  [cartDrawer, wishlistDrawer, mobileMenuDrawer, productModal, accountModal].forEach(el => {
-    if (el) {
-      el.classList.remove('open');
-      el.setAttribute('aria-hidden', 'true');
+  // Master Catalog across PUMA Storefront
+  const CATALOG = [
+    {
+      id: 'fall-stranger-things',
+      name: 'PUMA x STRANGER THINGS MB.06 Basketball Shoes',
+      subtitle: "Unisex Basketball & Lifestyle",
+      price: 13999,
+      mrp: null,
+      image: 'assets/puma/fall_stranger_things.jpg',
+      tags: ['basketball', 'stranger-things', 'collab', 'new', 'unisex']
+    },
+    {
+      id: 'fall-electrify-nitro',
+      name: 'Electrify NITRO™ 5 Running Shoes',
+      subtitle: "Men's Road Running Shoes",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/fall_electrify_nitro.jpg',
+      tags: ['running', 'nitro', 'men', 'road-running', 'new']
+    },
+    {
+      id: 'fall-speedcat-burgundy',
+      name: 'Speedcat VTG Burgundy x ROSÉ Sneakers',
+      subtitle: "Unisex Motorsport Heritage Sneakers",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/fall_speedcat_burgundy.jpg',
+      tags: ['speedcat', 'lifestyle', 'motorsport', 'unisex', 'new']
+    },
+    {
+      id: 'fall-speedcat-ballet',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Women's Low-Profile Lifestyle",
+      price: 6999,
+      mrp: 8499,
+      image: 'assets/puma/fall_speedcat_ballet.jpg',
+      tags: ['speedcat', 'ballet', 'women', 'lifestyle', 'sale']
+    },
+    {
+      id: 'nf-nitro',
+      name: 'Velocity NITRO™ 4 Running Shoes',
+      subtitle: "Men's & Women's Running Shoes",
+      price: 11999,
+      mrp: null,
+      image: 'assets/puma/nf_nitro.jpg',
+      tags: ['running', 'nitro', 'marathon', 'men', 'women']
+    },
+    {
+      id: 'nf-speedcat',
+      name: 'PUMA Speedcat OG in Red and Black Suede',
+      subtitle: 'Classic Unisex Motorsport Shoes',
+      price: 8999,
+      mrp: 10999,
+      image: 'assets/puma/nf_speedcat.jpg',
+      tags: ['speedcat', 'motorsport', 'lifestyle', 'sale']
+    },
+    {
+      id: 'nf-cold-weather',
+      name: 'PUMA Cold-Weather Gear Winter Collection',
+      subtitle: 'Outdoor & Performance Apparel',
+      price: 5999,
+      mrp: null,
+      image: 'assets/puma/nf_cold_weather.jpg',
+      tags: ['clothing', 'winter', 'running', 'lifestyle']
+    },
+    {
+      id: 'nf-containment',
+      name: 'Containment Breach PUMA x Stranger Things Shoe',
+      subtitle: 'Limited Edition Collaboration',
+      price: 14999,
+      mrp: null,
+      image: 'assets/puma/nf_containment.jpg',
+      tags: ['stranger-things', 'basketball', 'limited', 'collab']
+    },
+    {
+      id: 'ns-speedcat-metallic',
+      name: "Speedcat Ballet Women's Metallic Shoes",
+      subtitle: "Women's Terrace & Ballet Shoes",
+      price: 7499,
+      mrp: 8999,
+      image: 'assets/puma/ns_speedcat_metallic.jpg',
+      tags: ['speedcat', 'metallic', 'women', 'sale']
+    },
+    {
+      id: 'life-palermo',
+      name: 'PUMA Palermo Suede Sneakers in Espresso Brown',
+      subtitle: 'Classic Terrace Sneakers',
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/life_palermo.jpg',
+      tags: ['palermo', 'suede', 'classics', 'lifestyle']
+    },
+    {
+      id: 'life-suede',
+      name: 'PUMA Suede Classic Lifestyle Editorial',
+      subtitle: 'Iconic Heritage Streetwear',
+      price: 6499,
+      mrp: null,
+      image: 'assets/puma/life_suede.jpg',
+      tags: ['suede', 'classics', 'lifestyle']
+    },
+    {
+      id: 'life-bmw',
+      name: 'PUMA x BMW M Motorsport Apparel and Footwear',
+      subtitle: 'Motorsport Racing Collection',
+      price: 8999,
+      mrp: null,
+      image: 'assets/puma/life_bmw.jpg',
+      tags: ['motorsport', 'bmw', 'racing', 'lifestyle']
+    },
+    {
+      id: 'perf-velocity',
+      name: 'PUMA Velocity NITRO 3 Performance Shoes',
+      subtitle: 'High Cushion Everyday Running',
+      price: 10999,
+      mrp: null,
+      image: 'assets/puma/perf_velocity.jpg',
+      tags: ['running', 'nitro', 'performance']
+    },
+    {
+      id: 'perf-marathon',
+      name: 'PUMA Fast-R3 & Deviate Elite 4 Marathon Shoes',
+      subtitle: 'Carbon-Plated Racing Shoes',
+      price: 19999,
+      mrp: null,
+      image: 'assets/puma/perf_marathon.jpg',
+      tags: ['running', 'carbon-plate', 'marathon', 'race-day']
+    },
+    {
+      id: 'perf-hyrox',
+      name: 'Athletes Training in PUMA x HYROX Collection',
+      subtitle: 'Functional Fitness & Gym Gear',
+      price: 7999,
+      mrp: null,
+      image: 'assets/puma/perf_hyrox.jpg',
+      tags: ['training', 'hyrox', 'gym', 'fitness']
+    },
+    {
+      id: 'trend-court-shatter',
+      name: 'Court Shatter Low Sneakers',
+      subtitle: "Men's Retro Court Shoes",
+      price: 4999,
+      mrp: 6999,
+      image: 'assets/puma/trend_court_shatter.jpg',
+      tags: ['sale', 'court', 'sneakers', 'men']
+    },
+    {
+      id: 'trend-profoam',
+      name: 'PROFOAM Galactic Running Sneakers',
+      subtitle: 'Lightweight Responsive Cushioning',
+      price: 4499,
+      mrp: 6499,
+      image: 'assets/puma/trend_profoam.jpg',
+      tags: ['sale', 'running', 'profoam', 'unisex']
+    },
+    {
+      id: 'trend-glidepacer',
+      name: 'PUMA Glidepacer Pro Lightweight Running Shoes',
+      subtitle: "Men's Road Running Footwear",
+      price: 4999,
+      mrp: 7999,
+      image: 'assets/puma/trend_glidepacer.jpg',
+      tags: ['sale', 'running', 'glidepacer']
+    },
+    {
+      id: 'trend-blktop',
+      name: 'Blktop Rider Suede Sneakers',
+      subtitle: '80s Track & Street Heritage',
+      price: 5599,
+      mrp: 7999,
+      image: 'assets/puma/trend_blktop.jpg',
+      tags: ['sale', 'sneakers', 'rider', 'classics']
+    },
+    {
+      id: 'ns-softride',
+      name: 'Softride Premier GlideKnit All-Day Comfort Shoes',
+      subtitle: "Women's Everyday Running & Walking",
+      price: 5499,
+      mrp: null,
+      image: 'assets/puma/ns_softride.jpg',
+      tags: ['running', 'lifestyle', 'women', 'softride']
+    },
+    {
+      id: 'ns-speedcat-black',
+      name: 'Speedcat OG Sneakers in Puma Black',
+      subtitle: 'Unisex Motorsport Heritage',
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_black.jpg',
+      tags: ['speedcat', 'motorsport', 'lifestyle', 'men', 'women']
+    },
+    {
+      id: 'ns-speedcat-red',
+      name: 'Speedcat OG Sneakers in For All Time Red',
+      subtitle: 'Unisex Motorsport Classic',
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_red.jpg',
+      tags: ['speedcat', 'motorsport', 'lifestyle', 'men', 'women']
+    },
+    {
+      id: 'sp-glidepacer',
+      name: 'PUMA Glidepacer Pro Lightweight Running Shoes',
+      subtitle: "Performance Road Running",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/sp_glidepacer.jpg',
+      tags: ['sports', 'running', 'men', 'women']
+    },
+    {
+      id: 'sp-fade-pro',
+      name: 'Fade Pro High Energy Running Shoes',
+      subtitle: "Speed & Interval Training",
+      price: 7499,
+      mrp: null,
+      image: 'assets/puma/sp_fade_pro.jpg',
+      tags: ['sports', 'running', 'men', 'women']
+    },
+    {
+      id: 'sp-galaxis',
+      name: "Galaxis Pro Men's Running Shoes",
+      subtitle: "Men's Performance Cushioning",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/sp_galaxis.jpg',
+      tags: ['sports', 'running', 'men']
+    },
+    {
+      id: 'sp-softride-freq',
+      name: 'Softride Frequence Street All-Day Comfort Shoes',
+      subtitle: "Training & Gym Footwear",
+      price: 5999,
+      mrp: null,
+      image: 'assets/puma/sp_softride_freq.jpg',
+      tags: ['sports', 'training', 'men', 'women']
+    },
+    {
+      id: 'men-speedcat-red',
+      name: 'Speedcat Sneakers',
+      subtitle: "Men's Motorsport Heritage Shoes",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_red.jpg',
+      tags: ['speedcat', 'sneakers', 'lifestyle', 'motorsport', 'men']
+    },
+    {
+      id: 'men-speedcat-black',
+      name: 'Speedcat Sneakers',
+      subtitle: "Men's Motorsport Heritage Shoes",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_black.jpg',
+      tags: ['speedcat', 'sneakers', 'lifestyle', 'motorsport', 'men']
+    },
+    {
+      id: 'men-palermo-white-black',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Men's Terrace Classics",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/life_palermo.jpg',
+      tags: ['palermo', 'sneakers', 'lifestyle', 'men', 'bestseller']
+    },
+    {
+      id: 'men-deviate-nitro',
+      name: 'Deviate Pure NITRO™ Men\'s Running Shoes',
+      subtitle: "Men's Carbon-Plated Running Shoes",
+      price: 14999,
+      mrp: null,
+      image: 'assets/puma/perf_marathon.jpg',
+      tags: ['running', 'nitro', 'marathon', 'men']
+    },
+    {
+      id: 'men-electrify-nitro',
+      name: 'Electrify NITRO™ 5 Running Shoes',
+      subtitle: "Men's Daily Road Running Shoes",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/fall_electrify_nitro.jpg',
+      tags: ['running', 'nitro', 'men']
+    },
+    {
+      id: 'men-stranger-things',
+      name: 'PUMA x STRANGER THINGS MB.06 Basketball Shoes',
+      subtitle: "Men's Limited Edition Basketball Shoes",
+      price: 13999,
+      mrp: null,
+      image: 'assets/puma/fall_stranger_things.jpg',
+      tags: ['basketball', 'stranger-things', 'collab', 'men']
+    },
+    {
+      id: 'men-palermo-green',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Men's Terrace Heritage Shoes",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/life_suede.jpg',
+      tags: ['palermo', 'sneakers', 'men']
+    },
+    {
+      id: 'men-club-kayzer',
+      name: 'PUMA Club Kayzer Sneakers',
+      subtitle: "Men's Retro Court Shoes",
+      price: 3119,
+      mrp: 5999,
+      image: 'assets/puma/trend_court_shatter.jpg',
+      tags: ['sale', 'court', 'sneakers', 'men']
+    },
+    {
+      id: 'men-glidepacer-black-blue',
+      name: 'PUMA Glidepacer Pro Lightweight Running Shoes',
+      subtitle: "Men's Performance Road Running Shoes",
+      price: 4949,
+      mrp: 8999,
+      image: 'assets/puma/trend_glidepacer.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-profoam-galactic',
+      name: 'PROFOAM Galactic Sneakers',
+      subtitle: "Men's Responsive Cushioning Shoes",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/trend_profoam.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-galaxis-pro',
+      name: 'Galaxis Pro Men\'s Running Shoes',
+      subtitle: "Men's Performance Running Shoes",
+      price: 3759,
+      mrp: 7999,
+      image: 'assets/puma/sp_galaxis.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-scend-pro',
+      name: 'Scend Pro HeatStride Men\'s Running Shoes',
+      subtitle: "Men's Lightweight Breathable Running Shoes",
+      price: 3499,
+      mrp: 6999,
+      image: 'assets/puma/perf_velocity.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-fade-pro',
+      name: 'Fade Pro Running Shoes',
+      subtitle: "Men's Speed Training Shoes",
+      price: 4399,
+      mrp: 7999,
+      image: 'assets/puma/sp_fade_pro.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-blktop-rider',
+      name: 'Blktop Rider Suede Sneakers',
+      subtitle: "Men's Heritage Streetwear Shoes",
+      price: 4679,
+      mrp: 8999,
+      image: 'assets/puma/trend_blktop.jpg',
+      tags: ['sale', 'sneakers', 'men']
+    },
+    {
+      id: 'men-glidepacer-blue',
+      name: 'PUMA Glidepacer Pro Lightweight Running Shoes',
+      subtitle: "Men's Road Running Shoes",
+      price: 4499,
+      mrp: 8999,
+      image: 'assets/puma/sp_glidepacer.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-fade-white-cyan',
+      name: 'Fade Pro Running Shoes',
+      subtitle: "Men's High Energy Running Shoes",
+      price: 4399,
+      mrp: 7999,
+      image: 'assets/puma/sp_running.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    {
+      id: 'men-glidepacer-mint',
+      name: 'PUMA Glidepacer Pro Lightweight Running Shoes',
+      subtitle: "Men's Breathable Running Shoes",
+      price: 4949,
+      mrp: 8999,
+      image: 'assets/puma/sp_softride_freq.jpg',
+      tags: ['new', 'running', 'men', 'sale']
+    },
+    {
+      id: 'men-profoam-grey',
+      name: 'PROFOAM Galactic Sneakers',
+      subtitle: "Men's Lifestyle & Running Shoes",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/ns_softride.jpg',
+      tags: ['sale', 'running', 'men']
+    },
+    // ==========================================
+    // Women's Catalog (Matches in.puma.com/in/en/womens)
+    // ==========================================
+    {
+      id: 'women-speedcat-metallic',
+      name: "Speedcat Ballet Women's Metallic Shoes",
+      subtitle: "Women's Metallic Ballet Flat Sneakers",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_metallic.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women', 'trending']
+    },
+    {
+      id: 'women-speedcat-ballet-bw',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Women's Ballet Inspired Sneakers - Black/White",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/fall_speedcat_ballet.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-speedcat-ballet-red',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Women's Ballet Inspired Sneakers - Red/White",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/fall_speedcat_burgundy.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-speedcat-ballet-cream',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Women's Ballet Inspired Sneakers - Cream/Beige",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/life_suede.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-speedcat-croco',
+      name: "Speedcat Ballet Croco Texture Women's Sneakers",
+      subtitle: "Women's Croco Embossed Ballet Sneakers",
+      price: 7499,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_metallic.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-speedcat-ballet-pink',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Women's Ballet Inspired Sneakers - Pink/White",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/fall_speedcat_ballet.jpg',
+      tags: ['speedcat', 'ballet', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-speedcat-sneakers-red',
+      name: 'Speedcat Sneakers',
+      subtitle: "Women's Motorsport Classics - Suede Red",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_red.jpg',
+      tags: ['speedcat', 'sneakers', 'lifestyle', 'motorsport', 'women']
+    },
+    {
+      id: 'women-speedcat-sneakers-black',
+      name: 'Speedcat Sneakers',
+      subtitle: "Women's Motorsport Classics - Suede Black",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ns_speedcat_black.jpg',
+      tags: ['speedcat', 'sneakers', 'lifestyle', 'motorsport', 'women']
+    },
+    {
+      id: 'women-tori-pixie-v1',
+      name: "Tori Pixie V1 Women's All-day Comfort Sneakers",
+      subtitle: "Women's Everyday Casual Shoes",
+      price: 3119,
+      mrp: 5999,
+      image: 'assets/puma/trend_court_shatter.jpg',
+      tags: ['sale', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-galaxis-plum',
+      name: "Galaxis Pro Women's Performance Boost Running Shoes",
+      subtitle: "Women's Lightweight Running Shoes - Plum",
+      price: 3289,
+      mrp: 6999,
+      image: 'assets/puma/sp_galaxis.jpg',
+      tags: ['sale', 'running', 'women']
+    },
+    {
+      id: 'women-galaxis-black-lime',
+      name: "Galaxis Pro Women's Performance Boost Running Shoes",
+      subtitle: "Women's Lightweight Running Shoes - Black/Lime",
+      price: 3289,
+      mrp: 6999,
+      image: 'assets/puma/sp_galaxis.jpg',
+      tags: ['sale', 'running', 'women']
+    },
+    {
+      id: 'women-galaxis-white-yellow',
+      name: "Galaxis Pro Women's Performance Boost Running Shoes",
+      subtitle: "Women's Lightweight Running Shoes - White/Yellow",
+      price: 3359,
+      mrp: 6999,
+      image: 'assets/puma/sp_running.jpg',
+      tags: ['sale', 'running', 'women']
+    },
+    {
+      id: 'women-tori-pixie-femme',
+      name: "Tori Pixie Femme Women's Casual Sneakers",
+      subtitle: "Women's Platform Casual Sneakers",
+      price: 3599,
+      mrp: 5999,
+      image: 'assets/puma/trend_blktop.jpg',
+      tags: ['sale', 'sneakers', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-maxima-pro-blush',
+      name: "Maxima Pro Women's Running Shoes",
+      subtitle: "Women's High Cushion Running Shoes - Blush",
+      price: 6399,
+      mrp: 7999,
+      image: 'assets/puma/sp_fade_pro.jpg',
+      tags: ['sale', 'running', 'women']
+    },
+    {
+      id: 'women-maxima-pro-black',
+      name: "Maxima Pro Women's Running Shoes",
+      subtitle: "Women's High Cushion Running Shoes - Black",
+      price: 5999,
+      mrp: 7999,
+      image: 'assets/puma/perf_velocity.jpg',
+      tags: ['sale', 'running', 'women']
+    },
+    {
+      id: 'women-softride-frequence',
+      name: "Softride Frequence Street Women's All-Day Comfort Shoes",
+      subtitle: "Women's Cloud Soft Foam Shoes",
+      price: 4199,
+      mrp: 6999,
+      image: 'assets/puma/sp_softride_freq.jpg',
+      tags: ['sale', 'running', 'lifestyle', 'women']
+    },
+    {
+      id: 'women-cell-thrill',
+      name: "Cell Thrill Women's Comfort Running and Gym Shoes",
+      subtitle: "Women's Training & Gym Shoes",
+      price: 4124,
+      mrp: 5499,
+      image: 'assets/puma/trend_profoam.jpg',
+      tags: ['sale', 'running', 'sports', 'training', 'women']
+    },
+    // Official Motorsport Products (Matches in.puma.com/in/en/motorsport)
+    {
+      id: 'ms-ferrari-vegas-jacket',
+      name: "Scuderia Ferrari HP Replica Las Vegas Men's Coach Jacket",
+      subtitle: "Official Team Scuderia Ferrari Outerwear",
+      price: 19999,
+      mrp: null,
+      image: 'assets/puma/ms_ferrari_vegas_jacket.jpg',
+      tags: ['motorsport', 'ferrari', 'jacket', 'clothing', 'men', 'f1']
+    },
+    {
+      id: 'ms-mclaren-speedcat-orange',
+      name: 'McLAREN RACING Speedcat Sneakers',
+      subtitle: "Papaya Orange x Black Motorsport Heritage",
+      price: 10999,
+      mrp: null,
+      image: 'assets/puma/ms_mclaren_speedcat_orange.jpg',
+      tags: ['motorsport', 'mclaren', 'speedcat', 'sneakers', 'unisex', 'f1']
+    },
+    {
+      id: 'ms-mclaren-speedcat-burgundy',
+      name: 'McLAREN RACING Speedcat Sneakers',
+      subtitle: "Cream x Burgundy Motorsport Heritage",
+      price: 10999,
+      mrp: null,
+      image: 'assets/puma/ms_mclaren_speedcat_burgundy.jpg',
+      tags: ['motorsport', 'mclaren', 'speedcat', 'sneakers', 'unisex', 'f1']
+    },
+    {
+      id: 'ms-bmw-caven-leather',
+      name: 'BMW M Motorsport Caven 2.0 Leather Sneakers',
+      subtitle: "Men's Track Heritage Retro Shoes",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ms_bmw_caven_leather.jpg',
+      tags: ['motorsport', 'bmw', 'sneakers', 'shoes', 'men']
+    },
+    {
+      id: 'ms-ferrari-palermo',
+      name: 'Scuderia Ferrari Palermo Sneakers',
+      subtitle: "Terrace Classic Ferrari Shield Edition",
+      price: 7999,
+      mrp: null,
+      image: 'assets/puma/ms_ferrari_palermo.jpg',
+      tags: ['motorsport', 'ferrari', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ms-ferrari-hp-speedcat-red',
+      name: 'Scuderia Ferrari HP Speedcat Sneakers',
+      subtitle: "Limited Edition Rosso Corsa Racing Shoes",
+      price: 10999,
+      mrp: 19299,
+      image: 'assets/puma/ms_ferrari_hp_speedcat_red.jpg',
+      tags: ['motorsport', 'ferrari', 'speedcat', 'sneakers', 'limited-edition']
+    },
+    {
+      id: 'ms-porsche-court-classic',
+      name: 'Porsche Legacy Court Classic Lux Sneakers',
+      subtitle: "Porsche Motorsport Heritage Low-Tops",
+      price: 4274,
+      mrp: 7499,
+      image: 'assets/puma/ms_porsche_court_classic.jpg',
+      tags: ['motorsport', 'porsche', 'sneakers', 'sale', 'men']
+    },
+    {
+      id: 'ms-bmw-court-classic-black',
+      name: 'BMW M Motorsport Court Classic Lux Sneakers',
+      subtitle: "Black Track Heritage Low-Tops",
+      price: 4124,
+      mrp: 7499,
+      image: 'assets/puma/ms_bmw_court_classic_black.jpg',
+      tags: ['motorsport', 'bmw', 'sneakers', 'sale', 'men']
+    },
+    {
+      id: 'ms-bmw-court-classic-white',
+      name: 'BMW M Motorsport Court Classic Lux Sneakers',
+      subtitle: "White Track Heritage Low-Tops",
+      price: 4274,
+      mrp: 7499,
+      image: 'assets/puma/ms_bmw_court_classic_white.jpg',
+      tags: ['motorsport', 'bmw', 'sneakers', 'sale', 'men']
+    },
+    {
+      id: 'ms-bmw-hypnotic-black',
+      name: 'BMW M Motorsport Hypnotic Sneakers',
+      subtitle: "High-Performance Lightweight Track Shoes",
+      price: 7199,
+      mrp: 8999,
+      image: 'assets/puma/ms_bmw_hypnotic_black.jpg',
+      tags: ['motorsport', 'bmw', 'running', 'sneakers', 'men']
+    },
+    {
+      id: 'ms-ferrari-4panel-cap',
+      name: 'Scuderia Ferrari Lifestyle 4 Panel Cap',
+      subtitle: "Official Team Ferrari Cap with Shield Badge",
+      price: 1199,
+      mrp: 1999,
+      image: 'assets/puma/ms_ferrari_4panel_cap.jpg',
+      tags: ['motorsport', 'ferrari', 'cap', 'accessories', 'unisex']
+    },
+    {
+      id: 'ms-bmw-neo-cat',
+      name: 'BMW M Motorsport Neo Cat Sneakers',
+      subtitle: "Low-Profile Driving Performance Shoes",
+      price: 3599,
+      mrp: 7499,
+      image: 'assets/puma/ms_bmw_neo_cat.jpg',
+      tags: ['motorsport', 'bmw', 'driving', 'sneakers', 'men']
+    },
+    {
+      id: 'ms-bmw-hypnotic-lightweight',
+      name: 'BMW MMS Hypnotic Lightweight Sneakers',
+      subtitle: "Motorsport Cushioning Daily Shoes",
+      price: 5299,
+      mrp: 9999,
+      image: 'assets/puma/ms_bmw_hypnotic_lightweight.jpg',
+      tags: ['motorsport', 'bmw', 'sneakers', 'running', 'unisex']
+    },
+    {
+      id: 'ms-porsche-capro',
+      name: 'Porsche Legacy CA Pro Leather Motorsport Shoes',
+      subtitle: "Retro Court Leather Porsche Edition",
+      price: 4769,
+      mrp: 8999,
+      image: 'assets/puma/ms_porsche_capro.jpg',
+      tags: ['motorsport', 'porsche', 'ca-pro', 'sneakers', 'men']
+    },
+    {
+      id: 'ms-aston-martin-fade',
+      name: 'PUMA x ASTON MARTIN ARAMCO F1® TEAM Fade Sneakers',
+      subtitle: "Official Aston Martin F1 Racing Shoes",
+      price: 8799,
+      mrp: 10999,
+      image: 'assets/puma/ms_aston_martin_fade.jpg',
+      tags: ['motorsport', 'aston-martin', 'f1', 'sneakers', 'unisex']
+    },
+    // Official Lifestyle Collections (Matches in.puma.com/in/en/lifestyle)
+    {
+      id: 'ls-palermo-white-black',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Black",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_black.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex', 'bestseller']
+    },
+    {
+      id: 'ls-palermo-white-tan',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Tan",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_tan.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-white-blue',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Blue",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_blue.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-black-white',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - Black/White",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_black_white.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-all-white',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - All White",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_all_white.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex', 'bestseller']
+    },
+    {
+      id: 'ls-palermo-white-brown',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Brown",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_brown.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-white-green',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Green",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_green.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-speedcat-brown-suede',
+      name: 'Speedcat Sneakers',
+      subtitle: "Low-Profile Motorsport Heritage - Brown Suede",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ls_speedcat_brown_suede.jpg',
+      tags: ['lifestyle', 'speedcat', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-black-gum',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - Black/Gum",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_black_gum.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-palermo-white-vibrant-green',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Vibrant Green",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_vibrant_green.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-speedcat-ballet-silver',
+      name: "Speedcat Ballet Women's Metallic Shoes",
+      subtitle: "Low-Profile Metallic Lifestyle Shoes - Silver",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_speedcat_ballet_silver.jpg',
+      tags: ['lifestyle', 'speedcat', 'ballet', 'women', 'trending']
+    },
+    {
+      id: 'ls-t7-womens-short-jacket',
+      name: "T7 ALWAYS ON Women's Short Track Jacket",
+      subtitle: "Iconic Archive Tracksuit Jacket",
+      price: 4999,
+      mrp: null,
+      image: 'assets/puma/ls_t7_womens_short_jacket.jpg',
+      tags: ['lifestyle', 't7', 'jacket', 'clothing', 'women']
+    },
+    {
+      id: 'ls-speedcat-ballet-grey',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Low-Profile Lifestyle Ballet Shoes - Grey",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_speedcat_ballet_grey.jpg',
+      tags: ['lifestyle', 'speedcat', 'ballet', 'women']
+    },
+    {
+      id: 'ls-speedcat-ballet-pink',
+      name: "Speedcat Women's Ballet Shoes",
+      subtitle: "Low-Profile Lifestyle Ballet Shoes - Pink",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_speedcat_ballet_pink.jpg',
+      tags: ['lifestyle', 'speedcat', 'ballet', 'women']
+    },
+    {
+      id: 'ls-t7-womens-track-pants',
+      name: "T7 ALWAYS ON Women's Slim Fit Track Pants",
+      subtitle: "Archive Tracksuit Pants with T7 Stripes",
+      price: 1980,
+      mrp: 4219,
+      image: 'assets/puma/ls_t7_womens_track_pants.jpg',
+      tags: ['lifestyle', 't7', 'trackpants', 'clothing', 'women', 'sale']
+    },
+    {
+      id: 'ls-t7-mens-track-jacket',
+      name: "T7 ALWAYS ON Men's Track Jacket",
+      subtitle: "Archive Track Jacket with White Contrast Stripe",
+      price: 5499,
+      mrp: null,
+      image: 'assets/puma/ls_t7_mens_track_jacket.jpg',
+      tags: ['lifestyle', 't7', 'jacket', 'clothing', 'men']
+    },
+    {
+      id: 'ls-t7-mens-track-pants',
+      name: "T7 ALWAYS ON Men's Track Pants",
+      subtitle: "Archive T7 Stripe Sweatpants",
+      price: 3374,
+      mrp: 4499,
+      image: 'assets/puma/ls_t7_mens_track_pants.jpg',
+      tags: ['lifestyle', 't7', 'trackpants', 'clothing', 'men', 'sale']
+    },
+    {
+      id: 'ls-future-archive-sweater',
+      name: 'FUTURE ARCHIVE Relaxed Fit Crew Sweater',
+      subtitle: "Retro Streetwear Graphic Crewneck",
+      price: 3960,
+      mrp: 8427,
+      image: 'assets/puma/ls_future_archive_sweater.jpg',
+      tags: ['lifestyle', 'sweater', 'clothing', 'men', 'sale']
+    },
+    {
+      id: 'ls-road-to-unity-skirt',
+      name: "Road To Unity Women's Woven Midi Printed Pleated Skirt",
+      subtitle: "Plaid Streetwear Midi Skirt",
+      price: 2370,
+      mrp: 4740,
+      image: 'assets/puma/ls_road_to_unity_skirt.jpg',
+      tags: ['lifestyle', 'skirt', 'clothing', 'women', 'sale']
+    },
+    {
+      id: 'ls-t7-relaxed-cotton-shorts',
+      name: "T7 Family Men's Relaxed Cotton Shorts",
+      subtitle: "Everyday Comfortable Cotton Shorts",
+      price: 3374,
+      mrp: 4499,
+      image: 'assets/puma/ls_t7_relaxed_cotton_shorts.jpg',
+      tags: ['lifestyle', 't7', 'shorts', 'clothing', 'men', 'sale']
+    },
+    {
+      id: 'ls-speedcat-etoile-yellow',
+      name: "Speedcat Etoile Women's Sneakers",
+      subtitle: "Retro Low Profile Sneaker - Butter Yellow",
+      price: 9999,
+      mrp: null,
+      image: 'assets/puma/ls_speedcat_etoile_yellow.jpg',
+      tags: ['lifestyle', 'speedcat', 'sneakers', 'women']
+    },
+    {
+      id: 'ls-palermo-white-pink',
+      name: 'Palermo Leather Sneakers',
+      subtitle: "Terrace Classic Leather Edition - White/Pink",
+      price: 6999,
+      mrp: null,
+      image: 'assets/puma/ls_palermo_white_pink.jpg',
+      tags: ['lifestyle', 'palermo', 'sneakers', 'unisex']
+    },
+    {
+      id: 'ls-t7-mens-maroon-jacket',
+      name: "T7 ALWAYS ON Men's Track Jacket",
+      subtitle: "Archive Track Jacket in Rich Maroon",
+      price: 4399,
+      mrp: 5499,
+      image: 'assets/puma/ls_t7_mens_maroon_jacket.jpg',
+      tags: ['lifestyle', 't7', 'jacket', 'clothing', 'men', 'sale']
+    },
+    {
+      id: 'ls-t7-womens-green-pants',
+      name: "T7 ALWAYS ON Women's Slim Fit Track Pants",
+      subtitle: "Archive T7 Stripe Sweatpants in Forest Green",
+      price: 2190,
+      mrp: 4213,
+      image: 'assets/puma/ls_t7_womens_green_pants.jpg',
+      tags: ['lifestyle', 't7', 'trackpants', 'clothing', 'women', 'sale']
+    },
+    // =========================================================================
+    // KIDS COLLECTION (20 items from official in.puma.com/in/en/kids)
+    // =========================================================================
+    {
+      id: 'kids-paw-patrol-tee',
+      name: "PUMA X PAW PATROL Kids' Graphic Tee",
+      subtitle: "Official Nickelodeon Collaboration Everyday Cotton Tee",
+      price: 1124,
+      mrp: 1499,
+      image: 'assets/puma/kids_paw_patrol_tee.jpg',
+      tags: ['kids', 'clothing', 'tee', 'paw-patrol', 'sale']
+    },
+    {
+      id: 'kids-paw-patrol-shorts-set',
+      name: "PUMA X PAW PATROL Infants' Tee & Shorts Set",
+      subtitle: "Two-Piece Graphic Summer Outfit for Toddlers & Infants",
+      price: 2799,
+      mrp: 3499,
+      image: 'assets/puma/kids_paw_patrol_shorts_set.jpg',
+      tags: ['kids', 'clothing', 'sets', 'paw-patrol', 'infants', 'sale']
+    },
+    {
+      id: 'kids-paw-patrol-cargo-pants',
+      name: "PUMA X PAW PATROL Boys' T7 Cargo Pants",
+      subtitle: "Signature T7 Side Stripe Track Pants with Utility Pockets",
+      price: 3039,
+      mrp: 3799,
+      image: 'assets/puma/kids_paw_patrol_cargo_pants.jpg',
+      tags: ['kids', 'clothing', 'pants', 't7', 'paw-patrol', 'sale']
+    },
+    {
+      id: 'kids-kitten-mesh-white',
+      name: "PUMA Kitten Mesh Toddler's First-Walk Slip-on Sneakers",
+      subtitle: "Ultra-Light Breathable First-Step Shoes with Hook-and-Loop Strap",
+      price: 2999,
+      mrp: 2999,
+      image: 'assets/puma/kids_kitten_mesh_white.jpg',
+      tags: ['kids', 'shoes', 'sneakers', 'toddler', 'first-walk']
+    },
+    {
+      id: 'kids-future-8-match',
+      name: "FUTURE 8 MATCH FOREVER FG/AG Youth Football Boots",
+      subtitle: "High-Performance Firm Ground / Artificial Grass Cleats",
+      price: 6999,
+      mrp: 6999,
+      image: 'assets/puma/kids_future_8_match.jpg',
+      tags: ['kids', 'shoes', 'football', 'sports', 'cleats']
+    },
+    {
+      id: 'kids-ferrari-drift-cat-black',
+      name: "Scuderia Ferrari Drift Cat 11 Youth Everyday Sneakers",
+      subtitle: "Official Ferrari F1 Shield Low Profile Motorsport Shoes",
+      price: 3249,
+      mrp: 4999,
+      image: 'assets/puma/kids_ferrari_drift_cat_black.jpg',
+      tags: ['kids', 'shoes', 'motorsport', 'ferrari', 'sneakers', 'sale']
+    },
+    {
+      id: 'kids-smash-soft-school',
+      name: "Smash Soft Cushioning Youth School Shoes",
+      subtitle: "Classic All-Black Durable Everyday Uniform Footwear",
+      price: 3299,
+      mrp: 3299,
+      image: 'assets/puma/kids_smash_soft_school.jpg',
+      tags: ['kids', 'shoes', 'school', 'smash', 'sneakers']
+    },
+    {
+      id: 'kids-ferrari-drift-cat-white',
+      name: "Scuderia Ferrari Drift Cat 11 Youth Everyday Sneakers",
+      subtitle: "White/Red Scuderia Ferrari Racing Heritage Lifestyle Shoes",
+      price: 2999,
+      mrp: 4999,
+      image: 'assets/puma/kids_ferrari_drift_cat_white.jpg',
+      tags: ['kids', 'shoes', 'motorsport', 'ferrari', 'sneakers', 'sale']
+    },
+    {
+      id: 'kids-soft-enzo-5-black',
+      name: "Soft Enzo 5 Kid's Running Shoes",
+      subtitle: "Cushioned Breathable Mesh Athletic Running & Play Shoes",
+      price: 3499,
+      mrp: 3499,
+      image: 'assets/puma/kids_soft_enzo_5_black.jpg',
+      tags: ['kids', 'shoes', 'running', 'sports', 'enzo']
+    },
+    {
+      id: 'kids-kitten-mesh-blue',
+      name: "PUMA Kitten Mesh Toddler's First-Walk Slip-on Sneakers",
+      subtitle: "Cobalt Blue & Mint Soft Step Easy-Wear Toddler Shoes",
+      price: 2999,
+      mrp: 2999,
+      image: 'assets/puma/kids_kitten_mesh_blue.jpg',
+      tags: ['kids', 'shoes', 'sneakers', 'toddler', 'first-walk']
+    },
+    {
+      id: 'kids-carina-charm-white',
+      name: "Carina 3.0 Youth Charm Sneakers",
+      subtitle: "Platform Court Silhouette with Detachable Cat Charm",
+      price: 3499,
+      mrp: 3499,
+      image: 'assets/puma/kids_carina_charm_white.jpg',
+      tags: ['kids', 'shoes', 'lifestyle', 'carina', 'sneakers']
+    },
+    {
+      id: 'kids-pounce-lite-mint',
+      name: "Pounce Lite 2 Youth Running Shoes",
+      subtitle: "Ultra-Responsive Lightweight Foam Everyday Athletic Shoes",
+      price: 3999,
+      mrp: 3999,
+      image: 'assets/puma/kids_pounce_lite_mint.jpg',
+      tags: ['kids', 'shoes', 'running', 'sports', 'pounce']
+    },
+    {
+      id: 'kids-softride-echo-black',
+      name: "Softride Pro Echo Consonance Youth All-Day Comfort Shoes",
+      subtitle: "SOFTRIDE Foam Technology for Maximum Cushioning & Ease",
+      price: 2999,
+      mrp: 3999,
+      image: 'assets/puma/kids_softride_echo_black.jpg',
+      tags: ['kids', 'shoes', 'softride', 'comfort', 'sale']
+    },
+    {
+      id: 'kids-storm-backpack-black',
+      name: "PUMA Storm Water-Resistant Backpack 27L",
+      subtitle: "Multi-Compartment Weatherproof School & Sports Bag",
+      price: 1649,
+      mrp: 2999,
+      image: 'assets/puma/kids_storm_backpack_black.jpg',
+      tags: ['kids', 'accessories', 'backpacks', 'bags', 'school', 'sale']
+    },
+    {
+      id: 'kids-running-cap-black',
+      name: "Running Cap",
+      subtitle: "Lightweight Quick-Drying Performance Athletic Sun Cap",
+      price: 639,
+      mrp: 799,
+      image: 'assets/puma/kids_running_cap_black.jpg',
+      tags: ['kids', 'accessories', 'caps', 'running', 'sale']
+    },
+    {
+      id: 'kids-camo-face-mask',
+      name: "Camo Face Mask Pack of 2",
+      subtitle: "Triple-Layer Breathable Reusable Face Coverings",
+      price: 419,
+      mrp: 599,
+      image: 'assets/puma/kids_camo_face_mask.jpg',
+      tags: ['kids', 'accessories', 'masks', 'camo', 'sale']
+    },
+    {
+      id: 'kids-teamgoal-backpack',
+      name: "teamGOAL 23 Durable Football Backpack",
+      subtitle: "Heavy-Duty Ball & Boot Storage Compartment School Bag",
+      price: 753,
+      mrp: 1299,
+      image: 'assets/puma/kids_teamgoal_backpack.jpg',
+      tags: ['kids', 'accessories', 'backpacks', 'football', 'sale']
+    },
+    {
+      id: 'kids-school-backpack-yellow',
+      name: "School Backpack",
+      subtitle: "High-Capacity Everyday Campus Pack with Bold Logo Print",
+      price: 949,
+      mrp: 1899,
+      image: 'assets/puma/kids_school_backpack_yellow.jpg',
+      tags: ['kids', 'accessories', 'backpacks', 'bags', 'school', 'sale']
+    },
+    {
+      id: 'kids-zen-sling-bag',
+      name: "PU Zen Sling Bag",
+      subtitle: "Premium Faux Leather Compact Crossbody Festival Bag",
+      price: 1149,
+      mrp: 2299,
+      image: 'assets/puma/kids_zen_sling_bag.jpg',
+      tags: ['kids', 'accessories', 'bags', 'sling', 'lifestyle', 'sale']
     }
-  });
-  searchPanel.classList.remove('open');
-  overlay.classList.remove('visible');
-  document.body.classList.remove('no-scroll');
-}
+  ];
 
-function openPanel(panelEl) {
-  closeAllPanels();
-  panelEl.classList.add('open');
-  panelEl.setAttribute('aria-hidden', 'false');
-  overlay.classList.add('visible');
-  document.body.classList.add('no-scroll');
-}
+  const MEN_SIZES = ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'];
+  const WOMEN_SIZES = ['UK 3', 'UK 4', 'UK 5', 'UK 6', 'UK 7', 'UK 8'];
+  const KIDS_SHOE_SIZES = ['UK 10C', 'UK 11C', 'UK 12C', 'UK 13C', 'UK 1', 'UK 2', 'UK 3', 'UK 4', 'UK 5'];
+  const KIDS_APPAREL_SIZES = ['Age 2-3Y', 'Age 3-4Y', 'Age 5-6Y', 'Age 7-8Y', 'Age 9-10Y', 'Age 11-12Y'];
+  const ACCESSORY_SIZES = ['ONE SIZE'];
+  const UK_SIZES = MEN_SIZES;
+  const FREE_SHIPPING_THRESHOLD = 1999;
+  const FALLBACK_IMG = 'assets/puma/fall_electrify_nitro.jpg';
 
-// Cart Functions
-function addToCart(productId, size = 'UK 8') {
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
-
-  const existing = cart.find(item => item.id === productId && item.size === size);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ id: productId, size, qty: 1 });
+  // Persistence Helpers
+  function loadStorage(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
   }
 
-  saveStorage('puma_cart', cart);
-  renderCart();
-  showToast(`Added ${product.name} (${size}) to your bag`);
-}
-
-function updateCartQty(productId, size, delta) {
-  const idx = cart.findIndex(item => item.id === productId && item.size === size);
-  if (idx === -1) return;
-
-  cart[idx].qty += delta;
-  if (cart[idx].qty <= 0) {
-    cart.splice(idx, 1);
-  }
-  saveStorage('puma_cart', cart);
-  renderCart();
-}
-
-function removeFromCart(productId, size) {
-  cart = cart.filter(item => !(item.id === productId && item.size === size));
-  saveStorage('puma_cart', cart);
-  renderCart();
-}
-
-function renderCart() {
-  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-  const cartCount = document.getElementById('cartCount');
-  const drawerCount = document.getElementById('drawerCount');
-  const cartBody = document.getElementById('cartBody');
-  const cartFooter = document.getElementById('cartFooter');
-
-  cartCount.textContent = totalQty;
-  cartCount.dataset.empty = totalQty === 0 ? 'true' : 'false';
-  drawerCount.textContent = `(${totalQty})`;
-
-  if (cart.length === 0) {
-    cartBody.innerHTML = `
-      <div class="empty-state">
-        <strong>Your Shopping Cart is Empty</strong>
-        Explore our latest NITRO™, Speedcat, and Palermo drops to get started.
-      </div>
-    `;
-    cartFooter.hidden = true;
-    return;
+  function saveStorage(key, val) {
+    try {
+      localStorage.setItem(key, JSON.stringify(val));
+    } catch (e) {}
   }
 
-  let subtotal = 0;
-  let totalMrp = 0;
+  function formatINR(amount) {
+    return '₹' + Number(amount).toLocaleString('en-IN');
+  }
 
-  const itemsHTML = cart.map(entry => {
-    const product = PRODUCTS.find(p => p.id === entry.id);
-    if (!product) return '';
-    const linePrice = product.price * entry.qty;
-    const lineMrp = (product.mrp || product.price) * entry.qty;
-    subtotal += linePrice;
-    totalMrp += lineMrp;
+  function escapeHTML(str) {
+    return String(str || '').replace(/[&<>"']/g, ch => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[ch]));
+  }
 
-    return `
-      <div class="cart-item">
-        <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
-        <div>
-          <div class="cart-item-head">
-            <h4>${escapeHTML(product.name)}</h4>
-            <strong>${formatINR(linePrice)}</strong>
-          </div>
-          <div class="cart-item-meta">${escapeHTML(product.subtitle)} · Size ${escapeHTML(entry.size)}</div>
-          <div class="cart-item-controls">
-            <div class="qty-control">
-              <button type="button" data-qty-minus="${product.id}" data-size="${entry.size}" aria-label="Decrease quantity">−</button>
-              <span>${entry.qty}</span>
-              <button type="button" data-qty-plus="${product.id}" data-size="${entry.size}" aria-label="Increase quantity">+</button>
+  // State
+  let cart = loadStorage('puma_cart', []);
+  let wishlist = loadStorage('puma_wishlist', []);
+  let user = loadStorage('puma_user', null);
+  let activeQuickViewProduct = null;
+  let selectedQuickViewSize = 'UK 8';
+  let toastTimer = null;
+
+  // DOM Elements
+  const backdrop = document.getElementById('drawerBackdrop');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const wishlistDrawer = document.getElementById('wishlistDrawer');
+  const productModal = document.getElementById('productModal');
+  const accountModal = document.getElementById('accountModal');
+  const toastEl = document.getElementById('toast');
+  const headerSearchInput = document.querySelector('.search-input');
+
+  // Product Resolver (from catalog or card DOM attributes)
+  function findProduct(productId) {
+    const fromCatalog = CATALOG.find(p => p.id === productId);
+    if (fromCatalog) return fromCatalog;
+
+    // Fallback: extract from DOM card
+    const cardEl = document.querySelector(`[data-id="${productId}"]`);
+    if (cardEl) {
+      const imgEl = cardEl.querySelector('img');
+      const titleEl = cardEl.querySelector('.shoe-card-title, .ns-card-title, .editorial-content-title');
+      const priceEl = cardEl.querySelector('.price-current, .price-sale, .ns-card-price');
+      const mrpEl = cardEl.querySelector('.price-mrp, .price-old');
+
+      const name = titleEl ? titleEl.textContent.trim() : (imgEl ? imgEl.alt : productId);
+      const image = imgEl ? imgEl.getAttribute('src') : FALLBACK_IMG;
+      let price = 6999;
+      if (priceEl) {
+        const num = parseInt(priceEl.textContent.replace(/[^0-9]/g, ''), 10);
+        if (!isNaN(num)) price = num;
+      }
+      let mrp = null;
+      if (mrpEl) {
+        const num = parseInt(mrpEl.textContent.replace(/[^0-9]/g, ''), 10);
+        if (!isNaN(num)) mrp = num;
+      }
+
+      const generated = {
+        id: productId,
+        name,
+        subtitle: "Unisex Footwear",
+        price,
+        mrp,
+        image,
+        tags: ['puma', 'footwear']
+      };
+      CATALOG.push(generated);
+      return generated;
+    }
+
+    return null;
+  }
+
+  // Toast System
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('visible');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => {
+      toastEl.classList.remove('visible');
+    }, 2800);
+  }
+
+  // Drawer & Modal Controller
+  function closeAllPanels() {
+    const curCart = cartDrawer || document.getElementById('cartDrawer');
+    const curWish = wishlistDrawer || document.getElementById('wishlistDrawer');
+    const curProd = productModal || document.getElementById('productModal');
+    const curAcc = accountModal || document.getElementById('accountModal');
+    const curBackdrop = backdrop || document.getElementById('drawerBackdrop');
+
+    [curCart, curWish, curProd, curAcc].forEach(el => {
+      if (el) {
+        el.classList.remove('open');
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
+    if (curBackdrop) curBackdrop.classList.remove('visible');
+    document.body.classList.remove('no-scroll');
+
+    const searchDropdown = document.getElementById('searchDropdown');
+    if (searchDropdown) searchDropdown.classList.remove('visible');
+  }
+
+  function openPanel(panelEl) {
+    const el = panelEl || (typeof panelEl === 'string' ? document.getElementById(panelEl) : null);
+    if (!el) return;
+    closeAllPanels();
+    el.classList.add('open');
+    el.setAttribute('aria-hidden', 'false');
+    const curBackdrop = backdrop || document.getElementById('drawerBackdrop');
+    if (curBackdrop) curBackdrop.classList.add('visible');
+    document.body.classList.add('no-scroll');
+  }
+
+  // Cart Management
+  function addToCart(productId, size = 'UK 8', qty = 1) {
+    const product = findProduct(productId);
+    if (!product) return;
+
+    const existing = cart.find(item => item.id === productId && item.size === size);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({ id: productId, size, qty });
+    }
+
+    saveStorage('puma_cart', cart);
+    renderCart();
+    openPanel(cartDrawer);
+    showToast(`Added ${product.name} (${size}) to your bag`);
+  }
+
+  function updateCartQty(productId, size, delta) {
+    const idx = cart.findIndex(item => item.id === productId && item.size === size);
+    if (idx === -1) return;
+
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) {
+      cart.splice(idx, 1);
+    }
+
+    saveStorage('puma_cart', cart);
+    renderCart();
+  }
+
+  function removeFromCart(productId, size) {
+    cart = cart.filter(item => !(item.id === productId && item.size === size));
+    saveStorage('puma_cart', cart);
+    renderCart();
+    showToast('Item removed from your bag');
+  }
+
+  function renderCart() {
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    const cartCount = document.getElementById('cartCount');
+    if (cartCount) {
+      cartCount.textContent = totalQty;
+      cartCount.dataset.empty = totalQty === 0 ? 'true' : 'false';
+    }
+
+    const drawerCount = document.getElementById('drawerCount');
+    if (drawerCount) {
+      drawerCount.textContent = `(${totalQty})`;
+    }
+
+    const cartBody = document.getElementById('cartBody');
+    const cartFooter = document.getElementById('cartFooter');
+    if (!cartBody) return;
+
+    if (cart.length === 0) {
+      cartBody.innerHTML = `
+        <div class="empty-drawer-note">
+          <strong>YOUR BAG IS EMPTY</strong>
+          Explore our latest NITRO™, Speedcat, and Palermo drops to get started.
+        </div>
+      `;
+      if (cartFooter) cartFooter.hidden = true;
+      return;
+    }
+
+    let subtotal = 0;
+    let totalMrp = 0;
+
+    const rowsHTML = cart.map(entry => {
+      const product = findProduct(entry.id);
+      if (!product) return '';
+
+      const linePrice = product.price * entry.qty;
+      const lineMrp = (product.mrp || product.price) * entry.qty;
+      subtotal += linePrice;
+      totalMrp += lineMrp;
+
+      return `
+        <div class="cart-item-row">
+          <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.src='${FALLBACK_IMG}'" />
+          <div>
+            <div class="cart-item-top">
+              <h4>${escapeHTML(product.name)}</h4>
+              <strong>${formatINR(linePrice)}</strong>
             </div>
-            <button class="text-link-btn" type="button" data-remove-cart="${product.id}" data-size="${entry.size}">Remove</button>
+            <div class="cart-item-sub">${escapeHTML(product.subtitle)} · Size ${escapeHTML(entry.size)}</div>
+            <div class="cart-item-bottom">
+              <div class="qty-control">
+                <button type="button" data-qty-minus="${product.id}" data-size="${entry.size}" aria-label="Decrease quantity">−</button>
+                <span>${entry.qty}</span>
+                <button type="button" data-qty-plus="${product.id}" data-size="${entry.size}" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="item-remove-btn" type="button" data-remove-cart="${product.id}" data-size="${entry.size}">Remove</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const remainingForFree = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+    const progressPct = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
+    const shippingText = remainingForFree === 0
+      ? '🎉 You have unlocked FREE Express Delivery!'
+      : `Add ${formatINR(remainingForFree)} more to unlock FREE Delivery`;
+
+    cartBody.innerHTML = `
+      <div class="shipping-meter">
+        <div>${shippingText}</div>
+        <div class="shipping-meter-bar">
+          <div class="shipping-meter-fill" style="width: ${progressPct}%;"></div>
+        </div>
+      </div>
+      ${rowsHTML}
+    `;
+
+    const savings = totalMrp - subtotal;
+    const shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 199;
+    const grandTotal = subtotal + shippingFee;
+
+    if (cartFooter) {
+      cartFooter.hidden = false;
+      cartFooter.innerHTML = `
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span>${formatINR(subtotal)}</span>
+        </div>
+        ${savings > 0 ? `
+          <div class="summary-line" style="color: var(--accent-red);">
+            <span>You Save</span>
+            <span>−${formatINR(savings)}</span>
+          </div>
+        ` : ''}
+        <div class="summary-line">
+          <span>Standard Delivery</span>
+          <span>${shippingFee === 0 ? 'FREE' : formatINR(shippingFee)}</span>
+        </div>
+        <div class="summary-line total">
+          <span>Estimated Total</span>
+          <span>${formatINR(grandTotal)}</span>
+        </div>
+        <button class="btn-black btn-full" type="button" id="checkoutBtn">CHECKOUT NOW</button>
+      `;
+    }
+  }
+
+  // Wishlist Management
+  function toggleWishlist(productId) {
+    const product = findProduct(productId);
+    if (!product) return;
+
+    const exists = wishlist.includes(productId);
+    if (exists) {
+      wishlist = wishlist.filter(id => id !== productId);
+      showToast(`Removed ${product.name} from wishlist`);
+    } else {
+      wishlist.push(productId);
+      showToast(`Saved ${product.name} to wishlist`);
+    }
+
+    saveStorage('puma_wishlist', wishlist);
+    syncHeartButtons();
+    renderWishlist();
+  }
+
+  function syncHeartButtons() {
+    const badge = document.getElementById('wishlistCount');
+    if (badge) {
+      badge.textContent = wishlist.length;
+      badge.dataset.empty = wishlist.length === 0 ? 'true' : 'false';
+    }
+
+    document.querySelectorAll('.card-wishlist-btn').forEach(btn => {
+      const id = btn.dataset.wishlistId;
+      const isSaved = wishlist.includes(id);
+      btn.classList.toggle('active', isSaved);
+      btn.setAttribute('aria-label', `${isSaved ? 'Remove from' : 'Add to'} Wishlist`);
+    });
+
+    const modalWishBtn = document.getElementById('modalWishBtn');
+    if (modalWishBtn && activeQuickViewProduct) {
+      const isSaved = wishlist.includes(activeQuickViewProduct.id);
+      modalWishBtn.textContent = isSaved ? 'SAVED IN WISHLIST ♥' : 'ADD TO WISHLIST ♡';
+    }
+  }
+
+  function renderWishlist() {
+    const body = document.getElementById('wishlistBody');
+    const countLabel = document.getElementById('wishlistDrawerCount');
+    if (countLabel) countLabel.textContent = `(${wishlist.length})`;
+    if (!body) return;
+
+    if (wishlist.length === 0) {
+      body.innerHTML = `
+        <div class="empty-drawer-note">
+          <strong>YOUR WISHLIST IS EMPTY</strong>
+          Tap the heart on any shoe or apparel to save your favorites here.
+        </div>
+      `;
+      return;
+    }
+
+    body.innerHTML = wishlist.map(id => {
+      const product = findProduct(id);
+      if (!product) return '';
+      return `
+        <div class="cart-item-row">
+          <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.src='${FALLBACK_IMG}'" />
+          <div>
+            <div class="cart-item-top">
+              <h4>${escapeHTML(product.name)}</h4>
+              <strong>${formatINR(product.price)}</strong>
+            </div>
+            <div class="cart-item-sub">${escapeHTML(product.subtitle)}</div>
+            <div class="cart-item-bottom" style="margin-top: 10px;">
+              <button class="btn-black" style="padding: 6px 14px; min-height: 32px; font-size: 11px;" type="button" data-wishlist-to-cart="${product.id}">
+                MOVE TO BAG
+              </button>
+              <button class="item-remove-btn" type="button" data-remove-wishlist="${product.id}">Remove</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Quick-View Modal
+  function openQuickView(productId) {
+    const product = findProduct(productId);
+    const modal = productModal || document.getElementById('productModal');
+    if (!product || !modal) return;
+
+    const isKids = product.id.startsWith('kids-') || (product.tags && product.tags.includes('kids'));
+    const isAccessory = product.tags && (product.tags.includes('accessories') || product.tags.includes('backpacks') || product.tags.includes('caps') || product.tags.includes('masks') || product.tags.includes('bags'));
+    const isWomen = product.id.startsWith('women-') || (product.tags && product.tags.includes('women'));
+    
+    let sizes = MEN_SIZES;
+    let defaultSize = 'UK 8';
+    if (isAccessory) {
+      sizes = ACCESSORY_SIZES;
+      defaultSize = 'ONE SIZE';
+    } else if (isKids) {
+      const isApparel = product.tags && (product.tags.includes('clothing') || product.tags.includes('tee') || product.tags.includes('pants') || product.tags.includes('sets'));
+      sizes = isApparel ? KIDS_APPAREL_SIZES : KIDS_SHOE_SIZES;
+      defaultSize = isApparel ? 'Age 5-6Y' : 'UK 1';
+    } else if (isWomen) {
+      sizes = WOMEN_SIZES;
+      defaultSize = 'UK 5';
+    }
+
+    activeQuickViewProduct = product;
+    selectedQuickViewSize = defaultSize;
+
+    const isSaved = wishlist.includes(product.id);
+    const content = document.getElementById('quickViewContent');
+    if (!content) return;
+
+    content.innerHTML = `
+      <div class="quickview-layout">
+        <div class="quickview-media">
+          <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.src='${FALLBACK_IMG}'" />
+        </div>
+        <div class="quickview-info">
+          <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close modal">×</button>
+          <span class="quickview-sub">${escapeHTML(product.subtitle)}</span>
+          <h2>${escapeHTML(product.name)}</h2>
+          <div class="quickview-price-tag">
+            <span>${formatINR(product.price)}</span>
+            ${product.mrp ? `<span class="price-mrp" style="margin-left: 8px;">${formatINR(product.mrp)}</span>` : ''}
+          </div>
+          <div class="size-select-row">
+            <span>SELECT SIZE (UK)</span>
+            <span style="color: var(--text-secondary); font-weight: 500;">INCLUSIVE OF ALL TAXES</span>
+          </div>
+          <div class="size-btn-grid">
+            ${sizes.map(sz => `
+              <button type="button" class="size-choice ${sz === selectedQuickViewSize ? 'selected' : ''}" data-size-choice="${sz}">${sz}</button>
+            `).join('')}
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+            <button class="btn-black btn-full" type="button" id="modalAddBtn">ADD TO BAG</button>
+            <button class="btn-outline btn-full" type="button" id="modalWishBtn">
+              ${isSaved ? 'SAVED IN WISHLIST ♥' : 'ADD TO WISHLIST ♡'}
+            </button>
           </div>
         </div>
       </div>
     `;
-  }).join('');
 
-  const remainingForFree = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-  const progressPct = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
-  const shippingText = remainingForFree === 0
-    ? 'You have unlocked FREE Express Shipping!'
-    : `Add ${formatINR(remainingForFree)} more to unlock FREE Shipping`;
-
-  cartBody.innerHTML = `
-    <div class="shipping-progress">
-      <div>${shippingText}</div>
-      <div class="shipping-bar"><div class="shipping-bar-fill" style="width:${progressPct}%"></div></div>
-    </div>
-    ${itemsHTML}
-  `;
-
-  const savings = totalMrp - subtotal;
-  const shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 199;
-  const grandTotal = subtotal + shippingFee;
-
-  cartFooter.hidden = false;
-  cartFooter.innerHTML = `
-    <div class="summary-row"><span>Subtotal</span><span>${formatINR(subtotal)}</span></div>
-    ${savings > 0 ? `<div class="summary-row" style="color:var(--red);"><span>You Save</span><span>−${formatINR(savings)}</span></div>` : ''}
-    <div class="summary-row"><span>Shipping</span><span>${shippingFee === 0 ? 'FREE' : formatINR(shippingFee)}</span></div>
-    <div class="summary-row total"><span>Estimated Total</span><span>${formatINR(grandTotal)}</span></div>
-    <button class="button primary-dark full-width" type="button" id="checkoutBtn">Checkout Now</button>
-  `;
-}
-
-// Wishlist Functions
-function toggleWishlist(productId) {
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
-
-  const exists = wishlist.includes(productId);
-  if (exists) {
-    wishlist = wishlist.filter(id => id !== productId);
-    showToast(`Removed ${product.name} from wishlist`);
-  } else {
-    wishlist.push(productId);
-    showToast(`Saved ${product.name} to wishlist`);
+    openPanel(modal);
   }
 
-  saveStorage('puma_wishlist', wishlist);
-  syncHeartButtons();
-  renderWishlist();
-}
+  // Account Modal
+  function renderAccountModal() {
+    const body = document.getElementById('accountBody');
+    const dot = document.getElementById('accountDot');
+    if (dot) dot.classList.toggle('visible', Boolean(user));
+    if (!body) return;
 
-function syncHeartButtons() {
-  document.querySelectorAll('[data-wishlist]').forEach(btn => {
-    const id = btn.dataset.wishlist;
-    const isSaved = wishlist.includes(id);
-    btn.classList.toggle('active', isSaved);
-    btn.setAttribute('aria-pressed', String(isSaved));
-  });
-
-  const badge = document.getElementById('wishlistCount');
-  if (badge) {
-    badge.textContent = wishlist.length;
-    badge.dataset.empty = wishlist.length === 0 ? 'true' : 'false';
-  }
-}
-
-function renderWishlist() {
-  const body = document.getElementById('wishlistBody');
-  const countLabel = document.getElementById('wishlistDrawerCount');
-  countLabel.textContent = `(${wishlist.length})`;
-
-  if (wishlist.length === 0) {
-    body.innerHTML = `
-      <div class="empty-state">
-        <strong>Your Wishlist is Empty</strong>
-        Tap the heart icon on any sneaker or running shoe to save it here.
-      </div>
-    `;
-    return;
-  }
-
-  body.innerHTML = wishlist.map(id => {
-    const product = PRODUCTS.find(p => p.id === id);
-    if (!product) return '';
-    return `
-      <div class="cart-item">
-        <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
-        <div>
-          <div class="cart-item-head">
-            <h4>${escapeHTML(product.name)}</h4>
-            <strong>${formatINR(product.price)}</strong>
-          </div>
-          <div class="cart-item-meta">${escapeHTML(product.subtitle)}</div>
-          <div class="cart-item-controls">
-            <button class="button primary-dark" style="padding:8px 14px;font-size:11px;" type="button" data-move-to-cart="${product.id}">Move to Bag</button>
-            <button class="text-link-btn" type="button" data-remove-wishlist="${product.id}">Remove</button>
+    if (user) {
+      body.innerHTML = `
+        <div style="text-align: left;">
+          <p style="margin: 0 0 4px; font-size: 11px; font-weight: 700; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase;">WELCOME TO PUMA</p>
+          <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 800; margin: 0 0 4px; text-transform: uppercase;">${escapeHTML(user.name)}</h3>
+          <p style="margin: 0 0 20px; font-size: 13.5px; color: var(--text-secondary);">${escapeHTML(user.email)}</p>
+          <hr class="footer-divider" style="margin: 16px 0;" />
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="login.html" class="btn-black btn-full" style="text-align: center; text-decoration: none; padding: 10px;">MANAGE PUMA ACCOUNT</a>
+            <button class="btn-outline btn-full" type="button" id="signOutBtn" style="padding: 10px;">SIGN OUT</button>
           </div>
         </div>
-      </div>
-    `;
-  }).join('');
-}
+      `;
+    } else {
+      body.innerHTML = `
+        <form id="pumaAccountForm" style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="form-group">
+            <label for="accName" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Full Name</label>
+            <input id="accName" type="text" placeholder="Enter your full name" required style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; font-family: inherit; font-size: 13.5px;" />
+          </div>
+          <div class="form-group">
+            <label for="accEmail" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Email Address</label>
+            <input id="accEmail" type="email" placeholder="you@example.com" required style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; font-family: inherit; font-size: 13.5px;" />
+          </div>
+          <div class="form-group">
+            <label for="accPass" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Password</label>
+            <input id="accPass" type="password" placeholder="At least 6 characters" minlength="6" required style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; font-family: inherit; font-size: 13.5px;" />
+          </div>
+          <button class="btn-black btn-full" type="submit" style="padding: 12px; font-size: 13.5px; margin-top: 4px;">SIGN IN / JOIN PUMA</button>
+          <div style="text-align: center; margin-top: 6px;">
+            <a href="login.html" style="font-size: 12px; font-weight: 700; color: #181818; text-decoration: underline;">Open Full Login &amp; Register Page &rsaquo;</a>
+          </div>
+        </form>
+      `;
+    }
+  }
 
-// Product Quick-View Modal
-function openQuickView(productId) {
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
+  // Live Search Dropdown Handler
+  function initHeaderSearch() {
+    if (!headerSearchInput) return;
 
-  activeQuickViewProduct = product;
-  selectedQuickViewSize = 'UK 8';
+    // Ensure search dropdown container exists
+    let dropdown = document.getElementById('searchDropdown');
+    if (!dropdown) {
+      dropdown = document.createElement('div');
+      dropdown.id = 'searchDropdown';
+      dropdown.className = 'search-dropdown-results';
+      headerSearchInput.parentNode.appendChild(dropdown);
+    }
 
-  const isSaved = wishlist.includes(product.id);
-  const content = document.getElementById('quickViewContent');
-  content.innerHTML = `
-    <div class="quickview-grid">
-      <div class="quickview-media">
-        ${product.badge ? `<span class="tag ${product.badgeType === 'sale' ? 'sale' : ''}">${escapeHTML(product.badge)}</span>` : ''}
-        <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
-      </div>
-      <div class="quickview-details">
-        <button class="close-btn" type="button" data-close-modal aria-label="Close quick view">×</button>
-        <div class="quickview-category">${escapeHTML(product.subtitle)}</div>
-        <h2>${escapeHTML(product.name)}</h2>
-        <div class="quickview-price-row">
-          <span class="quickview-price ${product.mrp ? 'is-sale' : ''}">${formatINR(product.price)}</span>
-          ${product.mrp ? `<span class="old-price" style="display:inline;">${formatINR(product.mrp)}</span>` : ''}
-        </div>
-        <div class="size-label">
-          <span>Select Size (UK)</span>
-          <span style="color:var(--muted);font-weight:500;">Inclusive of all taxes</span>
-        </div>
-        <div class="size-grid">
-          ${UK_SIZES.map(size => `
-            <button type="button" class="size-btn ${size === selectedQuickViewSize ? 'selected' : ''}" data-select-size="${size}">${size}</button>
-          `).join('')}
-        </div>
-        <div class="quickview-actions">
-          <button type="button" class="button primary-dark full-width" id="quickViewAddBtn">Add to Cart</button>
-          <button type="button" class="button outline-dark full-width" id="quickViewWishBtn">${isSaved ? 'Saved in Wishlist ♥' : 'Add to Wishlist ♡'}</button>
-        </div>
-      </div>
-    </div>
-  `;
+    function renderSuggestions(query) {
+      const q = (query || '').trim().toLowerCase();
+      if (!q) {
+        dropdown.classList.remove('visible');
+        dropdown.innerHTML = '';
+        return;
+      }
 
-  openPanel(productModal);
-}
-
-// Live Search
-function renderSearchResults(query) {
-  const q = query.trim().toLowerCase();
-  const matches = q
-    ? PRODUCTS.filter(p =>
+      const matches = CATALOG.filter(p =>
         p.name.toLowerCase().includes(q) ||
         p.subtitle.toLowerCase().includes(q) ||
         p.tags.some(t => t.includes(q))
-      )
-    : PRODUCTS.slice(0, 4);
+      ).slice(0, 6);
 
-  if (matches.length === 0) {
-    searchResults.innerHTML = `<div class="search-empty">No products found for "<strong>${escapeHTML(query)}</strong>". Try searching for Speedcat, Palermo, or NITRO.</div>`;
-    return;
-  }
+      if (matches.length === 0) {
+        dropdown.innerHTML = `<div class="search-no-results">No products found for "<strong>${escapeHTML(query)}</strong>". Try searching for NITRO, Speedcat, or Palermo.</div>`;
+      } else {
+        dropdown.innerHTML = matches.map(item => `
+          <div class="search-result-item" data-search-id="${item.id}">
+            <img src="${item.image}" alt="${escapeHTML(item.name)}" onerror="this.src='${FALLBACK_IMG}'" />
+            <div class="search-result-item-info">
+              <h5>${escapeHTML(item.name)}</h5>
+              <p>${escapeHTML(item.subtitle)}</p>
+            </div>
+            <span class="res-price">${formatINR(item.price)}</span>
+          </div>
+        `).join('');
+      }
 
-  searchResults.innerHTML = matches.map(product => `
-    <button type="button" class="search-result-card" data-search-pick="${product.id}">
-      <img src="${product.image}" alt="${escapeHTML(product.name)}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
-      <div>
-        <h4>${escapeHTML(product.name)}</h4>
-        <p>${escapeHTML(product.subtitle)}</p>
-        <strong>${formatINR(product.price)}</strong>
-      </div>
-    </button>
-  `).join('');
-}
-
-// Section-scoped Category Tabs (Strictly scoped to #new)
-function applyPerformanceFilter(filter) {
-  const section = document.getElementById('new');
-  if (!section) return;
-
-  section.querySelectorAll('.tab').forEach(tab => {
-    tab.classList.toggle('active', tab.dataset.filter === filter);
-  });
-
-  section.querySelectorAll('.product-card').forEach(card => {
-    const category = card.dataset.category;
-    const tags = (card.dataset.tags || '').split(',');
-    const match = filter === 'all' || category === filter || tags.includes(filter);
-    card.classList.toggle('is-hidden', !match);
-  });
-}
-
-// Account Modal
-function renderAccountModal() {
-  const body = document.getElementById('accountBody');
-  const dot = document.getElementById('accountDot');
-  dot.classList.toggle('visible', Boolean(user));
-
-  if (user) {
-    body.innerHTML = `
-      <div style="padding:8px 0;">
-        <p style="margin:0 0 6px;color:var(--muted);font-size:13px;text-transform:uppercase;font-weight:700;">Signed in as</p>
-        <h3 style="margin:0 0 4px;font-family:var(--font-display);font-size:26px;text-transform:uppercase;">${escapeHTML(user.name)}</h3>
-        <p style="margin:0 0 22px;color:var(--muted);font-size:14px;">${escapeHTML(user.email)}</p>
-        <button type="button" class="button outline-dark full-width" id="signOutBtn">Sign Out</button>
-      </div>
-    `;
-  } else {
-    body.innerHTML = `
-      <form id="accountForm">
-        <div class="field">
-          <label for="accName">Full Name</label>
-          <input id="accName" type="text" placeholder="Enter your name" required>
-        </div>
-        <div class="field">
-          <label for="accEmail">Email Address</label>
-          <input id="accEmail" type="email" placeholder="you@example.com" required>
-        </div>
-        <div class="field">
-          <label for="accPass">Password</label>
-          <input id="accPass" type="password" placeholder="Minimum 6 characters" minlength="6" required>
-        </div>
-        <button type="submit" class="button primary-dark full-width">Sign In / Join PUMA</button>
-      </form>
-    `;
-  }
-}
-
-// Event Delegation & Initialization
-document.addEventListener('DOMContentLoaded', () => {
-  initAnnouncementBar();
-  renderRails();
-  renderCart();
-  syncHeartButtons();
-  renderWishlist();
-  renderAccountModal();
-  renderSearchResults('');
-
-  // Header buttons
-  document.getElementById('cartButton').addEventListener('click', () => openPanel(cartDrawer));
-  document.getElementById('wishlistButton').addEventListener('click', () => openPanel(wishlistDrawer));
-  document.getElementById('menuButton').addEventListener('click', () => openPanel(mobileMenuDrawer));
-  document.getElementById('accountButton').addEventListener('click', () => {
-    renderAccountModal();
-    openPanel(accountModal);
-  });
-
-  // Search button
-  document.getElementById('searchButton').addEventListener('click', () => {
-    const isOpen = searchPanel.classList.contains('open');
-    closeAllPanels();
-    if (!isOpen) {
-      searchPanel.classList.add('open');
-      renderSearchResults(searchInput.value);
-      searchInput.focus();
+      dropdown.classList.add('visible');
     }
-  });
 
-  document.getElementById('searchClear').addEventListener('click', () => {
-    searchInput.value = '';
-    renderSearchResults('');
-    searchInput.focus();
-  });
+    headerSearchInput.addEventListener('input', e => renderSuggestions(e.target.value));
 
-  searchInput.addEventListener('input', event => {
-    renderSearchResults(event.target.value);
-  });
-
-  // Trending search chips
-  document.querySelectorAll('.search-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      searchInput.value = chip.dataset.query;
-      renderSearchResults(chip.dataset.query);
-      searchInput.focus();
+    headerSearchInput.addEventListener('focus', () => {
+      if (headerSearchInput.value.trim()) renderSuggestions(headerSearchInput.value);
     });
-  });
 
-  // Close overlays & drawers
-  overlay.addEventListener('click', closeAllPanels);
-  document.querySelectorAll('[data-close-panel]').forEach(btn => {
-    btn.addEventListener('click', closeAllPanels);
-  });
-
-  // Close mobile drawer when clicking any link inside it
-  mobileMenuDrawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeAllPanels);
-  });
-
-  // Close mobile drawer if viewport resizes to desktop
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 960 && mobileMenuDrawer.classList.contains('open')) {
-      closeAllPanels();
-    }
-  });
-
-  // Escape key closes any open panel
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeAllPanels();
-  });
-
-  // Carousel scroll arrows
-  document.querySelectorAll('[data-rail-scroll]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.dataset.railTarget;
-      const direction = Number(btn.dataset.railScroll);
-      const rail = document.getElementById(targetId);
-      if (rail) {
-        rail.scrollBy({ left: direction * 290, behavior: 'smooth' });
+    dropdown.addEventListener('click', e => {
+      const itemEl = e.target.closest('[data-search-id]');
+      if (itemEl) {
+        const id = itemEl.dataset.searchId;
+        dropdown.classList.remove('visible');
+        headerSearchInput.value = '';
+        openQuickView(id);
       }
     });
-  });
 
-  // Section-scoped Performance Favorites tabs
-  document.querySelectorAll('#new .tab').forEach(tab => {
-    tab.addEventListener('click', () => applyPerformanceFilter(tab.dataset.filter));
-  });
-
-  // Links that also trigger a category filter (e.g. Hero "For Him" / "For Her")
-  document.querySelectorAll('[data-jump-filter]').forEach(link => {
-    link.addEventListener('click', () => {
-      applyPerformanceFilter(link.dataset.jumpFilter);
+    // Close on click outside
+    document.addEventListener('click', e => {
+      if (!headerSearchInput.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('visible');
+      }
     });
-  });
 
-  // Product card delegation (Wishlist, Quick Add, Quick View)
-  document.addEventListener('click', event => {
-    const wishBtn = event.target.closest('[data-wishlist]');
-    if (wishBtn) {
-      event.stopPropagation();
-      toggleWishlist(wishBtn.dataset.wishlist);
-      return;
-    }
-
-    const quickAddBtn = event.target.closest('[data-quick-add]');
-    if (quickAddBtn) {
-      event.stopPropagation();
-      addToCart(quickAddBtn.dataset.quickAdd, 'UK 8');
-      return;
-    }
-
-    const productCard = event.target.closest('.product-card');
-    if (productCard) {
-      openQuickView(productCard.dataset.id);
-      return;
-    }
-
-    // Search result click -> Quick View
-    const searchPick = event.target.closest('[data-search-pick]');
-    if (searchPick) {
-      openQuickView(searchPick.dataset.searchPick);
-      return;
-    }
-
-    // Quick view modal buttons
-    if (event.target.closest('[data-close-modal]')) {
-      closeAllPanels();
-      return;
-    }
-
-    const sizeBtn = event.target.closest('[data-select-size]');
-    if (sizeBtn) {
-      selectedQuickViewSize = sizeBtn.dataset.selectSize;
-      productModal.querySelectorAll('.size-btn').forEach(b => {
-        b.classList.toggle('selected', b.dataset.selectSize === selectedQuickViewSize);
+    const searchForm = headerSearchInput.closest('form');
+    if (searchForm) {
+      searchForm.addEventListener('submit', e => {
+        const q = (headerSearchInput.value || '').trim().toLowerCase();
+        if (!q) return;
+        const matches = CATALOG.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          p.subtitle.toLowerCase().includes(q) ||
+          p.tags.some(t => t.includes(q))
+        );
+        if (matches.length > 0) {
+          e.preventDefault();
+          dropdown.classList.remove('visible');
+          openQuickView(matches[0].id);
+        }
       });
+    }
+  }
+
+  // Smooth Carousel Scroll Integration
+  function initCarouselArrows() {
+    document.querySelectorAll('.carousel-arrow').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const targetHref = btn.getAttribute('href');
+        if (!targetHref || !targetHref.startsWith('#')) return;
+
+        const targetEl = document.querySelector(targetHref);
+        if (!targetEl) return;
+
+        const rail = targetEl.closest('.carousel-row, .shoe-carousel-track');
+        if (!rail) return;
+
+        e.preventDefault();
+        const isPrev = btn.getAttribute('aria-label') && btn.getAttribute('aria-label').toLowerCase().includes('prev');
+        const scrollAmount = rail.clientWidth * 0.75;
+        rail.scrollBy({
+          left: isPrev ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+
+  // Inject Heart Icons and Quick-Add Buttons onto Cards across all pages
+  function initProductCards() {
+    const cards = document.querySelectorAll('.shoe-card, .ns-card, .product-card');
+    cards.forEach(card => {
+      const id = card.dataset.id;
+      if (!id) return;
+
+      const media = card.querySelector('.shoe-card-media, .product-image');
+      if (media) {
+        media.style.position = 'relative';
+
+        // 1. Inject Heart / Wishlist button if not already present
+        if (!media.querySelector('.card-wishlist-btn, .heart, [data-wishlist]')) {
+          const isSaved = wishlist.includes(id);
+          const heartBtn = document.createElement('button');
+          heartBtn.type = 'button';
+          heartBtn.className = 'heart card-wishlist-btn' + (isSaved ? ' active' : '');
+          heartBtn.dataset.wishlist = id;
+          heartBtn.dataset.wishlistId = id;
+          heartBtn.setAttribute('aria-label', isSaved ? 'Remove from Wishlist' : 'Add to Wishlist');
+          heartBtn.setAttribute('aria-pressed', String(isSaved));
+          heartBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          `;
+          media.appendChild(heartBtn);
+        }
+
+        // 2. Inject Quick Add button if not already present
+        if (!media.querySelector('.quick-add, [data-quick-add]')) {
+          const quickBtn = document.createElement('button');
+          quickBtn.type = 'button';
+          quickBtn.className = 'quick-add';
+          quickBtn.dataset.quickAdd = id;
+          const isWomen = id.startsWith('women-') || id.includes('women') || id.includes('ballet');
+          const defaultSize = isWomen ? 'UK 5' : 'UK 8';
+          quickBtn.textContent = `+ QUICK ADD (${defaultSize})`;
+          media.appendChild(quickBtn);
+        }
+      }
+    });
+  }
+
+  // Document Event Delegation & Init
+  function onReady() {
+    initProductCards();
+    initHeaderSearch();
+    initCarouselArrows();
+    renderCart();
+    syncHeartButtons();
+    renderWishlist();
+    renderAccountModal();
+
+    // Header Action Triggers
+    const cartBtn = document.getElementById('cartButton');
+    if (cartBtn) cartBtn.addEventListener('click', () => openPanel(cartDrawer));
+
+    const wishBtn = document.getElementById('wishlistButton');
+    if (wishBtn) wishBtn.addEventListener('click', () => {
+      renderWishlist();
+      openPanel(wishlistDrawer);
+    });
+
+    const accBtn = document.getElementById('accountButton');
+    if (accBtn) accBtn.addEventListener('click', () => {
+      renderAccountModal();
+      openPanel(accountModal);
+    });
+
+    // Backdrop & Drawer Close Buttons
+    const curBackdrop = backdrop || document.getElementById('drawerBackdrop');
+    if (curBackdrop) curBackdrop.addEventListener('click', closeAllPanels);
+
+    document.querySelectorAll('[data-close-drawer], [data-close-panel]').forEach(btn => {
+      btn.addEventListener('click', closeAllPanels);
+    });
+
+    // Escape Key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAllPanels();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+
+  // Global Click Delegation
+  document.addEventListener('click', e => {
+    // 1. Wishlist Heart Click on Card
+    const cardHeart = e.target.closest('.card-wishlist-btn, .heart, [data-wishlist], [data-wishlist-id]');
+    if (cardHeart) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = cardHeart.dataset.wishlist || cardHeart.dataset.wishlistId;
+      if (id) toggleWishlist(id);
       return;
     }
 
-    if (event.target.id === 'quickViewAddBtn' && activeQuickViewProduct) {
-      addToCart(activeQuickViewProduct.id, selectedQuickViewSize);
-      openPanel(cartDrawer);
+    // 2. Quick Add Click on Card
+    const quickBtn = e.target.closest('.quick-add, [data-quick-add]');
+    if (quickBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = quickBtn.dataset.quickAdd;
+      if (id) {
+        const isWomen = id.startsWith('women-') || id.includes('women') || id.includes('ballet');
+        const defaultSize = isWomen ? 'UK 5' : 'UK 8';
+        addToCart(id, defaultSize, 1);
+        openPanel(cartDrawer || document.getElementById('cartDrawer'));
+      }
       return;
     }
 
-    if (event.target.id === 'quickViewWishBtn' && activeQuickViewProduct) {
+    // 3. Product Card Click -> Quick View Modal
+    const card = e.target.closest('.shoe-card, .ns-card, .product-card');
+    if (card) {
+      const clickedLink = e.target.closest('a');
+      const isSamePageAnchor = clickedLink && clickedLink.getAttribute('href') && clickedLink.getAttribute('href').startsWith('#');
+      const isExternalNav = clickedLink && clickedLink.getAttribute('href') && !clickedLink.getAttribute('href').startsWith('#');
+
+      if (!isExternalNav || e.target.closest('.shoe-card-media, .shoe-card-title, .ns-card-title, .product-image')) {
+        const id = card.dataset.id;
+        if (id) {
+          e.preventDefault();
+          openQuickView(id);
+          return;
+        }
+      }
+    }
+
+    // 4. Size Choice in Modal
+    const sizeBtn = e.target.closest('[data-size-choice]');
+    if (sizeBtn) {
+      selectedQuickViewSize = sizeBtn.dataset.sizeChoice;
+      const modal = productModal || document.getElementById('productModal');
+      if (modal) {
+        modal.querySelectorAll('.size-choice').forEach(b => {
+          b.classList.toggle('selected', b.dataset.sizeChoice === selectedQuickViewSize);
+        });
+      }
+      return;
+    }
+
+    // 5. Add to Bag from Modal
+    if ((e.target.id === 'modalAddBtn' || e.target.closest('#modalAddBtn')) && activeQuickViewProduct) {
+      addToCart(activeQuickViewProduct.id, selectedQuickViewSize, 1);
+      return;
+    }
+
+    // 6. Wishlist toggle from Modal
+    if ((e.target.id === 'modalWishBtn' || e.target.closest('#modalWishBtn')) && activeQuickViewProduct) {
       toggleWishlist(activeQuickViewProduct.id);
-      const isSaved = wishlist.includes(activeQuickViewProduct.id);
-      event.target.textContent = isSaved ? 'Saved in Wishlist ♥' : 'Add to Wishlist ♡';
       return;
     }
 
-    // Cart item actions
-    const minusBtn = event.target.closest('[data-qty-minus]');
+    // 7. Cart Quantity Minus
+    const minusBtn = e.target.closest('[data-qty-minus]');
     if (minusBtn) {
       updateCartQty(minusBtn.dataset.qtyMinus, minusBtn.dataset.size, -1);
       return;
     }
 
-    const plusBtn = event.target.closest('[data-qty-plus]');
+    // 8. Cart Quantity Plus
+    const plusBtn = e.target.closest('[data-qty-plus]');
     if (plusBtn) {
       updateCartQty(plusBtn.dataset.qtyPlus, plusBtn.dataset.size, 1);
       return;
     }
 
-    const removeCartBtn = event.target.closest('[data-remove-cart]');
-    if (removeCartBtn) {
-      removeFromCart(removeCartBtn.dataset.removeCart, removeCartBtn.dataset.size);
+    // 9. Cart Item Remove
+    const remCart = e.target.closest('[data-remove-cart]');
+    if (remCart) {
+      removeFromCart(remCart.dataset.removeCart, remCart.dataset.size);
       return;
     }
 
-    if (event.target.id === 'checkoutBtn') {
-      const itemCount = cart.reduce((s, i) => s + i.qty, 0);
+    // 10. Checkout Button
+    if (e.target.id === 'checkoutBtn' || e.target.id === 'checkoutButton' || e.target.closest('#checkoutBtn, #checkoutButton')) {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
       cart = [];
       saveStorage('puma_cart', cart);
       renderCart();
       closeAllPanels();
-      showToast(`Order placed for ${itemCount} item(s)! Thank you for shopping PUMA India.`);
+      showToast(`🎉 Order placed for ${count} item(s)! Thank you for shopping with PUMA India.`);
       return;
     }
 
-    // Wishlist drawer actions
-    const moveBtn = event.target.closest('[data-move-to-cart]');
-    if (moveBtn) {
-      addToCart(moveBtn.dataset.moveToCart, 'UK 8');
-      toggleWishlist(moveBtn.dataset.moveToCart);
-      openPanel(cartDrawer);
+    // 11. Wishlist Move to Bag
+    const moveCart = e.target.closest('[data-wishlist-to-cart], [data-move-to-cart]');
+    if (moveCart) {
+      const id = moveCart.dataset.wishlistToCart || moveCart.dataset.moveToCart;
+      const isWomen = id.startsWith('women-') || id.includes('women') || id.includes('ballet');
+      const sz = isWomen ? 'UK 5' : 'UK 8';
+      addToCart(id, sz, 1);
+      toggleWishlist(id);
       return;
     }
 
-    const removeWishBtn = event.target.closest('[data-remove-wishlist]');
-    if (removeWishBtn) {
-      toggleWishlist(removeWishBtn.dataset.removeWishlist);
+    // 12. Wishlist Item Remove
+    const remWish = e.target.closest('[data-remove-wishlist]');
+    if (remWish) {
+      toggleWishlist(remWish.dataset.removeWishlist);
       return;
     }
 
-    // Account sign out
-    if (event.target.id === 'signOutBtn') {
+    // 13. Sign Out
+    if (e.target.id === 'signOutBtn' || e.target.closest('#signOutBtn')) {
       user = null;
       saveStorage('puma_user', null);
       renderAccountModal();
       showToast('Signed out of your PUMA account.');
+      return;
     }
   });
 
-  // Keyboard support for opening product card with Enter/Space
-  document.addEventListener('keydown', event => {
-    if ((event.key === 'Enter' || event.key === ' ') && event.target.classList.contains('product-card')) {
-      event.preventDefault();
-      openQuickView(event.target.dataset.id);
+  // Account Form Submit
+  document.addEventListener('submit', e => {
+    if (e.target.id === 'pumaAccountForm' || e.target.id === 'accountForm') {
+      e.preventDefault();
+      const name = (document.getElementById('accName') ? document.getElementById('accName').value : 'PUMA MEMBER').trim();
+      const email = (document.getElementById('accEmail') ? document.getElementById('accEmail').value : '').trim();
+      if (!name || !email) return;
+
+      user = { name, email };
+      saveStorage('puma_user', user);
+      renderAccountModal();
+      closeAllPanels();
+      showToast(`Welcome to PUMA, ${name}!`);
     }
   });
+})();
 
-  // Account form submit
-  accountModal.addEventListener('submit', event => {
-    if (event.target.id !== 'accountForm') return;
-    event.preventDefault();
-    const name = document.getElementById('accName').value.trim();
-    const email = document.getElementById('accEmail').value.trim();
-    if (!name || !email) return;
-    user = { name, email };
-    saveStorage('puma_user', user);
-    renderAccountModal();
-    closeAllPanels();
-    showToast(`Welcome back, ${name}!`);
-  });
-
-  // Newsletter subscription
-  document.getElementById('subscribeForm').addEventListener('submit', event => {
-    event.preventDefault();
-    const msg = document.getElementById('formMessage');
-    msg.textContent = 'Welcome to PUMA India! Use code PUMA10 at checkout for 10% off your first order.';
-    event.target.reset();
-    showToast('Subscribed! Code PUMA10 unlocked.');
-  });
-
-  // Country selector button
-  document.getElementById('countrySelector').addEventListener('click', () => {
-    showToast('Currently shopping PUMA India (EN / ₹ INR)');
-  });
-});

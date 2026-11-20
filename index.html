@@ -1,802 +1,1162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PUMA.COM | Forever Faster — Shop official PUMA India sneakers, NITRO™ running shoes, sportswear, motorsport &amp; accessories.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='translate(24 0) scale(-1 1)'%3E%3Cpath fill='%23181818' d='M23.845 3.008c-.417-.533-1.146-.106-1.467.08-2.284 1.346-2.621 3.716-3.417 5.077-.626 1.09-1.652 1.89-2.58 1.952-.686.049-1.43-.084-2.168-.405-1.807-.781-2.78-1.792-3.017-1.97-.487-.37-4.23-4.015-7.28-4.164 0 0-.372-.75-.465-.763-.222-.025-.45.451-.616.501-.15.053-.413-.512-.565-.487-.153.02-.302.586-.6.877-.22.213-.486.2-.637.463-.052.096-.034.265-.093.42-.127.32-.551.354-.555.697 0 .381.357.454.669.72.248.212.265.362.554.461.258.088.632-.187.964-.088.277.081.543.14.602.423.054.256 0 .658-.34.613-.112-.015-.598-.174-1.198-.11-.725.077-1.553.309-1.634 1.11-.041.447.514.97 1.055.866.371-.071.196-.506.399-.716.267-.27 1.772.944 3.172.944.593 0 1.031-.15 1.467-.605.04-.029.093-.102.155-.11a.632.632 0 01.195.088c1.131.897 1.984 2.7 6.13 2.721.582.007 1.25.279 1.796.777.48.433.764 1.125 1.037 1.825.418 1.053 1.161 2.069 2.292 3.203.06.068.99.78 1.06.833.012.01.084.167.053.255-.02.69-.123 2.67 1.365 2.753.366.02.275-.231.275-.41-.005-.341-.065-.685.113-1.04.253-.478-.526-.709-.509-1.756.019-.784-.645-.651-.984-1.25-.19-.343-.368-.532-.35-.946.073-2.38-.517-3.948-.805-4.327-.227-.294-.423-.403-.207-.54 1.24-.815 1.525-1.574 1.525-1.574.66-1.541 1.256-2.945 2.075-3.57.166-.12.589-.44.852-.56.763-.362 1.173-.578 1.388-.788.356-.337.635-1.053.294-1.48z'/%3E%3C/g%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <title>PUMA.COM | Forever Faster</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUMA India — Official Storefront Clone</title>
+  <meta name="description"
+    content="Responsive PUMA India e-commerce storefront clone built with semantic HTML and pure CSS, featuring campaign banners, product carousels, and interactive category filter sidebars." />
+  <meta property="og:title" content="PUMA India — Official Storefront Clone" />
+  <meta property="og:description"
+    content="Responsive PUMA India e-commerce storefront clone built with semantic HTML and pure CSS, featuring campaign banners, product carousels, and interactive category filter sidebars." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="puma.css" />
 </head>
+
 <body>
-  <!-- Reusable Official PUMA Leaping Cat Symbol (Oriented right, matching in.puma.com) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="puma-cat-logo" viewBox="0 0 24 24">
-        <g transform="translate(24 0) scale(-1 1)">
-          <path fill="currentColor" d="M23.845 3.008c-.417-.533-1.146-.106-1.467.08-2.284 1.346-2.621 3.716-3.417 5.077-.626 1.09-1.652 1.89-2.58 1.952-.686.049-1.43-.084-2.168-.405-1.807-.781-2.78-1.792-3.017-1.97-.487-.37-4.23-4.015-7.28-4.164 0 0-.372-.75-.465-.763-.222-.025-.45.451-.616.501-.15.053-.413-.512-.565-.487-.153.02-.302.586-.6.877-.22.213-.486.2-.637.463-.052.096-.034.265-.093.42-.127.32-.551.354-.555.697 0 .381.357.454.669.72.248.212.265.362.554.461.258.088.632-.187.964-.088.277.081.543.14.602.423.054.256 0 .658-.34.613-.112-.015-.598-.174-1.198-.11-.725.077-1.553.309-1.634 1.11-.041.447.514.97 1.055.866.371-.071.196-.506.399-.716.267-.27 1.772.944 3.172.944.593 0 1.031-.15 1.467-.605.04-.029.093-.102.155-.11a.632.632 0 01.195.088c1.131.897 1.984 2.7 6.13 2.721.582.007 1.25.279 1.796.777.48.433.764 1.125 1.037 1.825.418 1.053 1.161 2.069 2.292 3.203.06.068.99.78 1.06.833.012.01.084.167.053.255-.02.69-.123 2.67 1.365 2.753.366.02.275-.231.275-.41-.005-.341-.065-.685.113-1.04.253-.478-.526-.709-.509-1.756.019-.784-.645-.651-.984-1.25-.19-.343-.368-.532-.35-.946.073-2.38-.517-3.948-.805-4.327-.227-.294-.423-.403-.207-.54 1.24-.815 1.525-1.574 1.525-1.574.66-1.541 1.256-2.945 2.075-3.57.166-.12.589-.44.852-.56.763-.362 1.173-.578 1.388-.788.356-.337.635-1.053.294-1.48z"/>
-        </g>
-      </symbol>
-    </defs>
-  </svg>
+  <!-- Mobile Drawer Toggle (Pure CSS Checkbox) -->
+  <input type="checkbox" id="nav-drawer-toggle" class="sr-only" aria-hidden="true" />
 
-  <!-- Official PUMA India Top Announcement Bar -->
-  <div class="announcement" role="region" aria-label="Store announcements">
-    <span class="announcement-text" id="announcementText">FREE RETURNS AND EXCHANGES</span>
-  </div>
+  <!-- Slim Top Announcement Bar -->
+  <div class="promo-bar">FREE RETURNS AND EXCHANGES**</div>
 
-  <!-- Official PUMA #181818 Sticky Header -->
+  <!-- ===================================================================
+         1. Responsive Navigation Header
+         =================================================================== -->
   <header class="site-header">
-    <div class="nav">
-      <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
+    <div class="header-inner">
+      <div class="header-left">
+        <label for="nav-drawer-toggle" class="mobile-menu-trigger" aria-label="Open navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </label>
 
-      <a class="logo" href="#" aria-label="PUMA Home">
-        <svg aria-hidden="true"><use href="#puma-cat-logo"/></svg>
-      </a>
+        <a href="#top" class="brand-logo" aria-label="PUMA Home">
+          <img src="assets/aistudio/image_b6153493.png" alt="PUMA Logo" width="45" height="36" />
+        </a>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-item">
-          <a class="nav-link" href="#fall-favorites">New</a>
-          <div class="mega-menu" aria-label="New arrivals">
-            <div class="mega-menu-inner cols-3">
-              <div class="mega-menu-column featured">
-                <a href="#new" data-jump-filter="men">Men's New Arrivals</a>
-                <a href="#new" data-jump-filter="women">Women's New Arrivals</a>
-                <a href="#new" data-jump-filter="all">Kid's New Arrivals</a>
-                <a href="#new" data-jump-filter="running">NITRO™ ⚡</a>
-              </div>
-              <div class="mega-menu-column featured">
-                <a href="#fall-favorites">SPEEDCAT</a>
-                <a href="#fall-favorites">PALERMO</a>
-                <a href="#new" data-jump-filter="sneakers">SUEDE</a>
-                <a href="#new" data-jump-filter="running">PUMA PROJECT3</a>
-              </div>
-              <div class="mega-menu-column featured">
-                <a href="#ferrari-banner">PUMA x SCUDERIA FERRARI</a>
-                <a href="#new">PUMA x McLAREN RACING Games Hunt Collection</a>
-                <a href="#new">PUMA x STRANGER THINGS</a>
-                <a href="#fall-favorites">PUMA x ROSÉ</a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <div class="nav-item">
+            <a href="new-season.html" class="nav-link">NEW</a>
+            <div class="mega-menu">
+              <div class="mega-grid--new">
+                <ul class="mega-links">
+                  <li><a href="new-season.html">Men's New Arrivals</a></li>
+                  <li><a href="new-season.html">Women's New Arrivals</a></li>
+                  <li><a href="new-season.html">Kid's New Arrivals</a></li>
+                  <li><a href="new-season.html">NITRO ⚡</a></li>
+                </ul>
+                <ul class="mega-links">
+                  <li><a href="new-season.html">SPEEDCAT</a></li>
+                  <li><a href="new-season.html">PALERMO</a></li>
+                  <li><a href="new-season.html">SUEDE</a></li>
+                  <li><a href="new-season.html">PUMA PROJECT3</a></li>
+                </ul>
+                <ul class="mega-links">
+                  <li><a href="new-season.html">PUMA x McLAREN RACING James Hunt Collection</a></li>
+                  <li><a href="new-season.html">PUMA x STRANGER THINGS</a></li>
+                </ul>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#sport">Sports</a>
-          <div class="mega-menu" aria-label="Sports">
-            <div class="mega-menu-inner cols-7">
-              <div class="mega-menu-column">
-                <strong>Running</strong>
-                <a href="#new" data-jump-filter="running">Shop All Running</a>
-                <a href="#new" data-jump-filter="running">NITRO™ ⚡</a>
-                <a href="#new" data-jump-filter="running">Carbon-Plated NITRO</a>
-                <a href="#new" data-jump-filter="running">Road Running</a>
-                <a href="#new" data-jump-filter="running">Race Day</a>
-                <a href="#new" data-jump-filter="running">Trail Running</a>
-                <a href="#new" data-jump-filter="running">Track &amp; Field</a>
-                <a href="#men">Clothing</a>
-                <a href="#sport-categories">Accessories</a>
-                <a href="#new" data-jump-filter="running">Seasons Collection</a>
-                <a href="#new" data-jump-filter="running">Run Club</a>
-                <a href="#new" data-jump-filter="running">PUMA PROJECT3</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Training</strong>
-                <a href="#men">Training Store</a>
-                <a href="#men">Gym Wear</a>
-                <a href="#men">PUMA x HYROX</a>
-                <a href="#men">Shoes</a>
-                <a href="#sport-categories">Gym Bags &amp; Accessories</a>
-                <a href="#men">Yoga</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Football</strong>
-                <a href="#sport">Football Store</a>
-                <a href="#sport">Bengaluru FC</a>
-                <a href="#sport">Manchester City FC</a>
-                <a href="#sport">Portugal</a>
-                <a href="#sport">AC Milan</a>
-                <a href="#sport">BVB</a>
-                <a href="#sport">Mumbai City FC</a>
-                <a href="#sport">Firm/Artificial Ground Boots</a>
-                <a href="#sport">Turf Trainers</a>
-                <a href="#sport">Indoor Shoes</a>
-                <a href="#sport">Clothing</a>
-                <a href="#sport">Footballs &amp; Accessories</a>
-                <a href="#sport">National Team Kits</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Cricket</strong>
-                <a href="#sport">PUMA x RCB</a>
-                <a href="#sport">PUMA x DELHI CAPITALS</a>
-                <a href="#sport">Cricket Shoes - Rubber</a>
-                <a href="#sport">Cricket Shoes - Spike</a>
-                <a href="#sport">Clothing</a>
-                <a href="#sport">Cricket Gear &amp; Accessories</a>
-                <a href="#sport">Cricket Store</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Basketball</strong>
-                <a href="#sport">Shoes</a>
-                <a href="#sport">Clothing</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Badminton</strong>
-                <a href="#sport">Non-marking Shoes</a>
-                <a href="#sport">Badminton Store</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Running Guides</strong>
-                <a href="#new" data-jump-filter="running">Select Your First Running Shoes</a>
-                <a href="#new" data-jump-filter="running">Beginner's Guide to Running</a>
-                <a href="#new" data-jump-filter="running">10K Running Guide &amp; Training Plan</a>
-                <a href="#new" data-jump-filter="running">Marathon Running Shoes Guide</a>
-                <a href="#new" data-jump-filter="running">Carbon Plate Running Shoes Guide</a>
-                <a href="#new" data-jump-filter="running">Flat Feet Running Shoes Guide</a>
-                <a href="#new" data-jump-filter="running">Wide Feet Running Shoes Guide</a>
+          <div class="nav-item">
+            <a href="sports.html" class="nav-link">SPORTS</a>
+            <div class="mega-menu">
+              <div class="mega-scroll-wrap">
+                <div class="mega-grid--sports">
+                  <div>
+                    <div class="mega-heading">Running</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Shop All Running</a></li>
+                      <li><a href="sports.html">NITRO™ ⚡</a></li>
+                      <li><a href="sports.html">Carbon-Plated-Nitro</a></li>
+                      <li><a href="sports.html">Road Running</a></li>
+                      <li><a href="sports.html">Race Day</a></li>
+                      <li><a href="sports.html">Trail Running</a></li>
+                      <li><a href="sports.html">Track &amp; Field</a></li>
+                      <li><a href="sports.html">Clothing</a></li>
+                      <li><a href="sports.html">Accessories</a></li>
+                      <li><a href="sports.html">Seasons Collection</a></li>
+                      <li><a href="sports.html">Run Club</a></li>
+                      <li><a href="sports.html">PUMA PROJECT3</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Training</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Training Store</a></li>
+                      <li><a href="sports.html">Gym Wear</a></li>
+                      <li><a href="sports.html">PUMA x HYROX</a></li>
+                      <li><a href="sports.html">Shoes</a></li>
+                      <li><a href="sports.html">Gym Bags &amp; Accessories</a></li>
+                      <li><a href="sports.html">Yoga</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Football</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Football Store</a></li>
+                      <li><a href="sports.html">Bengaluru FC</a></li>
+                      <li><a href="sports.html">Manchester City FC</a></li>
+                      <li><a href="sports.html">Portugal</a></li>
+                      <li><a href="sports.html">AC Milan</a></li>
+                      <li><a href="sports.html">BVB</a></li>
+                      <li><a href="sports.html">Mumbai City FC</a></li>
+                      <li><a href="sports.html">Firm/Artificial Ground Boots</a></li>
+                      <li><a href="sports.html">Turf Trainers</a></li>
+                      <li><a href="sports.html">Indoor Shoes</a></li>
+                      <li><a href="sports.html">Clothing</a></li>
+                      <li><a href="sports.html">Footballs &amp; Accessories</a></li>
+                      <li><a href="sports.html">National Team Kits</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Cricket</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">PUMA x RCB</a></li>
+                      <li><a href="sports.html">PUMA x DELHI CAPITALS</a></li>
+                      <li><a href="sports.html">Cricket Shoes - Rubber</a></li>
+                      <li><a href="sports.html">Cricket Shoes - Spike</a></li>
+                      <li><a href="sports.html">Clothing</a></li>
+                      <li><a href="sports.html">Cricket Gear &amp; Accessories</a></li>
+                      <li><a href="sports.html">Cricket Store</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Basketball</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Shoes</a></li>
+                      <li><a href="sports.html">Clothing</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Badminton</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Non-marking Shoes</a></li>
+                      <li><a href="sports.html">Badminton Store</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Running Guides</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Select Your First Running Shoes</a></li>
+                      <li><a href="sports.html">Beginner's Guide to Running</a></li>
+                      <li><a href="sports.html">10K Running Guide &amp; Training Plan</a></li>
+                      <li><a href="sports.html">Marathon Running Shoes Guide</a></li>
+                      <li><a href="sports.html">Carbon Plate Running Shoes Guide</a></li>
+                      <li><a href="sports.html">Flat Feet Running Shoes Guide</a></li>
+                      <li><a href="sports.html">Wide Feet Running Shoes Guide</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#new" data-jump-filter="men">Men</a>
-          <div class="mega-menu" aria-label="Men">
-            <div class="mega-menu-inner cols-7">
-              <div class="mega-menu-column featured">
-                <a class="accent-gold" href="#new" data-jump-filter="men">New &amp; Trending</a>
-                <a class="accent-red" href="#new" data-jump-filter="sale">Sale</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Highlights</strong>
-                <a href="#sport">PUMA x RCB</a>
-                <a href="#sport-categories">Classics</a>
-                <a href="#new" data-jump-filter="running">Fade Nitro</a>
-                <a href="#fall-favorites">Speedcat</a>
-                <a href="#fall-favorites">Palermo</a>
-                <a href="#new" data-jump-filter="running">NITRO™</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Shoes</strong>
-                <a href="#new" data-jump-filter="sneakers">Sneakers</a>
-                <a href="#new" data-jump-filter="running">Running</a>
-                <a href="#ferrari-banner">Motorsport</a>
-                <a href="#new" data-jump-filter="men">Walking</a>
-                <a href="#men">Training &amp; Gym</a>
-                <a href="#new" data-jump-filter="men">Slip-ons</a>
-                <a href="#new" data-jump-filter="men">Sandals &amp; Slides</a>
-                <a href="#sport">Football</a>
-                <a href="#sport">Cricket</a>
-                <a href="#sport">Basketball</a>
-                <a href="#sport">Badminton</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Clothing</strong>
-                <a href="#men">T-Shirts &amp; Jerseys</a>
-                <a href="#men">Pants &amp; Joggers</a>
-                <a href="#men">Jackets</a>
-                <a href="#men">Sweatshirts</a>
-                <a href="#men">Shorts</a>
-                <a href="#men">Tracksuits</a>
-                <a href="#men">Innerwear</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Accessories</strong>
-                <a href="#sport-categories">Bags &amp; Backpacks</a>
-                <a href="#sport-categories">Caps &amp; Beanies</a>
-                <a href="#sport-categories">Wallets</a>
-                <a href="#sport-categories">Socks</a>
-                <a href="#sport-categories">Gloves</a>
-                <a href="#sport-categories">Sports Equipment</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Sports</strong>
-                <a href="#new" data-jump-filter="running">Running</a>
-                <a href="#men">Training &amp; Gym</a>
-                <a href="#sport">Football</a>
-                <a href="#sport">Cricket</a>
-                <a href="#sport">Basketball</a>
-                <a href="#sport">Badminton</a>
-                <a href="#sport">Golf</a>
-                <a href="#sport">Yoga</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Motorsport</strong>
-                <a href="#sport">McLaren</a>
-                <a href="#ferrari-banner">Scuderia Ferrari</a>
-                <a href="#promo-collections">BMW M Motorsport</a>
-                <a href="#sport">Aston Martin Aramco F1® Team</a>
-                <a href="#sport">Porsche Design</a>
-                <a href="#sport">Porsche Legacy</a>
-                <a href="#sport">Formula 1</a>
+          <!-- MEN -->
+          <div class="nav-item">
+            <a href="men.html" class="nav-link">MEN</a>
+            <div class="mega-menu">
+              <div class="mega-grid--5">
+                <div>
+                  <div class="mega-heading">Shoes</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Men's Shoes</a></li>
+                    <li><a href="sports.html">Running Shoes</a></li>
+                    <li><a href="new-season.html">NITRO™ Running ⚡</a></li>
+                    <li><a href="new-season.html">Sneakers &amp; Classics</a></li>
+                    <li><a href="new-season.html">Palermo</a></li>
+                    <li><a href="new-season.html">Speedcat OG</a></li>
+                    <li><a href="new-season.html">Suede</a></li>
+                    <li><a href="sports.html">Training &amp; Gym Shoes</a></li>
+                    <li><a href="sports.html">Football Boots</a></li>
+                    <li><a href="sports.html">Cricket Shoes</a></li>
+                    <li><a href="sports.html">Badminton &amp; Tennis</a></li>
+                    <li><a href="new-season.html">Slides &amp; Sandals</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Clothing</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Men's Clothing</a></li>
+                    <li><a href="new-season.html">T-Shirts &amp; Polos</a></li>
+                    <li><a href="new-season.html">Shorts</a></li>
+                    <li><a href="new-season.html">Track Pants &amp; Joggers</a></li>
+                    <li><a href="new-season.html">Sweatshirts &amp; Hoodies</a></li>
+                    <li><a href="new-season.html">Jackets &amp; Windbreakers</a></li>
+                    <li><a href="sports.html">Football Jerseys</a></li>
+                    <li><a href="sports.html">Cricket Team Kits</a></li>
+                    <li><a href="sports.html">Gym Wear &amp; Tanks</a></li>
+                    <li><a href="new-season.html">Innerwear &amp; Loungewear</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Sports</div>
+                  <ul class="mega-links">
+                    <li><a href="sports.html">Running Store</a></li>
+                    <li><a href="sports.html">Training &amp; Gym</a></li>
+                    <li><a href="sports.html">Football Store</a></li>
+                    <li><a href="sports.html">Cricket Store</a></li>
+                    <li><a href="sports.html">Basketball</a></li>
+                    <li><a href="sports.html">Badminton</a></li>
+                    <li><a href="sports.html">PUMA x HYROX</a></li>
+                    <li><a href="motorsport.html">Motorsport Racing</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Accessories</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Accessories</a></li>
+                    <li><a href="new-season.html">Backpacks &amp; Bags</a></li>
+                    <li><a href="new-season.html">Caps &amp; Beanies</a></li>
+                    <li><a href="new-season.html">Socks (Multi-packs)</a></li>
+                    <li><a href="new-season.html">Water Bottles &amp; Shakers</a></li>
+                    <li><a href="new-season.html">Wallets &amp; Belts</a></li>
+                    <li><a href="sports.html">Gym Gloves &amp; Gear</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Featured</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Men's New Arrivals</a></li>
+                    <li><a href="new-season.html">Bestsellers</a></li>
+                    <li><a href="new-season.html">Speedcat Collection</a></li>
+                    <li><a href="new-season.html">PUMA x STRANGER THINGS</a></li>
+                    <li><a href="new-season.html">PUMA x McLAREN RACING</a></li>
+                    <li><a href="sports.html">PUMA x RCB Official</a></li>
+                    <li><a href="sports.html">Manchester City FC Kits</a></li>
+                    <li><a href="motorsport.html">Scuderia Ferrari HP</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#new" data-jump-filter="women">Women</a>
-          <div class="mega-menu" aria-label="Women">
-            <div class="mega-menu-inner cols-6">
-              <div class="mega-menu-column featured">
-                <a class="accent-gold" href="#new" data-jump-filter="women">New &amp; Trending</a>
-                <a class="accent-red" href="#new" data-jump-filter="sale">Sale</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Highlights</strong>
-                <a href="#fall-favorites">Ballet Flats</a>
-                <a href="#sport-categories">Classics</a>
-                <a href="#new" data-jump-filter="running">Fade Nitro</a>
-                <a href="#fall-favorites">Speedcat</a>
-                <a href="#fall-favorites">Palermo</a>
-                <a href="#new" data-jump-filter="running">NITRO™</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Shoes</strong>
-                <a href="#new" data-jump-filter="women">Sneakers</a>
-                <a href="#new" data-jump-filter="running">Running</a>
-                <a href="#new" data-jump-filter="women">Sandals, Slides &amp; Flip Flops</a>
-                <a href="#new" data-jump-filter="women">Walking</a>
-                <a href="#men">Training &amp; Gym</a>
-                <a href="#fall-favorites">Ballerinas</a>
-                <a href="#new" data-jump-filter="women">Slip Ons</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Clothing</strong>
-                <a href="#men">T-Shirts &amp; Tops</a>
-                <a href="#men">Jackets</a>
-                <a href="#men">Sweatshirts</a>
-                <a href="#men">Pants &amp; Tights</a>
-                <a href="#men">Sports Bras</a>
-                <a href="#men">Shorts</a>
-                <a href="#men">Dresses &amp; Skirts</a>
-                <a href="#men">Tracksuits</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Accessories</strong>
-                <a href="#sport-categories">Bags: Gym &amp; Casual</a>
-                <a href="#sport-categories">Backpacks</a>
-                <a href="#sport-categories">Caps &amp; Beanies</a>
-                <a href="#sport-categories">Wallets</a>
-                <a href="#sport-categories">Socks</a>
-                <a href="#sport-categories">Water Bottles</a>
-                <a href="#sport-categories">Gloves</a>
-                <a href="#sport-categories">Sports Equipment</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Sports</strong>
-                <a href="#new" data-jump-filter="running">Running</a>
-                <a href="#men">Training</a>
-                <a href="#men">Yoga</a>
-                <a href="#sport">Badminton</a>
-                <a href="#sport">Basketball</a>
-                <a href="#sport">Cricket</a>
-                <a href="#sport">Football</a>
+          <!-- WOMEN -->
+          <div class="nav-item">
+            <a href="women.html" class="nav-link">WOMEN</a>
+            <div class="mega-menu">
+              <div class="mega-grid--5">
+                <div>
+                  <div class="mega-heading">Shoes</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Women's Shoes</a></li>
+                    <li><a href="sports.html">Running Shoes</a></li>
+                    <li><a href="new-season.html">NITRO™ Running ⚡</a></li>
+                    <li><a href="new-season.html">Speedcat &amp; Ballet</a></li>
+                    <li><a href="new-season.html">Palermo</a></li>
+                    <li><a href="new-season.html">Suede Classics</a></li>
+                    <li><a href="new-season.html">Platform &amp; Chunky Sneakers</a></li>
+                    <li><a href="sports.html">Walking &amp; Gym Shoes</a></li>
+                    <li><a href="new-season.html">Slides &amp; Flip-Flops</a></li>
+                    <li><a href="sports.html">Badminton &amp; Court</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Clothing</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Women's Clothing</a></li>
+                    <li><a href="new-season.html">T-Shirts &amp; Tops</a></li>
+                    <li><a href="new-season.html">Sports Bras</a></li>
+                    <li><a href="new-season.html">Leggings &amp; Tights</a></li>
+                    <li><a href="new-season.html">Shorts &amp; Skirts</a></li>
+                    <li><a href="new-season.html">Sweatshirts &amp; Hoodies</a></li>
+                    <li><a href="new-season.html">Jackets &amp; Outerwear</a></li>
+                    <li><a href="new-season.html">Tracksuits &amp; Loungewear</a></li>
+                    <li><a href="new-season.html">Dresses &amp; Jumpsuits</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Sports</div>
+                  <ul class="mega-links">
+                    <li><a href="sports.html">Running Store</a></li>
+                    <li><a href="sports.html">Training &amp; Gym</a></li>
+                    <li><a href="sports.html">Yoga &amp; Studio</a></li>
+                    <li><a href="sports.html">Badminton</a></li>
+                    <li><a href="sports.html">Walking &amp; Everyday</a></li>
+                    <li><a href="sports.html">PUMA x HYROX</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Accessories</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Women's Accessories</a></li>
+                    <li><a href="new-season.html">Tote Bags &amp; Shoppers</a></li>
+                    <li><a href="new-season.html">Backpacks &amp; Waist Bags</a></li>
+                    <li><a href="new-season.html">Caps &amp; Headbands</a></li>
+                    <li><a href="new-season.html">Socks &amp; Training Gloves</a></li>
+                    <li><a href="sports.html">Yoga Mats &amp; Bottles</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Featured</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Women's New Arrivals</a></li>
+                    <li><a href="new-season.html">Speedcat VTG x ROSÉ</a></li>
+                    <li><a href="new-season.html">Palermo Pastel Pack</a></li>
+                    <li><a href="new-season.html">Softride Comfort Series</a></li>
+                    <li><a href="new-season.html">Studio Luxe Collection</a></li>
+                    <li><a href="new-season.html">PUMA SELECT Women</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#ferrari-banner">Motorsport</a>
-          <div class="mega-menu" aria-label="Motorsport">
-            <div class="mega-menu-inner cols-3">
-              <div class="mega-menu-column">
-                <strong>Teams</strong>
-                <a href="#ferrari-banner">Motorsport Store</a>
-                <a href="#ferrari-banner">Scuderia Ferrari</a>
-                <a href="#promo-collections">BMW M Motorsport</a>
-                <a href="#sport">McLAREN</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Series &amp; Partners</strong>
-                <a href="#sport">FORMULA 1</a>
-                <a href="#sport">Aston Martin Aramco F1® Team</a>
-                <a href="#sport">Porsche Legacy</a>
-                <a href="#sport">Porsche Design</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Categories</strong>
-                <a href="#fall-favorites">Shoes</a>
-                <a href="#ferrari-banner">Clothing</a>
-                <a href="#sport-categories">Accessories</a>
+          <!-- MOTORSPORT -->
+          <div class="nav-item">
+            <a href="motorsport.html" class="nav-link">MOTORSPORT</a>
+            <div class="mega-menu">
+              <div class="mega-grid">
+                <div>
+                  <div class="mega-heading">Teams &amp; Brands</div>
+                  <ul class="mega-links">
+                    <li><a href="motorsport.html">Scuderia Ferrari HP</a></li>
+                    <li><a href="new-season.html">Mercedes-AMG PETRONAS F1</a></li>
+                    <li><a href="new-season.html">BMW M Motorsport</a></li>
+                    <li><a href="new-season.html">Porsche Legacy</a></li>
+                    <li><a href="new-season.html">McLaren Racing</a></li>
+                    <li><a href="new-season.html">Williams Racing</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Footwear</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Speedcat OG</a></li>
+                    <li><a href="new-season.html">Speedcat Mid &amp; Low</a></li>
+                    <li><a href="new-season.html">Neo Cat &amp; Drift Cat</a></li>
+                    <li><a href="new-season.html">Future Cat Classics</a></li>
+                    <li><a href="new-season.html">Kart Cat Track Shoes</a></li>
+                    <li><a href="motorsport.html">Ferrari Official Footwear</a></li>
+                    <li><a href="new-season.html">BMW M Motorsport Shoes</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Apparel</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">F1 Team Replica Polos</a></li>
+                    <li><a href="new-season.html">Graphic Tees &amp; Pit Shirts</a></li>
+                    <li><a href="new-season.html">Track Jackets &amp; Sweaters</a></li>
+                    <li><a href="new-season.html">Hoodies &amp; Zip-Ups</a></li>
+                    <li><a href="new-season.html">Race Day Pants &amp; Shorts</a></li>
+                    <li><a href="new-season.html">Team Caps &amp; Headwear</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Exclusive Drops</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">James Hunt x McLaren Racing</a></li>
+                    <li><a href="motorsport.html">Scuderia Ferrari Miami Special</a></li>
+                    <li><a href="new-season.html">50 Years of BMW M</a></li>
+                    <li><a href="new-season.html">Porsche 911 Turbo 50Y</a></li>
+                    <li><a href="new-season.html">Motorsport Bags &amp; Backpacks</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#sport-categories">Lifestyle</a>
-          <div class="mega-menu" aria-label="Lifestyle">
-            <div class="mega-menu-inner cols-3">
-              <div class="mega-menu-column featured">
-                <a href="#sport-categories">Jersey Culture</a>
-                <a href="#fall-favorites">Summer Shop</a>
-                <a href="#fall-favorites">Sneaker Store</a>
-                <a href="#sport-categories">Travel Store</a>
-                <a href="#fall-favorites">Speedcat Style Guide</a>
-                <a href="#new" data-jump-filter="sneakers">Shoes</a>
-                <a href="#men">Clothing</a>
-                <a href="#new">Sneaker Finder</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Icons</strong>
-                <a href="#sport-categories">Classics</a>
-                <a href="#fall-favorites">Speedcat</a>
-                <a href="#fall-favorites">Palermo</a>
-                <a href="#new" data-jump-filter="sneakers">Suede</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Collaborations</strong>
-                <a href="#new">PUMA x AHLUWALIA</a>
-                <a href="#new">PUMA x SUPERKICKS</a>
-                <a href="#new">PUMA x POKEMON</a>
-                <a href="#new">PUMA x J.L-A.L</a>
-                <a href="#new">PUMA x GABBY'S DOLLHOUSE</a>
-                <a href="#new">A$AP ROCKY x PUMA</a>
-                <a href="#fall-favorites">PUMA x ROSÉ</a>
-                <a href="#new">PUMA x PAW PATROL</a>
-                <a href="#new">PUMA &amp; MADHAPPY</a>
+          <!-- LIFESTYLE -->
+          <div class="nav-item">
+            <a href="lifestyle.html" class="nav-link">LIFESTYLE</a>
+            <div class="mega-menu">
+              <div class="mega-grid">
+                <div>
+                  <div class="mega-heading">Iconic Silhouettes</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Palermo</a></li>
+                    <li><a href="new-season.html">Suede Classic</a></li>
+                    <li><a href="new-season.html">Speedcat</a></li>
+                    <li><a href="new-season.html">Slipstream</a></li>
+                    <li><a href="new-season.html">CA Pro</a></li>
+                    <li><a href="new-season.html">Clyde</a></li>
+                    <li><a href="new-season.html">Easy Rider</a></li>
+                    <li><a href="new-season.html">Blktop Rider</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Footwear Styles</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Retro Court Sneakers</a></li>
+                    <li><a href="new-season.html">Platform &amp; Chunky Shoes</a></li>
+                    <li><a href="new-season.html">Low Profile Terrace Shoes</a></li>
+                    <li><a href="new-season.html">Suede &amp; Gum Sole</a></li>
+                    <li><a href="new-season.html">Slip-Ons &amp; Slides</a></li>
+                    <li><a href="new-season.html">Archive Reissues</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Streetwear Apparel</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Oversized Graphic Tees</a></li>
+                    <li><a href="new-season.html">Cargo Pants &amp; Parachutes</a></li>
+                    <li><a href="new-season.html">Archive Tracksuits &amp; T7</a></li>
+                    <li><a href="new-season.html">Retro Sweatshirts &amp; Hoodies</a></li>
+                    <li><a href="new-season.html">Varsity &amp; Bomber Jackets</a></li>
+                    <li><a href="new-season.html">Street Caps &amp; Buckets</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Collaborations</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">PUMA x STRANGER THINGS</a></li>
+                    <li><a href="new-season.html">PUMA x ROSÉ</a></li>
+                    <li><a href="new-season.html">PUMA SELECT</a></li>
+                    <li><a href="new-season.html">PUMA PROJECT3</a></li>
+                    <li><a href="new-season.html">PUMA x PALM TREE CREW</a></li>
+                    <li><a href="new-season.html">PUMA x PLEASURES</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#sport-categories">Kids</a>
-          <div class="mega-menu" aria-label="Kids">
-            <div class="mega-menu-inner cols-6">
-              <div class="mega-menu-column featured">
-                <a class="accent-gold" href="#new">New &amp; Trending</a>
-                <a class="accent-red" href="#new" data-jump-filter="sale">Sale</a>
-                <a href="#sport-categories">School Store</a>
-                <a href="#fall-favorites">SPEEDCAT</a>
-                <a href="#new">PUMA x TRANSFORMERS</a>
-                <a href="#new">PUMA x DORA THE EXPLORER</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Shop by age</strong>
-                <a href="#new">Babies &amp; Toddlers (0 - 4 yrs)</a>
-                <a href="#new">Little Kids &amp; Pre School (4 - 8 yrs)</a>
-                <a href="#new">Big Kids &amp; Youth (8 - 16 yrs)</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Shoes</strong>
-                <a href="#new">Sneakers</a>
-                <a href="#new">Sports Shoes</a>
-                <a href="#new">Sandals, Flip-Flops &amp; Slides</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Clothing</strong>
-                <a href="#men">T-Shirts &amp; Tops</a>
-                <a href="#men">Pants &amp; Shorts</a>
-                <a href="#men">Sweatshirts &amp; Jackets</a>
-                <a href="#men">Dresses &amp; Skirts</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Bags &amp; Accessories</strong>
-                <a href="#sport-categories">School Bags</a>
-                <a href="#sport-categories">Caps &amp; Beanies</a>
-                <a href="#sport-categories">Bottles</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Sports</strong>
-                <a href="#sport">Football</a>
-                <a href="#sport">Cricket</a>
-                <a href="#new" data-jump-filter="running">Running</a>
-                <a href="#sport">Basketball</a>
-                <a href="#sport">Indoor Sports</a>
+          <!-- KIDS -->
+          <div class="nav-item">
+            <a href="kids.html" class="nav-link">KIDS</a>
+            <div class="mega-menu">
+              <div class="mega-grid">
+                <div>
+                  <div class="mega-heading">Boys (4-16 Y)</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Boys' Shoes</a></li>
+                    <li><a href="new-season.html">Sneakers &amp; Classics</a></li>
+                    <li><a href="sports.html">Running Shoes</a></li>
+                    <li><a href="sports.html">Football Boots</a></li>
+                    <li><a href="new-season.html">T-Shirts &amp; Polos</a></li>
+                    <li><a href="new-season.html">Shorts &amp; Track Pants</a></li>
+                    <li><a href="new-season.html">Hoodies &amp; Jackets</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Girls (4-16 Y)</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">All Girls' Shoes</a></li>
+                    <li><a href="new-season.html">Sneakers &amp; Lifestyle</a></li>
+                    <li><a href="sports.html">Running Shoes</a></li>
+                    <li><a href="new-season.html">Sandals &amp; Slides</a></li>
+                    <li><a href="new-season.html">Tops &amp; T-Shirts</a></li>
+                    <li><a href="new-season.html">Tights &amp; Shorts</a></li>
+                    <li><a href="new-season.html">Tracksuits &amp; Sets</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Infants (0-4 Y)</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Infant Hook &amp; Loop Shoes</a></li>
+                    <li><a href="new-season.html">First Walkers &amp; Crib</a></li>
+                    <li><a href="new-season.html">Baby Clothing Sets</a></li>
+                    <li><a href="new-season.html">Mini Suede &amp; Palermo</a></li>
+                    <li><a href="new-season.html">Kids Softride</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Popular</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Back to School</a></li>
+                    <li><a href="new-season.html">Softride Kids Comfort</a></li>
+                    <li><a href="new-season.html">Character Collabs</a></li>
+                    <li><a href="sports.html">Manchester City Kids Kits</a></li>
+                    <li><a href="motorsport.html">Scuderia Ferrari Kids</a></li>
+                    <li><a href="#trending-now">Kids Sale (Up to 50% Off)</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="nav-item">
-          <a class="nav-link" href="#new" data-jump-filter="sale">Sale</a>
-          <div class="mega-menu" aria-label="Sale">
-            <div class="mega-menu-inner cols-4">
-              <div class="mega-menu-column featured">
-                <a class="accent-red" href="#new" data-jump-filter="sale">Gymwear Under ₹2000</a>
-                <a class="accent-red" href="#new" data-jump-filter="sale">Sneakers Under ₹3000</a>
-                <a class="accent-red" href="#new" data-jump-filter="sale">Running Shoes Under ₹3000</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Men's Sale</strong>
-                <a href="#new" data-jump-filter="men">Shoes</a>
-                <a href="#men">Clothing</a>
-                <a href="#sport-categories">Accessories</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Women's Sale</strong>
-                <a href="#new" data-jump-filter="women">Shoes</a>
-                <a href="#men">Clothing</a>
-                <a href="#sport-categories">Accessories</a>
-              </div>
-              <div class="mega-menu-column">
-                <strong>Kid's Sale</strong>
-                <a href="#new" data-jump-filter="sale">Shoes</a>
-                <a href="#men">Clothing</a>
-                <a href="#sport-categories">Accessories</a>
+          <!-- SALE -->
+          <div class="nav-item">
+            <a href="#trending-now" class="nav-link nav-link--sale">SALE</a>
+            <div class="mega-menu">
+              <div class="mega-grid">
+                <div>
+                  <div class="mega-heading">Shop By Department</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Men's Sale <span class="mega-badge-sale">UP TO 50%</span></a></li>
+                    <li><a href="new-season.html">Women's Sale <span class="mega-badge-sale">UP TO 50%</span></a></li>
+                    <li><a href="new-season.html">Kids' Sale <span class="mega-badge-sale">UP TO 60%</span></a></li>
+                    <li><a href="new-season.html">Footwear Clearance</a></li>
+                    <li><a href="new-season.html">Clothing Sale</a></li>
+                    <li><a href="new-season.html">Accessories Under ₹999</a></li>
+                    <li><a href="#trending-now">Deals of the Week</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Shop By Discount</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Flat 30% Off</a></li>
+                    <li><a href="new-season.html">Flat 40% Off</a></li>
+                    <li><a href="new-season.html">Flat 50% Off &amp; Above</a></li>
+                    <li><a href="new-season.html">Extra 5% Off on Prepaid</a></li>
+                    <li><a href="new-season.html">Buy 2 Get Extra 10%</a></li>
+                    <li><a href="#trending-now">Outlet Specials</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Shop By Price</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Under ₹1,499</a></li>
+                    <li><a href="new-season.html">Under ₹1,999 (Free Delivery)</a></li>
+                    <li><a href="new-season.html">₹1,999 - ₹3,499</a></li>
+                    <li><a href="new-season.html">₹3,499 - ₹5,999</a></li>
+                    <li><a href="new-season.html">Premium Footwear Under ₹6,999</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="mega-heading">Trending Deals</div>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Speedcat &amp; Terrace Deals</a></li>
+                    <li><a href="sports.html">Running NITRO™ On Sale</a></li>
+                    <li><a href="motorsport.html">Motorsport Clearance</a></li>
+                    <li><a href="new-season.html">Winterwear Clearance</a></li>
+                    <li><a href="#trending-now">Court Shatter Low (From ₹4,999)</a></li>
+                    <li><a href="#trending-now">PROFOAM Galactic (From ₹4,499)</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
-      <div class="nav-actions">
-        <button class="icon-button search-trigger" id="searchButton" type="button" aria-label="Search PUMA">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
-          <span>Search</span>
-        </button>
-        <button class="icon-button" id="wishlistButton" type="button" aria-label="Open wishlist">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.8c0 5.3-8.8 10.2-8.8 10.2S3.2 14.1 3.2 8.8A4.5 4.5 0 0 1 12 6.5a4.5 4.5 0 0 1 8.8 2.3Z"/></svg>
+      <div class="header-right">
+        <form action="new-season.html" class="search-box" role="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <label for="header-search" class="sr-only">Search PUMA products</label>
+          <input id="header-search" type="search" class="search-input" placeholder="SEARCH" />
+        </form>
+
+        <button type="button" class="icon-btn" id="wishlistButton" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+            <path
+              d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg>
           <span class="badge-count" id="wishlistCount" data-empty="true">0</span>
         </button>
-        <button class="icon-button" id="cartButton" type="button" aria-label="Open shopping cart">
-          <!-- Official PUMA-style shopping cart icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.2 11.2a1.6 1.6 0 0 0 1.6 1.3h9.6a1.6 1.6 0 0 0 1.6-1.2L21.5 7H6.2"/></svg>
+
+        <button type="button" class="icon-btn" id="cartButton" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
           <span class="badge-count" id="cartCount" data-empty="true">0</span>
         </button>
-        <button class="icon-button" id="accountButton" type="button" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.5 3.1-5.3 7-5.3s6.3 1.8 7 5.3"/></svg>
+
+        <button type="button" class="icon-btn" id="accountButton" aria-label="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M20 21a8 8 0 0 0-16 0" />
+          </svg>
           <span class="account-dot" id="accountDot" aria-hidden="true"></span>
         </button>
       </div>
     </div>
-
-    <!-- Live Search Overlay -->
-    <div class="search-panel" id="searchPanel" role="search" aria-label="Product search">
-      <div class="search-panel-inner">
-        <div class="search-input-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
-          <input type="search" id="searchInput" placeholder="SEARCH PUMA.COM" aria-label="Search PUMA.COM" autocomplete="off">
-          <button class="search-clear" id="searchClear" type="button">Clear</button>
-        </div>
-        <div class="search-trending">
-          <span>Trending Searches:</span>
-          <button class="search-chip" type="button" data-query="Speedcat">Speedcat</button>
-          <button class="search-chip" type="button" data-query="Palermo">Palermo</button>
-          <button class="search-chip" type="button" data-query="NITRO">NITRO™</button>
-          <button class="search-chip" type="button" data-query="Running">Running</button>
-          <button class="search-chip" type="button" data-query="Women">Women</button>
-        </div>
-        <div class="search-results" id="searchResults"></div>
-      </div>
-    </div>
   </header>
 
-  <main>
-    <!-- Hero Banner (Exact PUMA India "CHANGE OF PACE") -->
-    <section class="hero" aria-label="Change of Pace campaign">
-      <img class="hero-art" src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/2ddcbf0de438249134e27e53436dceb769f46787?_a=BAMAPqkS0" alt="PUMA new season sneakers">
+  <!-- Pure-CSS Slide-Out Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <label for="nav-drawer-toggle" class="mobile-nav-backdrop" aria-label="Close navigation menu"></label>
+    <div class="mobile-nav-panel">
+      <div class="mobile-drawer-head">
+        <span class="footer-col-title" style="margin: 0">PUMA MENU</span>
+        <label for="nav-drawer-toggle" class="mobile-drawer-close" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </label>
+      </div>
+      <nav class="mobile-drawer-links">
+        <a href="new-season.html">NEW SEASON <span>&rsaquo;</span></a>
+        <a href="sports.html">SPORTS <span>&rsaquo;</span></a>
+        <a href="men.html">MEN <span>&rsaquo;</span></a>
+        <a href="women.html">WOMEN <span>&rsaquo;</span></a>
+        <a href="#fall-favorites">FALL FAVORITES <span>&rsaquo;</span></a>
+        <a href="motorsport.html">MOTORSPORT &amp; FERRARI <span>&rsaquo;</span></a>
+        <a href="lifestyle.html">LIFESTYLE FAVORITES <span>&rsaquo;</span></a>
+        <a href="#performance-favorites">PERFORMANCE FAVORITES <span>&rsaquo;</span></a>
+        <a href="#trending-now">TRENDING NOW (SALE) <span>&rsaquo;</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- =================================================================
+           Hero Banner ("CHANGE OF PACE")
+           ================================================================= -->
+    <section class="hero-banner" aria-label="Change of Pace Campaign">
+      <img src="assets/puma/hero_banner.jpg"
+        alt="PUMA Palermo and Easy Rider sneakers arranged on a wooden bench in a sunlit field" class="hero-media" />
       <div class="hero-scrim" aria-hidden="true"></div>
-      <div class="hero-inner">
+      <div class="hero-overlay">
         <div class="hero-content">
-          <h1>CHANGE OF PACE</h1>
-          <p class="hero-copy">GEAR UP FOR THE NEW SEASON</p>
-          <div class="button-group">
-            <a class="button primary-white" href="#new" data-jump-filter="men">FOR HIM</a>
-            <a class="button primary-white" href="#new" data-jump-filter="women">FOR HER</a>
+          <h1 class="hero-title">CHANGE OF PACE</h1>
+          <p class="hero-subtitle">GEAR UP FOR THE NEW SEASON</p>
+          <div class="hero-actions">
+            <a href="men.html" class="btn-white">FOR HIM</a>
+            <a href="new-season.html" class="btn-white">FOR HER</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Fall Favorites Carousel -->
-    <section class="section" id="fall-favorites" aria-labelledby="fallHeading">
-      <div class="section-heading">
-        <h2 id="fallHeading">FALL FAVORITES</h2>
-      </div>
-      <div class="carousel-shell">
-        <button class="carousel-arrow prev" type="button" data-rail-target="fallFavoritesRail" data-rail-scroll="-1" aria-label="Previous products">‹</button>
-        <div class="product-rail" id="fallFavoritesRail"></div>
-        <button class="carousel-arrow next" type="button" data-rail-target="fallFavoritesRail" data-rail-scroll="1" aria-label="Next products">›</button>
+    <!-- =================================================================
+           2. FALL FAVORITES
+           ================================================================= -->
+    <section id="fall-favorites" class="store-section" aria-labelledby="fall-heading">
+      <h2 id="fall-heading" class="section-heading">FALL FAVORITES</h2>
+      <div class="carousel-wrap">
+        <a href="#fall-card-1" class="carousel-arrow carousel-arrow--prev" aria-label="Previous Fall Favorites">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </a>
+
+        <div class="carousel-row">
+          <article id="fall-card-1" class="shoe-card" data-id="fall-stranger-things">
+            <div class="shoe-card-media">
+              <img src="assets/puma/fall_stranger_things.jpg" alt="PUMA x STRANGER THINGS MB.06 Basketball Shoes" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">PUMA x STRANGER THINGS MB.06 Basketball Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-current">₹13,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="fall-electrify-nitro">
+            <div class="shoe-card-media">
+              <img src="assets/puma/fall_electrify_nitro.jpg" alt="Electrify NITRO 5 Running Shoes in Triple Black" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Electrify NITRO™ 5 Running Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-current">₹9,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="fall-speedcat-burgundy">
+            <div class="shoe-card-media">
+              <img src="assets/puma/fall_speedcat_burgundy.jpg" alt="Speedcat VTG Burgundy x ROSÉ Suede Sneakers" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Speedcat VTG Burgundy x ROSÉ Sneakers</span>
+              <div class="shoe-card-prices">
+                <span class="price-current">₹9,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="fall-speedcat-ballet">
+            <div class="shoe-card-media">
+              <img src="assets/puma/fall_speedcat_ballet.jpg" alt="Speedcat Women's Ballet Shoes in Black and White" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Speedcat Women's Ballet Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-current">₹6,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article id="fall-card-5" class="shoe-card" data-id="nf-nitro">
+            <div class="shoe-card-media">
+              <img src="assets/puma/nf_nitro.jpg" alt="Velocity NITRO White and Red Running Shoes" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Velocity NITRO™ 4 Running Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-current">₹11,999</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <a href="#fall-card-5" class="carousel-arrow carousel-arrow--next" aria-label="Scroll to next Fall Favorites">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </a>
       </div>
     </section>
 
-    <!-- Full-Bleed PUMA x Scuderia Ferrari Campaign Banner (Official Banner Image with PUMA & Ferrari Logos) -->
-    <section class="campaign-banner" id="ferrari-banner" aria-label="PUMA x Scuderia Ferrari Collection">
-      <img src="assets/fall-favorites-banner.png" alt="PUMA x Scuderia Ferrari Charles Leclerc and Lewis Hamilton collection" loading="lazy">
-      <div class="campaign-banner-overlay">
-        <div class="campaign-banner-copy">
-          <div class="eyebrow">PUMA x SCUDERIA FERRARI</div>
-          <h2>LIGHTS OUT</h2>
-          <p>Official Scuderia Ferrari replica teamwear and motorsport icons.</p>
-          <div class="button-group">
-            <a class="button primary-white" href="#new" data-jump-filter="sneakers">SHOP NOW</a>
+    <!-- =================================================================
+           3. Scuderia Ferrari Banner
+           ================================================================= -->
+    <section id="ferrari-spotlight" class="ferrari-banner" aria-label="Scuderia Ferrari HP Official Drivers">
+      <img src="assets/puma/ferrari_banner.jpg"
+        alt="Charles Leclerc and Lewis Hamilton wearing Scuderia Ferrari HP official teamwear" class="ferrari-media" />
+      <div class="ferrari-overlay">
+        <div class="ferrari-content">
+          <h2 class="ferrari-title">THE CITY OF LIGHTS JUST GOT BRIGHTER</h2>
+          <p class="ferrari-subtitle">Scuderia Ferrari HP Official Drivers</p>
+          <div class="ferrari-actions">
+            <a href="new-season.html" class="btn-white">SHOP NOW</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Shop by Category -->
-    <section class="section" id="sport-categories" aria-labelledby="categoryHeading">
-      <div class="section-heading">
-        <h2 id="categoryHeading">SHOP BY CATEGORY</h2>
-        <a class="view-all" href="#new" data-jump-filter="all">VIEW ALL</a>
-      </div>
-      <div class="category-grid">
-        <a class="category-card" href="#sport">
-          <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/9f32689a3681b48dea8a6f4b3da188aaeaafbe03?_a=BAMAPqkS0" alt="PUMA accessories" loading="lazy">
-          <div class="category-card-copy"><strong>ACCESSORIES</strong><span>EXPLORE →</span></div>
+    <!-- =================================================================
+           4. NEW & FEATURED
+           ================================================================= -->
+    <section id="new-featured" class="store-section" aria-labelledby="nf-heading">
+      <h2 id="nf-heading" class="section-heading section-heading--center">NEW &amp; FEATURED</h2>
+      <div class="carousel-wrap">
+        <a href="#nf-card-1" class="carousel-arrow carousel-arrow--prev" aria-label="Previous New &amp; Featured">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
         </a>
-        <a class="category-card" href="#new" data-jump-filter="running">
-          <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/313488/01/sv01/fnd/IND/fmt/png/Electrify-NITRO%E2%84%A2-5-Running-Shoes" alt="PUMA running shoes" loading="lazy">
-          <div class="category-card-copy"><strong>RUNNING</strong><span>EXPLORE →</span></div>
-        </a>
-        <a class="category-card" href="#men">
-          <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/bee9541ab6daedf7bc69be72263ba1d19d322cc0?_a=BAMAPqkS0" alt="PUMA training apparel" loading="lazy">
-          <div class="category-card-copy"><strong>TRAINING</strong><span>EXPLORE →</span></div>
-        </a>
-        <a class="category-card" href="#new" data-jump-filter="sneakers">
-          <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/410911/01/sv01/fnd/IND/fmt/png/Speedcat-VTG-Burgundy-x-ROS%C3%89-Sneakers" alt="PUMA classics sneakers" loading="lazy">
-          <div class="category-card-copy"><strong>CLASSICS</strong><span>EXPLORE →</span></div>
-        </a>
-      </div>
-    </section>
 
-    <!-- Dual Featured Campaign Grid -->
-    <section class="promo-grid" id="promo-collections" aria-label="Featured collections">
-      <a class="promo-card" href="#new" data-jump-filter="running">
-        <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/bee9541ab6daedf7bc69be72263ba1d19d322cc0?_a=BAMAPqkS0" alt="PUMA NITRO collection" loading="lazy">
-        <div class="promo-copy">
-          <div class="eyebrow">NITRO™ COLLECTION</div>
-          <h2>UNLEASH YOUR ENERGY</h2>
-          <span class="button primary-white">SHOP NITRO</span>
+        <div class="carousel-row">
+          <article id="nf-card-1" class="editorial-card" data-id="nf-speedcat">
+            <a href="new-season.html" class="editorial-card-media">
+              <img src="assets/puma/nf_speedcat.jpg" alt="PUMA Speedcat OG in Red and Black Suede" />
+            </a>
+            <h3 class="editorial-card-title">SPEEDCAT</h3>
+            <p class="editorial-card-sub">EFFORTLESSLY LUXE</p>
+            <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+          </article>
+
+          <article class="editorial-card" data-id="nf-cold-weather">
+            <a href="new-season.html" class="editorial-card-media">
+              <img src="assets/puma/nf_cold_weather.jpg" alt="PUMA Cold-Weather Gear Winter Collection" />
+            </a>
+            <h3 class="editorial-card-title">COLD-WEATHER GEAR</h3>
+            <p class="editorial-card-sub">YOUR WINTER WARM-UP</p>
+            <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+          </article>
+
+          <article class="editorial-card" data-id="nf-containment">
+            <a href="new-season.html" class="editorial-card-media">
+              <img src="assets/puma/nf_containment.jpg" alt="Containment Breach PUMA x Stranger Things Shoe" />
+            </a>
+            <h3 class="editorial-card-title">CONTAINMENT BREACH</h3>
+            <p class="editorial-card-sub">PUMA x STRANGER THINGS</p>
+            <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+          </article>
+
+          <article class="editorial-card" data-id="nf-nitro">
+            <a href="new-season.html" class="editorial-card-media">
+              <img src="assets/puma/nf_nitro.jpg" alt="PUMA NITRO Collection Running Shoe" />
+            </a>
+            <h3 class="editorial-card-title">NITRO COLLECTION</h3>
+            <p class="editorial-card-sub">UNLEASH YOUR ENERGY</p>
+            <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NITRO</a>
+          </article>
+
+          <article id="nf-card-5" class="editorial-card" data-id="ns-speedcat-metallic">
+            <a href="new-season.html" class="editorial-card-media">
+              <img src="assets/puma/ns_speedcat_metallic.jpg" alt="Speedcat Ballet Women's Metallic Shoes" />
+            </a>
+            <h3 class="editorial-card-title">SPEEDCAT BALLET</h3>
+            <p class="editorial-card-sub">TRENDING SILHOUETTE</p>
+            <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+          </article>
         </div>
-      </a>
-      <a class="promo-card" href="#sport">
-        <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/ac9bddb0a31fb69916143d81444a27fac1f2de62?_a=BAMAROkS0" alt="PUMA x BMW M Motorsport" loading="lazy">
-        <div class="promo-copy">
-          <div class="eyebrow">PUMA x BMW M MOTORSPORT</div>
-          <h2>THE M ISN'T MILD</h2>
-          <span class="button primary-white">SHOP NOW</span>
+
+        <a href="#nf-card-5" class="carousel-arrow carousel-arrow--next" aria-label="Next New &amp; Featured">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- =================================================================
+           5. LIFESTYLE FAVORITES
+           ================================================================= -->
+    <section id="lifestyle-favorites" class="store-section" aria-labelledby="lifestyle-heading">
+      <h2 id="lifestyle-heading" class="section-heading section-heading--center">LIFESTYLE FAVORITES</h2>
+      <div class="editorial-grid-3">
+        <article class="editorial-card" data-id="life-palermo">
+          <a href="new-season.html" class="editorial-card-media">
+            <img src="assets/puma/life_palermo.jpg" alt="PUMA Palermo Suede Sneakers in Espresso Brown" />
+          </a>
+          <h3 class="editorial-card-title">PALERMO</h3>
+          <p class="editorial-card-sub">FROM PITCH TO STREETS</p>
+          <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+        </article>
+
+        <article class="editorial-card" data-id="life-suede">
+          <a href="new-season.html" class="editorial-card-media">
+            <img src="assets/puma/life_suede.jpg" alt="PUMA Suede Classic Lifestyle Editorial" />
+          </a>
+          <h3 class="editorial-card-title">SUEDE</h3>
+          <p class="editorial-card-sub">CRAFTED FOR TIMELESS STYLE</p>
+          <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+        </article>
+
+        <article class="editorial-card" data-id="life-bmw">
+          <a href="new-season.html" class="editorial-card-media">
+            <img src="assets/puma/life_bmw.jpg" alt="PUMA x BMW M Motorsport Apparel and Footwear" />
+          </a>
+          <h3 class="editorial-card-title">PUMA X BMW M MOTORSPORT</h3>
+          <p class="editorial-card-sub">THE M ISN'T FOR MILD</p>
+          <a href="new-season.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================================
+           6. PERFORMANCE FAVORITES
+           ================================================================= -->
+    <section id="performance-favorites" class="store-section" aria-labelledby="performance-heading">
+      <h2 id="performance-heading" class="section-heading section-heading--center">PERFORMANCE FAVORITES</h2>
+      <div class="editorial-grid-3">
+        <article class="editorial-card" data-id="perf-velocity">
+          <a href="sports.html" class="editorial-card-media">
+            <img src="assets/puma/perf_velocity.jpg" alt="Runner wearing PUMA Velocity NITRO running shoes" />
+          </a>
+          <h3 class="editorial-card-title">VELOCITY NITRO™</h3>
+          <p class="editorial-card-sub">EVERYDAY COMFORT, EVERY STRIDE.</p>
+          <a href="sports.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+        </article>
+
+        <article class="editorial-card" data-id="perf-marathon">
+          <a href="sports.html" class="editorial-card-media">
+            <img src="assets/puma/perf_marathon.jpg" alt="PUMA Fast-R3 and Deviate Elite 4 Marathon Shoes" />
+          </a>
+          <h3 class="editorial-card-title">MARATHON SEASON</h3>
+          <p class="editorial-card-sub">FAST-R3 &amp; DEVIATE ELITE 4</p>
+          <a href="sports.html" class="btn-black editorial-card-cta">SHOP NITRO</a>
+        </article>
+
+        <article class="editorial-card" data-id="perf-hyrox">
+          <a href="sports.html" class="editorial-card-media">
+            <img src="assets/puma/perf_hyrox.jpg" alt="Athletes training in PUMA x HYROX collection" />
+          </a>
+          <h3 class="editorial-card-title">PUMA X HYROX</h3>
+          <p class="editorial-card-sub">BUILT FOR THIS RACE</p>
+          <a href="sports.html" class="btn-black editorial-card-cta">SHOP NOW</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================================
+           7. TRENDING NOW
+           ================================================================= -->
+    <section id="trending-now" class="store-section" aria-labelledby="trending-heading">
+      <h2 id="trending-heading" class="section-heading">TRENDING NOW</h2>
+      <div class="carousel-wrap">
+        <a href="#trend-card-1" class="carousel-arrow carousel-arrow--prev" aria-label="Previous trending products">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </a>
+
+        <div class="carousel-row">
+          <article id="trend-card-1" class="shoe-card" data-id="trend-court-shatter">
+            <div class="shoe-card-media">
+              <span class="discount-tag">-53%</span>
+              <img src="assets/puma/trend_court_shatter.jpg" alt="Court Shatter Low Sneakers in White" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Court Shatter Low Sneakers</span>
+              <div class="shoe-card-prices">
+                <span class="price-sale">₹2,819</span>
+                <span class="price-old">₹5,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="trend-profoam">
+            <div class="shoe-card-media">
+              <span class="discount-tag">-50%</span>
+              <img src="assets/puma/trend_profoam.jpg" alt="PROFOAM Galactic Sneakers in Black" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">PROFOAM Galactic Sneakers</span>
+              <div class="shoe-card-prices">
+                <span class="price-sale">₹3,999</span>
+                <span class="price-old">₹7,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="trend-glidepacer">
+            <div class="shoe-card-media">
+              <span class="discount-tag">-45%</span>
+              <img src="assets/puma/trend_glidepacer.jpg" alt="PUMA Glidepacer Pro Lightweight Running Shoes in Mint" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">PUMA Glidepacer Pro Lightweight Running Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-sale">₹4,949</span>
+                <span class="price-old">₹8,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="shoe-card" data-id="trend-blktop">
+            <div class="shoe-card-media">
+              <span class="discount-tag">-48%</span>
+              <img src="assets/puma/trend_blktop.jpg" alt="Blktop Rider Suede Sneakers in Charcoal" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Blktop Rider Suede Sneakers</span>
+              <div class="shoe-card-prices">
+                <span class="price-sale">₹4,679</span>
+                <span class="price-old">₹8,999</span>
+              </div>
+            </div>
+          </article>
+
+          <article id="trend-card-5" class="shoe-card" data-id="fall-electrify-nitro">
+            <div class="shoe-card-media">
+              <span class="discount-tag">-45%</span>
+              <img src="assets/puma/fall_electrify_nitro.jpg" alt="Fade NITRO Running Shoes in Black" />
+            </div>
+            <div class="shoe-card-meta">
+              <span class="shoe-card-title">Fade Pro NITRO™ Running Shoes</span>
+              <div class="shoe-card-prices">
+                <span class="price-sale">₹5,499</span>
+                <span class="price-old">₹9,999</span>
+              </div>
+            </div>
+          </article>
         </div>
-      </a>
-    </section>
 
-    <!-- Performance Favorites Filterable Carousel -->
-    <section class="section" id="new" aria-labelledby="perfHeading">
-      <div class="section-heading">
-        <div>
-          <h2 id="perfHeading">PERFORMANCE FAVORITES</h2>
-          <div class="tabs" role="tablist" aria-label="Filter favorites by category">
-            <button class="tab active" type="button" data-filter="all" role="tab">All</button>
-            <button class="tab" type="button" data-filter="men" role="tab">Men</button>
-            <button class="tab" type="button" data-filter="women" role="tab">Women</button>
-            <button class="tab" type="button" data-filter="running" role="tab">Running</button>
-            <button class="tab" type="button" data-filter="sneakers" role="tab">Sneakers</button>
-            <button class="tab" type="button" data-filter="sale" role="tab">Sale</button>
-          </div>
-        </div>
-        <a class="view-all" href="#fall-favorites">SHOP ALL</a>
+        <a href="#trend-card-5" class="carousel-arrow carousel-arrow--next" aria-label="Next trending products">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </a>
       </div>
-      <div class="carousel-shell">
-        <button class="carousel-arrow prev" type="button" data-rail-target="performanceRail" data-rail-scroll="-1" aria-label="Previous favorites">‹</button>
-        <div class="product-rail" id="performanceRail"></div>
-        <button class="carousel-arrow next" type="button" data-rail-target="performanceRail" data-rail-scroll="1" aria-label="Next favorites">›</button>
-      </div>
-    </section>
-
-    <!-- PUMA Training Editorial Banner -->
-    <section class="category-banner" id="men" aria-labelledby="trainingHeading">
-      <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/ac9bddb0a31fb69916143d81444a27fac1f2de62?_a=BAMAROkS0" alt="PUMA training collection" loading="lazy">
-      <div class="category-banner-copy">
-        <div class="eyebrow">PUMA TRAINING</div>
-        <h2 id="trainingHeading">TRAIN LOUDER</h2>
-        <p>From first rep to final set, gear up with performance essentials built to keep you moving.</p>
-        <a class="button primary-dark" href="#new" data-jump-filter="running">SHOP TRAINING →</a>
-      </div>
-    </section>
-
-    <!-- Seasonal Collections 3-Column Grid -->
-    <section class="season-grid" id="sport" aria-label="Shop seasonal collections">
-      <a class="season-card" href="#new" data-jump-filter="running">
-        <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/9f32689a3681b48dea8a6f4b3da188aaeaafbe03?_a=BAMAPqkS0" alt="PUMA running collection" loading="lazy">
-        <div class="season-card-copy"><h3>RUNNING</h3><span>SHOP NOW →</span></div>
-      </a>
-      <a class="season-card" href="#ferrari-banner">
-        <img src="https://images.puma.com/image/upload/c_scale,f_auto,q_auto:best,w_1280/cms/images/bee9541ab6daedf7bc69be72263ba1d19d322cc0?_a=BAMAPqkS0" alt="PUMA motorsport collection" loading="lazy">
-        <div class="season-card-copy"><h3>MOTORSPORT</h3><span>SHOP NOW →</span></div>
-      </a>
-      <a class="season-card" href="#new" data-jump-filter="sneakers">
-        <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/410911/01/sv01/fnd/IND/fmt/png/Speedcat-VTG-Burgundy-x-ROS%C3%89-Sneakers" alt="PUMA classics" loading="lazy">
-        <div class="season-card-copy"><h3>CLASSICS</h3><span>SHOP NOW →</span></div>
-      </a>
     </section>
   </main>
 
-  <!-- Official PUMA India Footer (#181818) -->
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div>
-        <h3 class="footer-heading">SUPPORT</h3>
-        <div class="footer-support-lists">
+  <!-- ===================================================================
+         8. Footer
+         =================================================================== -->
+  <footer id="footer-support" class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top-grid">
+        <div>
+          <h2 class="footer-col-title">SUPPORT</h2>
           <ul class="footer-links">
-            <li><a href="#subscribeForm">Contact us</a></li>
-            <li><a href="#new" data-jump-filter="sale">Promotions &amp; Sale</a></li>
-            <li><a href="#subscribeForm">Track Order</a></li>
-            <li><a href="#sport-categories">Shoe Care</a></li>
-            <li><a href="#new" data-jump-filter="running">Tech Glossary</a></li>
-            <li><a href="#subscribeForm">Initiate Return / Exchange</a></li>
-            <li><a href="#subscribeForm">Cookie Settings</a></li>
-          </ul>
-          <ul class="footer-links">
-            <li><a href="#subscribeForm">FAQs</a></li>
-            <li><a href="#accountButton">My Account</a></li>
-            <li><a href="#subscribeForm">Exchange &amp; Return Policy</a></li>
-            <li><a href="#subscribeForm">Privacy Policy</a></li>
-            <li><a href="#subscribeForm">Terms &amp; Conditions</a></li>
-            <li><a href="#subscribeForm">Warranty Claims</a></li>
-            <li><a href="#fall-favorites">Sitemap</a></li>
+            <li><a href="#footer-support">Contact us</a></li>
+            <li><a href="#trending-now">Promotions &amp; Sale</a></li>
+            <li><a href="#footer-support">My Account</a></li>
+            <li><a href="#footer-support">Exchange &amp; Return Policy</a></li>
+            <li><a href="#footer-support">Privacy Policy</a></li>
+            <li><a href="#footer-support">Terms &amp; Conditions</a></li>
+            <li><a href="new-season.html">Shoes</a></li>
+            <li><a href="#performance-favorites">Running Shoes</a></li>
+            <li><a href="#performance-favorites">Hyrox India</a></li>
+            <li><a href="#footer-support">Cookie Settings</a></li>
           </ul>
         </div>
-      </div>
 
-      <div>
-        <h3 class="footer-heading">ABOUT</h3>
-        <ul class="footer-links">
-          <li><a href="#sport">Company</a></li>
-          <li><a href="#men">What is HYROX?</a></li>
-          <li><a href="#ferrari-banner">Corporate News</a></li>
-          <li><a href="#promo-collections">Press Center</a></li>
-          <li><a href="#sport">Investors</a></li>
-          <li><a href="#sport">Sustainability</a></li>
-          <li><a href="#sport">Careers</a></li>
-          <li><a href="#sport">Store Locator</a></li>
-          <li><a href="#sport">PUMA Articles</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="footer-heading">STAY UP TO DATE</h3>
-        <form class="footer-subscribe" id="subscribeForm">
-          <input type="email" placeholder="Sign up for email" aria-label="Email address" required>
-          <button type="submit">SIGN UP</button>
-        </form>
-        <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
-
-        <div class="footer-social" aria-label="PUMA social media">
-          <a href="https://www.youtube.com/puma" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.9 12l-6.3 3.6Z"/></svg>
-          </a>
-          <a href="https://x.com/pumaindia" target="_blank" rel="noopener noreferrer" aria-label="X">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://www.pinterest.com/puma" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.88 1.54 1.88 1.85 0 3.27-1.95 3.27-4.76 0-2.49-1.79-4.23-4.34-4.23-2.96 0-4.7 2.22-4.7 4.51 0 .89.34 1.85.77 2.37.08.1.1.19.07.29-.08.33-.25 1.04-.29 1.18-.05.19-.15.23-.35.14-1.31-.61-2.13-2.52-2.13-4.06 0-3.31 2.4-6.35 6.93-6.35 3.64 0 6.47 2.59 6.47 6.06 0 3.62-2.28 6.53-5.45 6.53-1.06 0-2.06-.55-2.41-1.2l-.65 2.5c-.24.91-.88 2.05-1.31 2.75.99.31 2.03.47 3.12.47 5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/pumaindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.facebook.com/PUMAIndia" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.6V4.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.6v3h2.7v8h3.2Z"/></svg>
-          </a>
+        <div>
+          <h2 class="footer-col-title footer-col-title--spacer" aria-hidden="true">SUPPORT MORE</h2>
+          <ul class="footer-links">
+            <li><a href="#footer-support">FAQs</a></li>
+            <li><a href="#footer-support">Warranty Claims</a></li>
+            <li><a href="#footer-support">Track Order</a></li>
+            <li><a href="#footer-support">Shoe Care</a></li>
+            <li><a href="#performance-favorites">Tech Glossary</a></li>
+            <li><a href="#footer-support">Initiate Return / Exchange</a></li>
+            <li><a href="lifestyle.html">Sneakers</a></li>
+            <li><a href="#new-featured">Nitro</a></li>
+            <li><a href="#top">Sitemap</a></li>
+          </ul>
         </div>
 
-        <h3 class="footer-heading">EXPLORE</h3>
-        <div class="footer-apps">
-          <a class="app-card" href="#fall-favorites" aria-label="PUMA App">
-            <svg aria-hidden="true"><use href="#puma-cat-logo"/></svg>
+        <div>
+          <h2 class="footer-col-title">ABOUT</h2>
+          <ul class="footer-links">
+            <li><a href="#footer-support">Company</a></li>
+            <li><a href="#performance-favorites">What is HYROX?</a></li>
+            <li><a href="#footer-support">Corporate News</a></li>
+            <li><a href="#footer-support">Press Center</a></li>
+            <li><a href="#footer-support">Investors</a></li>
+            <li><a href="#footer-support">Sustainability</a></li>
+            <li><a href="#footer-support">Careers</a></li>
+            <li><a href="#footer-support">Store Locator</a></li>
+            <li><a href="#footer-support">PUMA Articles</a></li>
+            <li><a href="#trending-now">Black Friday 2026</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-col-title">STAY UP TO DATE</h2>
+          <div class="social-row">
+            <a href="#footer-support" class="social-link" aria-label="PUMA on YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+              </svg>
+            </a>
+            <a href="#footer-support" class="social-link" aria-label="PUMA on X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+              </svg>
+            </a>
+            <a href="#footer-support" class="social-link" aria-label="PUMA on Pinterest">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 .1-2.9l1.1-4.6s-.3-.6-.3-1.4c0-1.3.8-2.3 1.7-2.3.8 0 1.2.6 1.2 1.3 0 .8-.5 2-.8 3.1-.2.9.5 1.7 1.4 1.7 1.7 0 3-1.8 3-4.3 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.2 0 .8.3 1.7.7 2.2.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.3.1-1.2-.6-2-2.4-2-3.8 0-3.1 2.2-5.9 6.5-5.9 3.4 0 6.1 2.4 6.1 5.7 0 3.4-2.1 6.1-5.1 6.1-1 0-1.9-.5-2.3-1.1l-.6 2.4c-.2.9-.8 2-1.2 2.7A10 10 0 1 0 12 2Z" />
+              </svg>
+            </a>
+            <a href="#footer-support" class="social-link" aria-label="PUMA on Instagram">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#footer-support" class="social-link" aria-label="PUMA on Facebook">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 12 2Z" />
+              </svg>
+            </a>
+          </div>
+
+          <h2 class="footer-col-title">EXPLORE</h2>
+          <a href="#top" class="explore-app-card" aria-label="PUMA App">
+            <svg width="26" height="16" viewBox="0 0 64 38" fill="currentColor" aria-hidden="true">
+              <path
+                d="M58.4 4.1c-2.2-1.8-5.2-1.4-7.2.4-2.1 1.9-5.8 5.2-11.2 7.1-4.8 1.7-9.6 1.9-14.2 3.1-4.5 1.1-8.8 3.6-12.1 7.1-2.5 2.7-4.8 5.4-7.4 7.7-1.4 1.2-3.5 1.8-5.1 1-.6-.3-1.2.1-1.1.8.2 1.6 1.8 2.8 3.6 2.8 3.1 0 6.1-2.4 8.7-4.9 3.6-3.4 7.3-6.6 12-7.8 2.2-.5 4.4-.6 6.6-.5-.7 2.4-2.3 5.2-4.6 7.5-1.1 1.1-.3 2.8 1.2 2.4 3.3-.9 6.6-4.1 8.5-7.6 1.8-3.3 2.9-6.6 5.2-8.7 2.7-2.5 5.4-4.2 8.7-5.6 1.5-.6 2.9.6 2.3 2.1-.6 1.6-2 3.8-4.1 6-.8.8-.1 2.2 1.1 1.9 3.4-.8 6.8-4.1 8.1-7.8.8-2.2 1.1-5.1-1.1-7z" />
+            </svg>
             <span>APP</span>
           </a>
-          <a class="app-card" href="#men" aria-label="PUMA TRAC">
-            <svg aria-hidden="true"><use href="#puma-cat-logo"/></svg>
-            <span>TRAC</span>
-          </a>
         </div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <!-- Authentic Indian & Global Payment Brand Logos -->
-      <div class="payment-methods" aria-label="Accepted payment methods">
-        <span class="pay-logo" title="VISA">
-          <svg viewBox="0 0 56 18" aria-label="VISA"><text x="28" y="14" text-anchor="middle" fill="#1A1F71" font-family="Arial, sans-serif" font-style="italic" font-weight="900" font-size="16" letter-spacing="-0.5">VISA</text></svg>
-        </span>
-        <span class="pay-logo" title="Mastercard">
-          <svg viewBox="0 0 38 24" aria-label="Mastercard"><circle cx="14" cy="12" r="8" fill="#EB001B"/><circle cx="24" cy="12" r="8" fill="#F79E1B"/><path d="M19 5.7a8 8 0 0 0 0 12.6 8 8 0 0 0 0-12.6Z" fill="#FF5F00"/></svg>
-        </span>
-        <span class="pay-logo" title="Maestro">
-          <svg viewBox="0 0 38 24" aria-label="Maestro"><circle cx="14" cy="12" r="8" fill="#EB001B"/><circle cx="24" cy="12" r="8" fill="#0099DF"/><path d="M19 5.7a8 8 0 0 0 0 12.6 8 8 0 0 0 0-12.6Z" fill="#6C6BBD"/></svg>
-        </span>
-        <span class="pay-logo amex" title="American Express">
-          <svg viewBox="0 0 54 18" aria-label="AMEX"><text x="27" y="13" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="900" font-size="11.5" letter-spacing="0.4">AMEX</text></svg>
-        </span>
-        <span class="pay-logo" title="UPI">
-          <svg viewBox="0 0 52 18" aria-label="UPI"><text x="19" y="14" text-anchor="middle" fill="#4E4E4E" font-family="Arial, sans-serif" font-style="italic" font-weight="900" font-size="14">UPI</text><polygon points="36,3 43,9 36,15" fill="#F47920"/><polygon points="41,3 48,9 41,15" fill="#097939"/></svg>
-        </span>
-        <span class="pay-logo" title="RuPay">
-          <svg viewBox="0 0 64 18" aria-label="RuPay"><text x="25" y="13.5" text-anchor="middle" fill="#1A2B6D" font-family="Arial, sans-serif" font-style="italic" font-weight="800" font-size="13">RuPay</text><polygon points="49,3 55,9 49,15" fill="#F47920"/><polygon points="54,3 60,9 54,15" fill="#097939"/></svg>
-        </span>
-      </div>
+      <hr class="footer-divider" />
 
-      <!-- Official India Selector with Real Tricolor SVG Flag -->
-      <button class="country-selector" id="countrySelector" type="button" aria-label="Country and language: India">
-        <svg class="flag-svg" viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="8" y="0" fill="#FF9933"/>
-          <rect width="24" height="8" y="8" fill="#FFFFFF"/>
-          <rect width="24" height="8" y="16" fill="#138808"/>
-          <circle cx="12" cy="12" r="2.7" fill="none" stroke="#000080" stroke-width="0.9"/>
-          <circle cx="12" cy="12" r="0.7" fill="#000080"/>
-        </svg>
-        <span>INDIA</span>
-      </button>
+      <div class="footer-bottom">
+        <div class="payment-badges" aria-label="Accepted payment methods">
+          <span class="pay-chip" style="color: #1a1f71">VISA</span>
+          <span class="pay-chip" style="gap: 0">
+            <svg width="24" height="16" viewBox="0 0 36 22" aria-label="Mastercard">
+              <circle cx="13" cy="11" r="8" fill="#eb001b" />
+              <circle cx="23" cy="11" r="8" fill="#f79e1b" fill-opacity="0.88" />
+            </svg>
+          </span>
+          <span class="pay-chip">
+            <svg width="24" height="16" viewBox="0 0 36 22" aria-label="Maestro">
+              <circle cx="13" cy="11" r="8" fill="#eb001b" />
+              <circle cx="23" cy="11" r="8" fill="#0099df" fill-opacity="0.88" />
+            </svg>
+          </span>
+          <span class="pay-chip" style="background: #2e77bc; color: #ffffff; font-size: 8px">AMEX</span>
+          <span class="pay-chip" style="color: #097939">UPI</span>
+          <span class="pay-chip" style="color: #1c3d8f">RuPay</span>
+        </div>
 
-      <div class="legal-copy">
-        © PUMA INDIA LTD, 2026. ALL RIGHTS RESERVED.
-        <a href="#subscribeForm">IMPRINT AND LEGAL DATA</a>
+        <a href="#footer-support" class="region-selector">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <clipPath id="in-flag">
+              <circle cx="12" cy="12" r="11" />
+            </clipPath>
+            <g clip-path="url(#in-flag)">
+              <rect x="0" y="0" width="24" height="8" fill="#ff9933" />
+              <rect x="0" y="8" width="24" height="8" fill="#ffffff" />
+              <rect x="0" y="16" width="24" height="8" fill="#138808" />
+              <circle cx="12" cy="12" r="2.8" fill="none" stroke="#000080" stroke-width="1" />
+            </g>
+          </svg>
+          <span>INDIA</span>
+        </a>
+
+        <div class="footer-legal">
+          <p>© PUMA INDIA LTD, 2026. ALL RIGHTS RESERVED.</p>
+          <p><a href="#footer-support">IMPRINT AND LEGAL DATA</a></p>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- Shared Backdrop -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- Mobile Navigation Drawer -->
-  <aside class="drawer drawer-left" id="mobileMenuDrawer" aria-label="Mobile navigation" aria-hidden="true">
-    <div class="drawer-header">
-      <h2>MENU</h2>
-      <button class="close-btn" type="button" data-close-panel aria-label="Close menu">×</button>
-    </div>
-    <div class="drawer-body">
-      <nav class="mobile-nav-list" aria-label="Mobile categories">
-        <a href="#fall-favorites">New <span>→</span></a>
-        <a href="#sport">Sports <span>→</span></a>
-        <a href="#new" data-jump-filter="men">Men <span>→</span></a>
-        <a href="#new" data-jump-filter="women">Women <span>→</span></a>
-        <a href="#ferrari-banner">Motorsport <span>→</span></a>
-        <a href="#sport-categories">Lifestyle <span>→</span></a>
-        <a href="#sport-categories">Kids <span>→</span></a>
-        <a href="#new" data-jump-filter="sale">Sale <span>→</span></a>
-      </nav>
-      <div class="mobile-nav-actions">
-        <a class="button primary-white full-width" href="#new">SHOP ALL FAVORITES</a>
-      </div>
-    </div>
-  </aside>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
 
   <!-- Shopping Bag Drawer -->
-  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
-    <div class="drawer-header">
-      <h2>YOUR CART <span id="drawerCount">(0)</span></h2>
-      <button class="close-btn" type="button" data-close-panel aria-label="Close cart">×</button>
+  <aside class="side-drawer" id="cartDrawer" aria-label="Shopping Cart" aria-hidden="true">
+    <div class="side-drawer-head">
+      <h2>Your Bag <span id="drawerCount">(0)</span></h2>
+      <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close cart">×</button>
     </div>
-    <div class="drawer-body" id="cartBody"></div>
-    <div class="drawer-footer" id="cartFooter" hidden></div>
+    <div class="side-drawer-body" id="cartBody"></div>
+    <div class="side-drawer-foot" id="cartFooter" hidden></div>
   </aside>
 
   <!-- Wishlist Drawer -->
-  <aside class="drawer" id="wishlistDrawer" aria-label="Wishlist" aria-hidden="true">
-    <div class="drawer-header">
-      <h2>WISHLIST <span id="wishlistDrawerCount">(0)</span></h2>
-      <button class="close-btn" type="button" data-close-panel aria-label="Close wishlist">×</button>
+  <aside class="side-drawer" id="wishlistDrawer" aria-label="Wishlist" aria-hidden="true">
+    <div class="side-drawer-head">
+      <h2>Wishlist <span id="wishlistDrawerCount">(0)</span></h2>
+      <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close wishlist">×</button>
     </div>
-    <div class="drawer-body" id="wishlistBody"></div>
+    <div class="side-drawer-body" id="wishlistBody"></div>
   </aside>
 
   <!-- Product Quick-View Modal -->
-  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-label="Product quick view" aria-hidden="true">
+  <div class="app-modal" id="productModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div id="quickViewContent"></div>
   </div>
 
-  <!-- Account Sign-In Modal -->
-  <div class="modal modal-compact" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle" aria-hidden="true">
-    <div class="drawer-header">
-      <h2 id="accountTitle">MY ACCOUNT</h2>
-      <button class="close-btn" type="button" data-close-panel aria-label="Close account modal">×</button>
+  <!-- Account Modal -->
+  <div class="app-modal app-modal-compact" id="accountModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="side-drawer-head">
+      <h2>PUMA Account</h2>
+      <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close account modal">×</button>
     </div>
-    <div class="account-body" id="accountBody"></div>
+    <div style="padding: 24px;" id="accountBody"></div>
   </div>
 
   <!-- Toast Notification -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="app-toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js" defer></script>
 </body>
+
 </html>

@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PUMA Motorsport | Formula 1®, Ferrari, BMW M &amp; McLaren Official Store</title>
+    <meta
+      name="description"
+      content="Shop official PUMA Motorsport gear, Formula 1® collections, Scuderia Ferrari jackets, BMW M Motorsport sneakers, McLaren Speedcat and Porsche Legacy styles."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="puma.css" />
+    <style>
+      /* Motorsport Showcase Carousel */
+      .ms-showcase-section {
+        margin: 16px 0 32px;
+        position: relative;
+      }
+      .ms-showcase-row {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(240px, 1fr);
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        padding-bottom: 8px;
+      }
+      .ms-showcase-row::-webkit-scrollbar {
+        display: none;
+      }
+      .ms-showcase-card {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4 / 3.9;
+        background-color: #181818;
+        scroll-snap-align: start;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+      }
+      .ms-showcase-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 300ms ease;
+      }
+      .ms-showcase-card:hover img {
+        transform: scale(1.04);
+      }
+      .ms-showcase-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%);
+        display: flex;
+        align-items: flex-end;
+        padding: 16px 18px;
+      }
+      .ms-showcase-title {
+        color: #ffffff;
+        font-family: var(--font-display);
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      .ms-showcase-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transition: background 150ms ease, transform 150ms ease;
+      }
+      .ms-showcase-arrow:hover {
+        background: #ffffff;
+        transform: translateY(-50%) scale(1.08);
+      }
+      .ms-showcase-arrow--prev {
+        left: -14px;
+      }
+      .ms-showcase-arrow--next {
+        right: -14px;
+      }
+      .ms-progress-bar {
+        height: 3px;
+        width: 100%;
+        background-color: #e5e5e5;
+        border-radius: 2px;
+        margin-top: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .ms-progress-fill {
+        height: 100%;
+        width: 28%;
+        background-color: #181818;
+        border-radius: 2px;
+        transition: width 200ms ease;
+      }
+      /* Feature Tile in Grid */
+      .ms-editorial-tile {
+        position: relative;
+        background: url('assets/puma/ms_gear_up_banner.jpg') center/cover no-repeat;
+        min-height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .ms-editorial-tile h3 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin: 0 0 16px;
+        line-height: 1.15;
+      }
+      .ms-editorial-tile .btn-outline-white {
+        display: inline-block;
+        padding: 10px 22px;
+        border: 1.5px solid #ffffff;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 150ms ease, color 150ms ease;
+      }
+      .ms-editorial-tile .btn-outline-white:hover {
+        background: #ffffff;
+        color: #181818;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Drawer Toggle (Pure CSS Checkbox) -->
+    <input type="checkbox" id="nav-drawer-toggle" class="sr-only" aria-hidden="true" />
+
+    <!-- Top Announcement Bar (Matches Screenshot 1 & 2) -->
+    <div class="promo-bar">
+      SOLVE YOUR QUERIES FASTER! SEND US A 'HI' ON WHATSAPP AT 8792968173 <a href="https://wa.me/918792968173" style="color: inherit; text-decoration: underline; font-weight: 700; margin-left: 4px;">CLICK HERE</a>
+    </div>
+
+    <!-- ===================================================================
+         Responsive Navigation Header
+         =================================================================== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <label for="nav-drawer-toggle" class="mobile-menu-trigger" aria-label="Open navigation menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </label>
+
+          <a href="index.html" class="brand-logo" aria-label="PUMA Home">
+            <img src="assets/aistudio/image_b6153493.png" alt="PUMA Logo" width="45" height="36" />
+          </a>
+
+          <nav class="primary-nav" aria-label="Main navigation">
+            <div class="nav-item">
+              <a href="new-season.html" class="nav-link">NEW</a>
+              <div class="mega-menu">
+                <div class="mega-grid--new">
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">Men's New Arrivals</a></li>
+                    <li><a href="new-season.html">Women's New Arrivals</a></li>
+                    <li><a href="new-season.html">Kid's New Arrivals</a></li>
+                    <li><a href="new-season.html">NITRO ⚡</a></li>
+                  </ul>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">SPEEDCAT</a></li>
+                    <li><a href="new-season.html">PALERMO</a></li>
+                    <li><a href="new-season.html">SUEDE</a></li>
+                    <li><a href="new-season.html">PUMA PROJECT3</a></li>
+                  </ul>
+                  <ul class="mega-links">
+                    <li><a href="new-season.html">PUMA x McLAREN RACING James Hunt Collection</a></li>
+                    <li><a href="new-season.html">PUMA x STRANGER THINGS</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="nav-item">
+              <a href="sports.html" class="nav-link">SPORTS</a>
+              <div class="mega-menu">
+                <div class="mega-scroll-wrap">
+                  <div class="mega-grid--sports">
+                    <div>
+                      <div class="mega-heading">Running</div>
+                      <ul class="mega-links">
+                        <li><a href="sports.html">Shop All Running</a></li>
+                        <li><a href="sports.html">NITRO™ ⚡</a></li>
+                        <li><a href="sports.html">Carbon-Plated-Nitro</a></li>
+                        <li><a href="sports.html">Road Running</a></li>
+                        <li><a href="sports.html">Race Day</a></li>
+                        <li><a href="sports.html">Trail Running</a></li>
+                        <li><a href="sports.html">Track &amp; Field</a></li>
+                        <li><a href="sports.html">Clothing</a></li>
+                        <li><a href="sports.html">Accessories</a></li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <div class="mega-heading">Training</div>
+                      <ul class="mega-links">
+                        <li><a href="sports.html">Training Store</a></li>
+                        <li><a href="sports.html">Gym Wear</a></li>
+                        <li><a href="sports.html">PUMA x HYROX</a></li>
+                        <li><a href="sports.html">Shoes</a></li>
+                        <li><a href="sports.html">Gym Bags &amp; Accessories</a></li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <div class="mega-heading">Football</div>
+                      <ul class="mega-links">
+                        <li><a href="sports.html">Football Store</a></li>
+                        <li><a href="sports.html">Manchester City FC</a></li>
+                        <li><a href="sports.html">AC Milan</a></li>
+                        <li><a href="sports.html">BVB</a></li>
+                        <li><a href="sports.html">National Team Kits</a></li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <div class="mega-heading">Cricket</div>
+                      <ul class="mega-links">
+                        <li><a href="sports.html">PUMA x RCB</a></li>
+                        <li><a href="sports.html">PUMA x DELHI CAPITALS</a></li>
+                        <li><a href="sports.html">Cricket Shoes</a></li>
+                        <li><a href="sports.html">Cricket Gear &amp; Accessories</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MEN -->
+            <div class="nav-item">
+              <a href="men.html" class="nav-link">MEN</a>
+              <div class="mega-menu">
+                <div class="mega-grid--5">
+                  <div>
+                    <div class="mega-heading">Shoes</div>
+                    <ul class="mega-links">
+                      <li><a href="men.html">All Men's Shoes</a></li>
+                      <li><a href="sports.html">Running Shoes</a></li>
+                      <li><a href="men.html">Sneakers &amp; Classics</a></li>
+                      <li><a href="men.html">Palermo</a></li>
+                      <li><a href="men.html">Speedcat OG</a></li>
+                      <li><a href="men.html">Suede</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Clothing</div>
+                    <ul class="mega-links">
+                      <li><a href="men.html">All Men's Clothing</a></li>
+                      <li><a href="men.html">T-Shirts &amp; Polos</a></li>
+                      <li><a href="men.html">Shorts</a></li>
+                      <li><a href="men.html">Track Pants &amp; Joggers</a></li>
+                      <li><a href="men.html">Jackets &amp; Windbreakers</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Sports</div>
+                    <ul class="mega-links">
+                      <li><a href="sports.html">Running Store</a></li>
+                      <li><a href="sports.html">Football Store</a></li>
+                      <li><a href="sports.html">Cricket Store</a></li>
+                      <li><a href="motorsport.html">Motorsport Racing</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Accessories</div>
+                    <ul class="mega-links">
+                      <li><a href="men.html">Backpacks &amp; Bags</a></li>
+                      <li><a href="men.html">Caps &amp; Beanies</a></li>
+                      <li><a href="men.html">Socks</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Featured</div>
+                    <ul class="mega-links">
+                      <li><a href="men.html">Men's New Arrivals</a></li>
+                      <li><a href="motorsport.html">Scuderia Ferrari HP</a></li>
+                      <li><a href="motorsport.html">BMW M Motorsport</a></li>
+                      <li><a href="motorsport.html">McLAREN RACING</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WOMEN -->
+            <div class="nav-item">
+              <a href="women.html" class="nav-link">WOMEN</a>
+              <div class="mega-menu">
+                <div class="mega-grid--5">
+                  <div>
+                    <div class="mega-heading">Shoes</div>
+                    <ul class="mega-links">
+                      <li><a href="women.html">All Women's Shoes</a></li>
+                      <li><a href="women.html">Speedcat Ballet</a></li>
+                      <li><a href="women.html">Palermo</a></li>
+                      <li><a href="women.html">Suede Classics</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Clothing</div>
+                    <ul class="mega-links">
+                      <li><a href="women.html">Tops &amp; T-Shirts</a></li>
+                      <li><a href="women.html">Leggings &amp; Tights</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="mega-heading">Collections</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html">Women's Motorsport</a></li>
+                      <li><a href="women.html">Speedcat Ballet</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOTORSPORT (ACTIVE) -->
+            <div class="nav-item">
+              <a href="motorsport.html" class="nav-link nav-link--active">MOTORSPORT</a>
+              <div class="mega-menu">
+                <div class="mega-grid--5">
+                  <div>
+                    <div class="mega-heading">Formula 1® Teams</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html?team=ferrari">Scuderia Ferrari</a></li>
+                      <li><a href="motorsport.html?team=mclaren">McLAREN Racing</a></li>
+                      <li><a href="motorsport.html?team=aston-martin">Aston Martin Aramco F1®</a></li>
+                      <li><a href="motorsport.html?team=f1">PUMA &amp; Formula 1®</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Manufacturers</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html?team=bmw">BMW M Motorsport</a></li>
+                      <li><a href="motorsport.html?team=porsche">Porsche Legacy</a></li>
+                      <li><a href="motorsport.html?team=mercedes">Mercedes-AMG PETRONAS</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Shoes</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html">All Motorsport Shoes</a></li>
+                      <li><a href="motorsport.html">Speedcat Racing</a></li>
+                      <li><a href="motorsport.html">Neo Cat Driving Shoes</a></li>
+                      <li><a href="motorsport.html">Caven &amp; Court Classic</a></li>
+                      <li><a href="motorsport.html">Palermo Motorsport</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Clothing</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html">Team Replica Jackets</a></li>
+                      <li><a href="motorsport.html">Team T-Shirts &amp; Polos</a></li>
+                      <li><a href="motorsport.html">Hoodies &amp; Sweatshirts</a></li>
+                      <li><a href="motorsport.html">Track Pants &amp; Shorts</a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <div class="mega-heading">Accessories</div>
+                    <ul class="mega-links">
+                      <li><a href="motorsport.html">Official Team Caps</a></li>
+                      <li><a href="motorsport.html">Backpacks &amp; Waistbags</a></li>
+                      <li><a href="motorsport.html">Driver Signed Editions</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LIFESTYLE -->
+            <div class="nav-item">
+              <a href="lifestyle.html" class="nav-link">LIFESTYLE</a>
+            </div>
+
+            <!-- KIDS -->
+            <div class="nav-item">
+              <a href="kids.html" class="nav-link">KIDS</a>
+            </div>
+
+            <!-- SALE -->
+            <div class="nav-item">
+              <a href="index.html#trending-now" class="nav-link nav-link--sale">SALE</a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="header-right">
+          <form action="#ms-grid" class="search-box" role="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <label for="ms-search" class="sr-only">Search Motorsport products</label>
+            <input id="ms-search" type="search" class="search-input" placeholder="SEARCH" />
+          </form>
+
+          <button type="button" class="icon-btn" id="wishlistButton" aria-label="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+            <span class="badge-count" id="wishlistCount" data-empty="true">0</span>
+          </button>
+
+          <button type="button" class="icon-btn" id="cartButton" aria-label="Shopping Cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <circle cx="8" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" />
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+            </svg>
+            <span class="badge-count" id="cartCount" data-empty="true">0</span>
+          </button>
+
+          <button type="button" class="icon-btn" id="accountButton" aria-label="My Account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+            <span class="account-dot" id="accountDot" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slide-Out Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" aria-label="Mobile Navigation">
+      <label for="nav-drawer-toggle" class="mobile-nav-backdrop" aria-label="Close navigation menu"></label>
+      <div class="mobile-nav-panel">
+        <div class="mobile-drawer-head">
+          <span class="footer-col-title" style="margin: 0">PUMA MENU</span>
+          <label for="nav-drawer-toggle" class="mobile-drawer-close" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </label>
+        </div>
+        <nav class="mobile-drawer-links">
+          <a href="new-season.html">NEW SEASON <span>&rsaquo;</span></a>
+          <a href="sports.html">SPORTS <span>&rsaquo;</span></a>
+          <a href="men.html">MEN <span>&rsaquo;</span></a>
+          <a href="women.html">WOMEN <span>&rsaquo;</span></a>
+          <a href="motorsport.html" style="color: var(--accent-gold); font-weight: 800;">MOTORSPORT <span>&rsaquo;</span></a>
+          <a href="lifestyle.html">LIFESTYLE <span>&rsaquo;</span></a>
+          <a href="login.html">MY ACCOUNT / LOGIN <span>&rsaquo;</span></a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         MOTORSPORT MAIN CONTENT (Matches in.puma.com/in/en/motorsport)
+         =================================================================== -->
+    <main class="ns-page">
+      <!-- Breadcrumb -->
+      <nav class="ns-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">&bull;</span>
+        <span>Motorsport</span>
+      </nav>
+
+      <!-- 1. Top Carousel / Team Showcase Banners (Matches Screenshot 1 & 2) -->
+      <section class="ms-showcase-section" aria-label="Motorsport Teams Carousel">
+        <button class="ms-showcase-arrow ms-showcase-arrow--prev" id="msPrevBtn" type="button" aria-label="Previous Team">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="ms-showcase-arrow ms-showcase-arrow--next" id="msNextBtn" type="button" aria-label="Next Team">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+
+        <div class="ms-showcase-row" id="msShowcaseRow">
+          <!-- Card 1: McLaren -->
+          <a href="#ms-grid" class="ms-showcase-card" data-team-filter="mclaren">
+            <img src="assets/puma/ms_showcase_mclaren.jpg" alt="McLAREN Racing" />
+            <div class="ms-showcase-overlay">
+              <h2 class="ms-showcase-title">MCLAREN</h2>
+            </div>
+          </a>
+
+          <!-- Card 2: Scuderia Ferrari -->
+          <a href="#ms-grid" class="ms-showcase-card" data-team-filter="ferrari">
+            <img src="assets/puma/ms_showcase_ferrari.jpg" alt="Scuderia Ferrari" />
+            <div class="ms-showcase-overlay">
+              <h2 class="ms-showcase-title">SCUDERIA FERRARI</h2>
+            </div>
+          </a>
+
+          <!-- Card 3: BMW M Motorsport -->
+          <a href="#ms-grid" class="ms-showcase-card" data-team-filter="bmw">
+            <img src="assets/puma/ms_showcase_bmw.jpg" alt="BMW M Motorsport" />
+            <div class="ms-showcase-overlay">
+              <h2 class="ms-showcase-title">BMW M MOTORSPORT</h2>
+            </div>
+          </a>
+
+          <!-- Card 4: Aston Martin Aramco F1 Team -->
+          <a href="#ms-grid" class="ms-showcase-card" data-team-filter="aston-martin">
+            <img src="assets/puma/ms_showcase_aston_martin.jpg" alt="Aston Martin Aramco F1 Team" />
+            <div class="ms-showcase-overlay">
+              <h2 class="ms-showcase-title">ASTON MARTIN ARAMCO F1® TEAM</h2>
+            </div>
+          </a>
+
+          <!-- Card 5: PUMA & Formula 1 -->
+          <a href="#ms-grid" class="ms-showcase-card" data-team-filter="f1">
+            <img src="assets/puma/ms_showcase_f1.jpg" alt="PUMA & Formula 1" />
+            <div class="ms-showcase-overlay">
+              <h2 class="ms-showcase-title">PUMA &amp; FORMULA 1®</h2>
+            </div>
+          </a>
+        </div>
+
+        <!-- Scroll Indicator Bar -->
+        <div class="ms-progress-bar">
+          <div class="ms-progress-fill" id="msProgressFill"></div>
+        </div>
+      </section>
+
+      <!-- Page Heading (Matches Screenshot 1 & 2) -->
+      <h1 class="ns-title">MOTORSPORT</h1>
+
+      <!-- Pure-CSS Filter Inputs -->
+      <input type="checkbox" id="ms-sidebar-toggle" class="sr-only" aria-hidden="true" />
+
+      <input type="radio" name="ms-grid-mode" id="ms-grid-2" class="sr-only" />
+      <input type="radio" name="ms-grid-mode" id="ms-grid-4" class="sr-only" checked />
+
+      <input type="radio" name="ms-cat" id="ms-cat-all" class="sr-only" checked />
+      <input type="radio" name="ms-cat" id="ms-cat-shoes" class="sr-only" />
+      <input type="radio" name="ms-cat" id="ms-cat-clothing" class="sr-only" />
+      <input type="radio" name="ms-cat" id="ms-cat-accessories" class="sr-only" />
+
+      <input type="radio" name="ms-type" id="ms-type-all" class="sr-only" checked />
+      <input type="radio" name="ms-type" id="ms-type-sneakers" class="sr-only" />
+      <input type="radio" name="ms-type" id="ms-type-speedcat" class="sr-only" />
+      <input type="radio" name="ms-type" id="ms-type-jackets" class="sr-only" />
+
+      <input type="radio" name="ms-team" id="ms-team-all" class="sr-only" checked />
+      <input type="radio" name="ms-team" id="ms-team-ferrari" class="sr-only" />
+      <input type="radio" name="ms-team" id="ms-team-bmw" class="sr-only" />
+      <input type="radio" name="ms-team" id="ms-team-mclaren" class="sr-only" />
+      <input type="radio" name="ms-team" id="ms-team-porsche" class="sr-only" />
+      <input type="radio" name="ms-team" id="ms-team-aston-martin" class="sr-only" />
+
+      <!-- Filter Toolbar Row (Matches Screenshot 1 & 2) -->
+      <div class="ns-toolbar">
+        <div class="ns-filter-pills">
+          <label for="ms-sidebar-toggle" class="ns-sliders-btn" title="Toggle Filter Sidebar" aria-label="Toggle Filter Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <circle cx="9" cy="7" r="2" fill="#ffffff" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+              <circle cx="15" cy="17" r="2" fill="#ffffff" />
+            </svg>
+          </label>
+
+          <details class="ns-dropdown">
+            <summary>Category</summary>
+            <div class="ns-dropdown-panel">
+              <label for="ms-cat-all" class="filter-option-label">All Categories</label>
+              <label for="ms-cat-shoes" class="filter-option-label">Shoes</label>
+              <label for="ms-cat-clothing" class="filter-option-label">Clothing</label>
+              <label for="ms-cat-accessories" class="filter-option-label">Accessories</label>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Product Type</summary>
+            <div class="ns-dropdown-panel">
+              <label for="ms-type-all" class="filter-option-label">All Product Types</label>
+              <label for="ms-type-sneakers" class="filter-option-label">Sneakers</label>
+              <label for="ms-type-speedcat" class="filter-option-label">Speedcat</label>
+              <label for="ms-type-jackets" class="filter-option-label">Jackets &amp; Outerwear</label>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Price</summary>
+            <div class="ns-dropdown-panel">
+              <span class="filter-option-label">Under ₹4,000</span>
+              <span class="filter-option-label">₹4,000 - ₹8,000</span>
+              <span class="filter-option-label">Over ₹8,000</span>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Size</summary>
+            <div class="ns-dropdown-panel">
+              <span class="filter-option-label">UK 6</span>
+              <span class="filter-option-label">UK 7</span>
+              <span class="filter-option-label">UK 8</span>
+              <span class="filter-option-label">UK 9</span>
+              <span class="filter-option-label">UK 10</span>
+              <span class="filter-option-label">UK 11</span>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Colour</summary>
+            <div class="ns-dropdown-panel">
+              <span class="filter-option-label">Black</span>
+              <span class="filter-option-label">Red</span>
+              <span class="filter-option-label">White</span>
+              <span class="filter-option-label">Orange</span>
+              <span class="filter-option-label">Green</span>
+            </div>
+          </details>
+
+          <!-- Motorsport Specific: Collaboration & Partnership Filter (Matches Screenshot 1 & 2) -->
+          <details class="ns-dropdown">
+            <summary>Collaboration &amp; Partnership</summary>
+            <div class="ns-dropdown-panel">
+              <label for="ms-team-all" class="filter-option-label">All Partnerships</label>
+              <label for="ms-team-ferrari" class="filter-option-label">Scuderia Ferrari</label>
+              <label for="ms-team-bmw" class="filter-option-label">BMW M Motorsport</label>
+              <label for="ms-team-mclaren" class="filter-option-label">McLAREN Racing</label>
+              <label for="ms-team-porsche" class="filter-option-label">Porsche Legacy</label>
+              <label for="ms-team-aston-martin" class="filter-option-label">Aston Martin F1®</label>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Discount</summary>
+            <div class="ns-dropdown-panel">
+              <span class="filter-option-label">20% and above</span>
+              <span class="filter-option-label">40% and above</span>
+              <span class="filter-option-label">50% and above</span>
+            </div>
+          </details>
+
+          <details class="ns-dropdown">
+            <summary>Gender</summary>
+            <div class="ns-dropdown-panel">
+              <span class="filter-option-label">Men</span>
+              <span class="filter-option-label">Women</span>
+              <span class="filter-option-label">Unisex</span>
+            </div>
+          </details>
+        </div>
+
+        <div class="ns-sort-wrap">
+          <details class="ns-dropdown">
+            <summary>RECOMMENDED</summary>
+            <div class="ns-dropdown-panel" style="right: 0; left: auto;">
+              <span class="filter-option-label">Price: Low to High</span>
+              <span class="filter-option-label">Price: High to Low</span>
+              <span class="filter-option-label">Newest First</span>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Meta Bar: 552 PRODUCTS count & 2-col / 4-col switchers -->
+      <div class="ns-meta-bar">
+        <span class="ns-count">552 PRODUCTS</span>
+
+        <div class="ns-view-switchers" role="radiogroup" aria-label="Grid layout toggle">
+          <label for="ms-grid-2" class="ns-view-btn" title="2-column grid">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="8" height="18" />
+              <rect x="13" y="3" width="8" height="18" />
+            </svg>
+          </label>
+          <label for="ms-grid-4" class="ns-view-btn" title="4-column grid">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="4" height="4" />
+              <rect x="8" y="2" width="4" height="4" />
+              <rect x="14" y="2" width="4" height="4" />
+              <rect x="20" y="2" width="2" height="4" />
+              <rect x="2" y="8" width="4" height="4" />
+              <rect x="8" y="8" width="4" height="4" />
+              <rect x="14" y="8" width="4" height="4" />
+              <rect x="20" y="8" width="2" height="4" />
+              <rect x="2" y="14" width="4" height="4" />
+              <rect x="8" y="14" width="4" height="4" />
+              <rect x="14" y="14" width="4" height="4" />
+              <rect x="20" y="14" width="2" height="4" />
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <!-- Collapsible Left Product Filter Sidebar + Product Grid -->
+      <div class="ns-catalog-wrap">
+        <aside class="ns-sidebar" aria-label="Motorsport Product Filter Sidebar">
+          <div class="filter-sidebar-top">
+            <span class="filter-sidebar-title">Filter Results</span>
+            <label for="ms-sidebar-toggle" class="filter-close-mobile" style="display: inline-flex" aria-label="Close sidebar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </label>
+          </div>
+
+          <details class="filter-group" open>
+            <summary class="filter-group-header">Motorsport Team / Partner</summary>
+            <div class="filter-group-content">
+              <label for="ms-team-all" class="filter-row"><span class="filter-indicator"></span><span>All Teams</span></label>
+              <label for="ms-team-ferrari" class="filter-row"><span class="filter-indicator"></span><span>Scuderia Ferrari</span></label>
+              <label for="ms-team-bmw" class="filter-row"><span class="filter-indicator"></span><span>BMW M Motorsport</span></label>
+              <label for="ms-team-mclaren" class="filter-row"><span class="filter-indicator"></span><span>McLAREN Racing</span></label>
+              <label for="ms-team-porsche" class="filter-row"><span class="filter-indicator"></span><span>Porsche Legacy</span></label>
+              <label for="ms-team-aston-martin" class="filter-row"><span class="filter-indicator"></span><span>Aston Martin Aramco F1®</span></label>
+            </div>
+          </details>
+
+          <details class="filter-group" open>
+            <summary class="filter-group-header">Category</summary>
+            <div class="filter-group-content">
+              <label for="ms-cat-all" class="filter-row"><span class="filter-indicator"></span><span>All Categories</span></label>
+              <label for="ms-cat-shoes" class="filter-row"><span class="filter-indicator"></span><span>Footwear &amp; Sneakers</span></label>
+              <label for="ms-cat-clothing" class="filter-row"><span class="filter-indicator"></span><span>Outerwear &amp; Apparel</span></label>
+              <label for="ms-cat-accessories" class="filter-row"><span class="filter-indicator"></span><span>Headwear &amp; Caps</span></label>
+            </div>
+          </details>
+
+          <details class="filter-group" open>
+            <summary class="filter-group-header">Product Silhouette</summary>
+            <div class="filter-group-content">
+              <label for="ms-type-all" class="filter-row"><span class="filter-indicator"></span><span>All Silhouettes</span></label>
+              <label for="ms-type-sneakers" class="filter-row"><span class="filter-indicator"></span><span>Sneakers</span></label>
+              <label for="ms-type-speedcat" class="filter-row"><span class="filter-indicator"></span><span>Speedcat Motorsport</span></label>
+              <label for="ms-type-jackets" class="filter-row"><span class="filter-indicator"></span><span>Replica Jackets</span></label>
+            </div>
+          </details>
+        </aside>
+
+        <!-- Product Cards Grid (4 columns) -->
+        <section class="ns-grid" id="ms-grid" aria-label="Motorsport Catalog Grid">
+
+        <!-- ROW 1 (Screenshot 3 & 4) -->
+
+        <!-- 1. Ferrari Las Vegas Coach Jacket -->
+        <article class="ns-card" data-id="ms-ferrari-vegas-jacket" data-cat="clothing" data-type="jackets" data-team="ferrari" data-color="black">
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_ferrari_vegas_jacket.jpg" alt="Scuderia Ferrari HP Replica Las Vegas Men's Coach Jacket" />
+          </div>
+          <div class="ns-card-colors">1 COLOR</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Scuderia Ferrari HP Replica Las Vegas Men's Coach Jacket</span>
+            <span class="ns-card-price">₹19,999</span>
+          </div>
+        </article>
+
+        <!-- 2. McLaren Speedcat Black/Orange -->
+        <article class="ns-card" data-id="ms-mclaren-speedcat-orange" data-cat="shoes" data-type="speedcat sneakers" data-team="mclaren" data-color="orange black">
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_mclaren_speedcat_orange.jpg" alt="McLAREN RACING Speedcat Sneakers in Black/Orange" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">McLAREN RACING Speedcat Sneakers</span>
+            <span class="ns-card-price">₹10,999</span>
+          </div>
+        </article>
+
+        <!-- 3. McLaren Speedcat Cream/Burgundy -->
+        <article class="ns-card" data-id="ms-mclaren-speedcat-burgundy" data-cat="shoes" data-type="speedcat sneakers" data-team="mclaren" data-color="white red">
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_mclaren_speedcat_burgundy.jpg" alt="McLAREN RACING Speedcat Sneakers in Cream/Burgundy" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">McLAREN RACING Speedcat Sneakers</span>
+            <span class="ns-card-price">₹10,999</span>
+          </div>
+        </article>
+
+        <!-- 4. BMW Caven 2.0 Leather -->
+        <article class="ns-card" data-id="ms-bmw-caven-leather" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="black">
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_caven_leather.jpg" alt="BMW M Motorsport Caven 2.0 Leather Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW M Motorsport Caven 2.0 Leather Sneakers</span>
+            <span class="ns-card-price">₹6,999</span>
+          </div>
+        </article>
+
+        <!-- ROW 2 (Screenshot 5) -->
+
+        <!-- 5. Ferrari Palermo Sneakers -->
+        <article class="ns-card" data-id="ms-ferrari-palermo" data-cat="shoes" data-type="sneakers" data-team="ferrari" data-color="black red">
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_ferrari_palermo.jpg" alt="Scuderia Ferrari Palermo Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Scuderia Ferrari Palermo Sneakers</span>
+            <span class="ns-card-price">₹7,999</span>
+          </div>
+        </article>
+
+        <!-- 6. Feature Banner Tile: GEAR UP FOR THE FAST LANE -->
+        <div class="ms-editorial-tile">
+          <h3>GEAR UP FOR THE FAST LANE</h3>
+          <a href="#ms-grid" class="btn-outline-white">EXPLORE MOTORSPORT</a>
+        </div>
+
+        <!-- 7. Ferrari HP Speedcat Red (Limited Edition) -->
+        <article class="ns-card" data-id="ms-ferrari-hp-speedcat-red" data-cat="shoes" data-type="speedcat sneakers" data-team="ferrari" data-color="red">
+          <span class="ns-badge-discount">-43%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_ferrari_hp_speedcat_red.jpg" alt="Scuderia Ferrari HP Speedcat Sneakers in Rosso Corsa Red" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Scuderia Ferrari HP Speedcat Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹10,999</span>
+            </div>
+          </div>
+          <span class="ns-selling-badge" style="background:#181818; color:#ffffff; font-size:10px; font-weight:800; padding:2px 6px; letter-spacing:0.04em; align-self:flex-start; margin-top:4px;">LIMITED EDITION</span>
+        </article>
+
+        <!-- 8. Porsche Legacy Court Classic Lux -->
+        <article class="ns-card" data-id="ms-porsche-court-classic" data-cat="shoes" data-type="sneakers" data-team="porsche" data-color="white">
+          <span class="ns-badge-discount">-43%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_porsche_court_classic.jpg" alt="Porsche Legacy Court Classic Lux Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Porsche Legacy Court Classic Lux Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹4,274</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹7,499</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROW 3 (Screenshot 6) -->
+
+        <!-- 9. BMW Court Classic Lux Black -->
+        <article class="ns-card" data-id="ms-bmw-court-classic-black" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="black">
+          <span class="ns-badge-discount">-45%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_court_classic_black.jpg" alt="BMW M Motorsport Court Classic Lux Sneakers in Black" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW M Motorsport Court Classic Lux Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹4,124</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹7,499</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. BMW Court Classic Lux White -->
+        <article class="ns-card" data-id="ms-bmw-court-classic-white" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="white">
+          <span class="ns-badge-discount">-43%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_court_classic_white.jpg" alt="BMW M Motorsport Court Classic Lux Sneakers in White" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW M Motorsport Court Classic Lux Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹4,274</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹7,499</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11. BMW Hypnotic Sneakers Black -->
+        <article class="ns-card" data-id="ms-bmw-hypnotic-black" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="black">
+          <span class="ns-badge-discount">-20%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_hypnotic_black.jpg" alt="BMW M Motorsport Hypnotic Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW M Motorsport Hypnotic Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹7,199</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹8,999</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12. Ferrari 4 Panel Cap -->
+        <article class="ns-card" data-id="ms-ferrari-4panel-cap" data-cat="accessories" data-type="caps" data-team="ferrari" data-color="red">
+          <span class="ns-badge-discount">-40%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_ferrari_4panel_cap.jpg" alt="Scuderia Ferrari Lifestyle 4 Panel Cap in Red" />
+          </div>
+          <div class="ns-card-colors">1 COLOR</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Scuderia Ferrari Lifestyle 4 Panel Cap</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹1,199</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹1,999</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROW 4 (Screenshot 7) -->
+
+        <!-- 13. BMW Neo Cat Sneakers -->
+        <article class="ns-card" data-id="ms-bmw-neo-cat" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="black">
+          <span class="ns-badge-discount">-52%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_neo_cat.jpg" alt="BMW M Motorsport Neo Cat Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW M Motorsport Neo Cat Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹3,599</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹7,499</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 14. BMW MMS Hypnotic Lightweight -->
+        <article class="ns-card" data-id="ms-bmw-hypnotic-lightweight" data-cat="shoes" data-type="sneakers" data-team="bmw" data-color="white">
+          <span class="ns-badge-discount">-47%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_bmw_hypnotic_lightweight.jpg" alt="BMW MMS Hypnotic Lightweight Sneakers" />
+          </div>
+          <div class="ns-card-colors">1 COLOR</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">BMW MMS Hypnotic Lightweight Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹5,299</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹9,999</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 15. Porsche CA Pro Leather -->
+        <article class="ns-card" data-id="ms-porsche-capro" data-cat="shoes" data-type="sneakers" data-team="porsche" data-color="white">
+          <span class="ns-badge-discount">-47%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_porsche_capro.jpg" alt="Porsche Legacy CA Pro Leather Motorsport Shoes" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">Porsche Legacy CA Pro Leather Motorsport Shoes</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹4,769</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹8,999</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 16. Aston Martin F1 Fade Sneakers -->
+        <article class="ns-card" data-id="ms-aston-martin-fade" data-cat="shoes" data-type="sneakers" data-team="aston-martin" data-color="black green">
+          <span class="ns-badge-discount">-20%</span>
+          <div class="shoe-card-media">
+            <img src="assets/puma/ms_aston_martin_fade.jpg" alt="PUMA x ASTON MARTIN ARAMCO F1® TEAM Fade Sneakers" />
+          </div>
+          <div class="ns-card-colors">2 COLORS</div>
+          <div class="ns-card-row">
+            <span class="ns-card-title">PUMA x ASTON MARTIN ARAMCO F1® TEAM Fade Sneakers</span>
+            <div class="ns-card-prices">
+              <span class="ns-card-price">₹8,799</span>
+              <span class="price-mrp" style="text-decoration:line-through; color:var(--text-secondary); font-size:12px; margin-left:6px;">₹10,999</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div> <!-- /.ns-catalog-wrap -->
+
+      <!-- Bottom Jump to Top Button (Matches Screenshot 3-7) -->
+      <div style="text-align: right; padding: 30px 0 10px;">
+        <a href="#top" class="icon-btn" style="background:#ffffff; border:1px solid #d0d0d0; border-radius:50%; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:#181818;" title="Back to Top">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </main>
+
+    <!-- ===================================================================
+         OFFICIAL PUMA FOOTER
+         =================================================================== -->
+    <footer id="footer-support" class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top-grid">
+          <div>
+            <h2 class="footer-col-title">SUPPORT</h2>
+            <ul class="footer-links">
+              <li><a href="index.html#footer-support">Contact us</a></li>
+              <li><a href="index.html#trending-now">Promotions &amp; Sale</a></li>
+              <li><a href="index.html#footer-support">My Account</a></li>
+              <li><a href="index.html#footer-support">Exchange &amp; Return Policy</a></li>
+              <li><a href="index.html#footer-support">Privacy Policy</a></li>
+              <li><a href="index.html#footer-support">Terms &amp; Conditions</a></li>
+              <li><a href="motorsport.html">Shoes</a></li>
+              <li><a href="sports.html">Running Shoes</a></li>
+              <li><a href="sports.html">Hyrox India</a></li>
+              <li><a href="index.html#footer-support">Cookie Settings</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-col-title footer-col-title--spacer" aria-hidden="true">SUPPORT MORE</h2>
+            <ul class="footer-links">
+              <li><a href="index.html#footer-support">FAQs</a></li>
+              <li><a href="index.html#footer-support">Warranty Claims</a></li>
+              <li><a href="index.html#footer-support">Track Order</a></li>
+              <li><a href="index.html#footer-support">Shoe Care</a></li>
+              <li><a href="sports.html">Tech Glossary</a></li>
+              <li><a href="index.html#footer-support">Initiate Return / Exchange</a></li>
+              <li><a href="lifestyle.html">Sneakers</a></li>
+              <li><a href="sports.html">Nitro</a></li>
+              <li><a href="index.html">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-col-title">ABOUT</h2>
+            <ul class="footer-links">
+              <li><a href="index.html#footer-support">Company</a></li>
+              <li><a href="sports.html">What is HYROX?</a></li>
+              <li><a href="index.html#footer-support">Corporate News</a></li>
+              <li><a href="index.html#footer-support">Press Center</a></li>
+              <li><a href="index.html#footer-support">Investors</a></li>
+              <li><a href="index.html#footer-support">Sustainability</a></li>
+              <li><a href="index.html#footer-support">Careers</a></li>
+              <li><a href="index.html#footer-support">Store Locator</a></li>
+              <li><a href="index.html#footer-support">PUMA Articles</a></li>
+              <li><a href="index.html#trending-now">Black Friday 2026</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-col-title">STAY UP TO DATE</h2>
+            <div class="social-row">
+              <a href="index.html#footer-support" class="social-link" aria-label="PUMA on YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+                </svg>
+              </a>
+              <a href="index.html#footer-support" class="social-link" aria-label="PUMA on X">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                </svg>
+              </a>
+              <a href="index.html#footer-support" class="social-link" aria-label="PUMA on Pinterest">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8-.1-2 .1-2.9l1.1-4.6s-.3-.6-.3-1.4c0-1.3.8-2.3 1.7-2.3.8 0 1.2.6 1.2 1.3 0 .8-.5 2-.8 3.1-.2.9.5 1.7 1.4 1.7 1.7 0 3-1.8 3-4.3 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.2 0 .8.3 1.7.7 2.2.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.3.1-1.2-.6-2-2.4-2-3.8 0-3.1 2.2-5.9 6.5-5.9 3.4 0 6.1 2.4 6.1 5.7 0 3.4-2.1 6.1-5.1 6.1-1 0-1.9-.5-2.3-1.1l-.6 2.4c-.2.9-.8 2-1.2 2.7A10 10 0 1 0 12 2Z" />
+                </svg>
+              </a>
+              <a href="index.html#footer-support" class="social-link" aria-label="PUMA on Instagram">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="index.html#footer-support" class="social-link" aria-label="PUMA on Facebook">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 12 2Z" />
+                </svg>
+              </a>
+            </div>
+
+            <h2 class="footer-col-title">EXPLORE</h2>
+            <a href="index.html" class="explore-app-card" aria-label="PUMA App">
+              <svg width="26" height="16" viewBox="0 0 64 38" fill="currentColor" aria-hidden="true">
+                <path d="M58.4 4.1c-2.2-1.8-5.2-1.4-7.2.4-2.1 1.9-5.8 5.2-11.2 7.1-4.8 1.7-9.6 1.9-14.2 3.1-4.5 1.1-8.8 3.6-12.1 7.1-2.5 2.7-4.8 5.4-7.4 7.7-1.4 1.2-3.5 1.8-5.1 1-.6-.3-1.2.1-1.1.8.2 1.6 1.8 2.8 3.6 2.8 3.1 0 6.1-2.4 8.7-4.9 3.6-3.4 7.3-6.6 12-7.8 2.2-.5 4.4-.6 6.6-.5-.7 2.4-2.3 5.2-4.6 7.5-1.1 1.1-.3 2.8 1.2 2.4 3.3-.9 6.6-4.1 8.5-7.6 1.8-3.3 2.9-6.6 5.2-8.7 2.7-2.5 5.4-4.2 8.7-5.6 1.5-.6 2.9.6 2.3 2.1-.6 1.6-2 3.8-4.1 6-.8.8-.1 2.2 1.1 1.9 3.4-.8 6.8-4.1 8.1-7.8.8-2.2 1.1-5.1-1.1-7z" />
+              </svg>
+              <span>APP</span>
+            </a>
+          </div>
+        </div>
+
+        <hr class="footer-divider" />
+
+        <div class="footer-bottom">
+          <div class="payment-badges" aria-label="Accepted payment methods">
+            <span class="pay-chip" style="color: #1a1f71">VISA</span>
+            <span class="pay-chip" style="gap: 0">
+              <svg width="24" height="16" viewBox="0 0 36 22" aria-label="Mastercard">
+                <circle cx="13" cy="11" r="8" fill="#eb001b" />
+                <circle cx="23" cy="11" r="8" fill="#f79e1b" fill-opacity="0.88" />
+              </svg>
+            </span>
+            <span class="pay-chip">
+              <svg width="24" height="16" viewBox="0 0 36 22" aria-label="Maestro">
+                <circle cx="13" cy="11" r="8" fill="#eb001b" />
+                <circle cx="23" cy="11" r="8" fill="#0099df" fill-opacity="0.88" />
+              </svg>
+            </span>
+            <span class="pay-chip" style="background: #2e77bc; color: #ffffff; font-size: 8px">AMEX</span>
+            <span class="pay-chip" style="color: #097939">UPI</span>
+            <span class="pay-chip" style="color: #1c3d8f">RuPay</span>
+          </div>
+
+          <a href="index.html#footer-support" class="region-selector">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <clipPath id="in-flag">
+                <circle cx="12" cy="12" r="11" />
+              </clipPath>
+              <g clip-path="url(#in-flag)">
+                <rect x="0" y="0" width="24" height="8" fill="#ff9933" />
+                <rect x="0" y="8" width="24" height="8" fill="#ffffff" />
+                <rect x="0" y="16" width="24" height="8" fill="#138808" />
+                <circle cx="12" cy="12" r="2.8" fill="none" stroke="#000080" stroke-width="1" />
+              </g>
+            </svg>
+            <span>INDIA</span>
+          </a>
+
+          <div class="footer-legal">
+            <p>&copy; PUMA INDIA LTD, 2026. ALL RIGHTS RESERVED.</p>
+            <p><a href="index.html#footer-support">IMPRINT AND LEGAL DATA</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Shared Backdrop -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+    <!-- Shopping Bag Drawer -->
+    <aside class="side-drawer" id="cartDrawer" aria-label="Shopping Cart" aria-hidden="true">
+      <div class="side-drawer-head">
+        <h2>Your Bag <span id="drawerCount">(0)</span></h2>
+        <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close cart">×</button>
+      </div>
+      <div class="side-drawer-body" id="cartBody"></div>
+      <div class="side-drawer-foot" id="cartFooter" hidden></div>
+    </aside>
+
+    <!-- Wishlist Drawer -->
+    <aside class="side-drawer" id="wishlistDrawer" aria-label="Wishlist" aria-hidden="true">
+      <div class="side-drawer-head">
+        <h2>Wishlist <span id="wishlistDrawerCount">(0)</span></h2>
+        <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close wishlist">×</button>
+      </div>
+      <div class="side-drawer-body" id="wishlistBody"></div>
+    </aside>
+
+    <!-- Product Quick-View Modal -->
+    <div class="app-modal" id="productModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div id="quickViewContent"></div>
+    </div>
+
+    <!-- Account Modal -->
+    <div class="app-modal app-modal-compact" id="accountModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="side-drawer-head">
+        <h2>PUMA Account</h2>
+        <button class="side-drawer-close" type="button" data-close-drawer aria-label="Close account modal">×</button>
+      </div>
+      <div style="padding: 24px;" id="accountBody"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="app-toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Script -->
+    <script src="app.js" defer></script>
+    <script>
+      // Top Showcase Carousel Interactive Scroll
+      document.addEventListener('DOMContentLoaded', function () {
+        const row = document.getElementById('msShowcaseRow');
+        const prev = document.getElementById('msPrevBtn');
+        const next = document.getElementById('msNextBtn');
+        const fill = document.getElementById('msProgressFill');
+
+        if (row && prev && next) {
+          prev.addEventListener('click', function () {
+            row.scrollBy({ left: -260, behavior: 'smooth' });
+          });
+          next.addEventListener('click', function () {
+            row.scrollBy({ left: 260, behavior: 'smooth' });
+          });
+          row.addEventListener('scroll', function () {
+            const max = row.scrollWidth - row.clientWidth;
+            if (max > 0 && fill) {
+              const pct = 28 + (row.scrollLeft / max) * 72;
+              fill.style.width = Math.min(100, pct) + '%';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
