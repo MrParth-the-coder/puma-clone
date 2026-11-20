@@ -1093,6 +1093,261 @@
       mrp: 2299,
       image: 'assets/puma/kids_zen_sling_bag.jpg',
       tags: ['kids', 'accessories', 'bags', 'sling', 'lifestyle', 'sale']
+    },
+    // ==========================================
+    // PUMA SALE COLLECTION (28 Verified Products)
+    // ==========================================
+    {
+      id: 'sale-club-kayzer-white-gum',
+      name: "PUMA Club Kayzer Sneakers",
+      subtitle: "Men's Low Terrace Casual Sneakers",
+      price: 3599,
+      mrp: 5999,
+      image: 'assets/puma/sale_club_kayzer_white_gum.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'white', 'casual']
+    },
+    {
+      id: 'sale-club-kayzer-black-gum',
+      name: "PUMA Club Kayzer Sneakers",
+      subtitle: "Men's Low Terrace Casual Sneakers",
+      price: 3119,
+      mrp: 5999,
+      image: 'assets/puma/sale_club_kayzer_black_gum.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'black', 'casual']
+    },
+    {
+      id: 'sale-profoam-galactic-black',
+      name: "PROFOAM Galactic Sneakers",
+      subtitle: "Chunky Cushioning Everyday Runners",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/sale_profoam_galactic_black.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'running', 'men', 'black']
+    },
+    {
+      id: 'sale-glidepacer-pro-black-blue',
+      name: "PUMA Glidepacer Pro Lightweight Running Shoes",
+      subtitle: "Performance Distance Road Running Shoes",
+      price: 4949,
+      mrp: 8999,
+      image: 'assets/puma/sale_glidepacer_pro_black_blue.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'black', 'blue']
+    },
+    {
+      id: 'sale-court-shatter-all-white',
+      name: "Court Shatter Low Sneakers",
+      subtitle: "Clean Retro Court Leather Sneakers",
+      price: 2819,
+      mrp: 5999,
+      image: 'assets/puma/sale_court_shatter_all_white.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'white', 'court']
+    },
+    {
+      id: 'sale-club-kayzer-white-black',
+      name: "PUMA Club Kayzer Sneakers",
+      subtitle: "Classic White & Black Terrace Sneakers",
+      price: 3119,
+      mrp: 5999,
+      image: 'assets/puma/sale_club_kayzer_white_black.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'white', 'black']
+    },
+    {
+      id: 'sale-galaxis-pro-white-red',
+      name: "Galaxis Pro Men's Running Shoes",
+      subtitle: "High-Rebound Responsive Running Shoes",
+      price: 3289,
+      mrp: 6999,
+      image: 'assets/puma/sale_galaxis_pro_white_red.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'white', 'red']
+    },
+    {
+      id: 'sale-fade-pro-navy-cyan',
+      name: "Fade Pro Running Shoes",
+      subtitle: "Engineered Mesh Breathable Road Runners",
+      price: 4399,
+      mrp: 7999,
+      image: 'assets/puma/sale_fade_pro_navy_cyan.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'blue', 'cyan']
+    },
+    {
+      id: 'sale-court-shatter-all-black',
+      name: "Court Shatter Low Sneakers",
+      subtitle: "Monochrome Street Court Sneakers",
+      price: 2819,
+      mrp: 5999,
+      image: 'assets/puma/sale_court_shatter_all_black.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'black', 'court']
+    },
+    {
+      id: 'sale-blktop-rider-teal-orange',
+      name: "Blktop Rider Suede Sneakers",
+      subtitle: "Vintage 80s Track & Trail Runner Silhouette",
+      price: 4679,
+      mrp: 8999,
+      image: 'assets/puma/sale_blktop_rider_teal_orange.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'teal', 'orange']
+    },
+    {
+      id: 'sale-smashic-comfort-white',
+      name: "Smashic Comfort Casual Sneakers",
+      subtitle: "Minimalist Tennis-Inspired Comfort Sneakers",
+      price: 2384,
+      mrp: 4499,
+      image: 'assets/puma/sale_smashic_comfort_white.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'white', 'casual']
+    },
+    {
+      id: 'sale-blktop-rider-navy-grey',
+      name: "Blktop Rider Suede Sneakers",
+      subtitle: "Lugged Outsole Retro Lifestyle Shoes",
+      price: 4679,
+      mrp: 8999,
+      image: 'assets/puma/sale_blktop_rider_navy_grey.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'blue', 'grey']
+    },
+    {
+      id: 'sale-softride-frequence-black',
+      name: "Softride Frequence Street All-Day Comfort Shoes",
+      subtitle: "Plush Foam Midsole Everyday Slip-On Runners",
+      price: 3499,
+      mrp: 6999,
+      image: 'assets/puma/sale_softride_frequence_black.jpg',
+      tags: ['sale', 'shoes', 'running', 'lifestyle', 'men', 'black']
+    },
+    {
+      id: 'sale-smashic-comfort-brown',
+      name: "Smashic Comfort Casual Sneakers",
+      subtitle: "Tan Leather Casual Street Shoes",
+      price: 2474,
+      mrp: 4499,
+      image: 'assets/puma/sale_smashic_comfort_brown.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'brown']
+    },
+    {
+      id: 'sale-cricket-square-white-blue',
+      name: "Cricket Square Men's Shoes",
+      subtitle: "Pro Turf & Pitch Grip Cricket Spikes",
+      price: 2749,
+      mrp: 4999,
+      image: 'assets/puma/sale_cricket_square_white_blue.jpg',
+      tags: ['sale', 'shoes', 'sports', 'cricket', 'men', 'white', 'blue']
+    },
+    {
+      id: 'sale-scend-pro-heatstride-black',
+      name: "Scend Pro HeatStride Men's Running Shoes",
+      subtitle: "PROFOAMLITE Cushioned Training Runners",
+      price: 3499,
+      mrp: 6999,
+      image: 'assets/puma/sale_scend_pro_heatstride_black.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'black']
+    },
+    {
+      id: 'sale-profoam-galactic-grey',
+      name: "PROFOAM Galactic Sneakers",
+      subtitle: "Silver Tech Mesh Lifestyle Sneakers",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/sale_profoam_galactic_grey.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'running', 'men', 'grey']
+    },
+    {
+      id: 'sale-r78-soft-cushioned-black',
+      name: "PUMA R78 Soft Cushioned Sneakers",
+      subtitle: "Heritage 70s Running Style Sneakers",
+      price: 2849,
+      mrp: 4999,
+      image: 'assets/puma/sale_r78_soft_cushioned_black.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'black']
+    },
+    {
+      id: 'sale-smashic-womens-lavender',
+      name: "Smashic Women's Comfort Casual Sneakers",
+      subtitle: "Clean Tennis Shoes with Pastel Lavender Formstrip",
+      price: 2159,
+      mrp: 4499,
+      image: 'assets/puma/sale_smashic_womens_lavender.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'women', 'white', 'purple']
+    },
+    {
+      id: 'sale-smashic-comfort-black',
+      name: "Smashic Comfort Casual Sneakers",
+      subtitle: "Durable Full-Black Leather Everyday Shoes",
+      price: 2339,
+      mrp: 4499,
+      image: 'assets/puma/sale_smashic_comfort_black.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'black']
+    },
+    {
+      id: 'sale-fade-pro-white-turquoise',
+      name: "Fade Pro Running Shoes",
+      subtitle: "Air Mesh Lightweight Athletic Runners",
+      price: 4399,
+      mrp: 7999,
+      image: 'assets/puma/sale_fade_pro_white_turquoise.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'white', 'turquoise']
+    },
+    {
+      id: 'sale-blktop-rider-vibrant-pink',
+      name: "Blktop Rider Vibrant Women's Sneakers",
+      subtitle: "Colorblock Suede & Nylon Lifestyle Sneakers",
+      price: 4319,
+      mrp: 8999,
+      image: 'assets/puma/sale_blktop_rider_vibrant_pink.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'women', 'pink', 'teal']
+    },
+    {
+      id: 'sale-court-shatter-black-white',
+      name: "Court Shatter Low Sneakers",
+      subtitle: "Black & White Contrast Court Casual Shoes",
+      price: 2879,
+      mrp: 5999,
+      image: 'assets/puma/sale_court_shatter_black_white.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'black', 'white']
+    },
+    {
+      id: 'sale-rbd-tech-black-white-orange',
+      name: "RBD Tech Sneakers",
+      subtitle: "Mid-Cut Basketball-Inspired Street Sneakers",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/sale_rbd_tech_black_white_orange.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'basketball', 'men', 'black', 'orange']
+    },
+    {
+      id: 'sale-softride-frequence-grey',
+      name: "Softride Frequence Street All-Day Comfort Shoes",
+      subtitle: "Grey Heather Knit Slip-On Comfort Runners",
+      price: 3499,
+      mrp: 6999,
+      image: 'assets/puma/sale_softride_frequence_grey.jpg',
+      tags: ['sale', 'shoes', 'running', 'lifestyle', 'men', 'grey']
+    },
+    {
+      id: 'sale-galaxis-pro-neon-yellow',
+      name: "Galaxis Pro Men's Running Shoes",
+      subtitle: "Electric Yellow Performance Distance Runners",
+      price: 3289,
+      mrp: 6999,
+      image: 'assets/puma/sale_galaxis_pro_neon_yellow.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'yellow', 'black']
+    },
+    {
+      id: 'sale-galaxis-pro-black-neon',
+      name: "Galaxis Pro Men's Running Shoes",
+      subtitle: "Triple Black with Neon Volt Accent Road Runners",
+      price: 3359,
+      mrp: 6999,
+      image: 'assets/puma/sale_galaxis_pro_black_neon.jpg',
+      tags: ['sale', 'shoes', 'running', 'men', 'black', 'neon']
+    },
+    {
+      id: 'sale-profoam-galactic-beige',
+      name: "PROFOAM Galactic Sneakers",
+      subtitle: "Neutral Tan & Sand Suede Chunky Sneakers",
+      price: 3999,
+      mrp: 7999,
+      image: 'assets/puma/sale_profoam_galactic_beige.jpg',
+      tags: ['sale', 'shoes', 'sneakers', 'lifestyle', 'men', 'beige', 'tan']
     }
   ];
 
