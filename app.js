@@ -2174,5 +2174,455 @@
       showToast(`Welcome to PUMA, ${name}!`);
     }
   });
+
+  // =========================================================================
+  // UNIVERSAL STOREFRONT FILTER & SORT ENGINE
+  // Powers Lifestyle, Motorsport, Kids, Sale, Men, Women, Sports, New Season
+  // =========================================================================
+  function initStoreFilters() {
+    const grid = document.getElementById('ls-grid') || 
+                 document.getElementById('kidsProductGrid') || 
+                 document.getElementById('sale-grid') || 
+                 document.getElementById('ms-grid') || 
+                 document.getElementById('womenCatalogGrid') || 
+                 document.getElementById('menCatalogGrid') || 
+                 document.getElementById('sp-grid') ||
+                 document.querySelector('.ns-grid');
+
+    if (!grid) return;
+
+    const allArticles = Array.from(grid.querySelectorAll('.ns-card, .shoe-card'));
+    if (allArticles.length === 0) return;
+
+    const cards = allArticles.filter(c => !c.classList.contains('ns-editorial-card'));
+    const editorialCards = allArticles.filter(c => c.classList.contains('ns-editorial-card'));
+
+    const countEl = document.querySelector('.ns-count, .ns-product-count, #saleProductCount');
+    if (countEl && !countEl.dataset.originalCount) {
+      countEl.dataset.originalCount = countEl.textContent.trim();
+    }
+
+    const catalogWrap = grid.closest('.ns-catalog-wrap') || document.querySelector('.ns-catalog-wrap');
+
+    // Normalize card datasets for instant filtering and sorting
+    cards.forEach(card => {
+      // 1. Numeric priceVal
+      if (!card.dataset.priceVal) {
+        const priceEl = card.querySelector('.ns-card-price, .shoe-price, .price');
+        if (priceEl) {
+          const num = parseInt(priceEl.textContent.replace(/[^\d]/g, ''), 10);
+          if (!isNaN(num)) card.dataset.priceVal = num;
+        } else if (card.dataset.price && !isNaN(parseInt(card.dataset.price, 10))) {
+          card.dataset.priceVal = parseInt(card.dataset.price, 10);
+        } else {
+          card.dataset.priceVal = 0;
+        }
+      }
+
+      // 2. Numeric discount
+      if (!card.dataset.discountVal) {
+        if (card.dataset.discount && !isNaN(parseInt(card.dataset.discount, 10))) {
+          card.dataset.discountVal = parseInt(card.dataset.discount, 10);
+        } else {
+          const discBadge = card.querySelector('.ns-badge-discount, .discount-tag');
+          if (discBadge) {
+            const num = parseInt(discBadge.textContent.replace(/[^\d]/g, ''), 10);
+            if (!isNaN(num)) card.dataset.discountVal = num;
+          } else {
+            card.dataset.discountVal = 0;
+          }
+        }
+      }
+
+      // 3. Normalize full text for fast sub-string matching
+      if (!card.dataset.fullSearchText) {
+        card.dataset.fullSearchText = (card.textContent || '').toLowerCase();
+      }
+    });
+
+    const originalOrder = [...cards];
+
+    const activeFilters = {
+      category: 'all',
+      type: 'all',
+      team: 'all',
+      color: 'all',
+      priceRange: 'all',
+      discount: 'all',
+      gender: 'all'
+    };
+
+    function updateFilterView() {
+      let visibleCount = 0;
+      const isFiltering = activeFilters.category !== 'all' ||
+                          activeFilters.type !== 'all' ||
+                          activeFilters.team !== 'all' ||
+                          activeFilters.color !== 'all' ||
+                          activeFilters.priceRange !== 'all' ||
+                          activeFilters.discount !== 'all' ||
+                          activeFilters.gender !== 'all';
+
+      cards.forEach(card => {
+        let matches = true;
+        const cat = (card.dataset.cat || '').toLowerCase();
+        const type = (card.dataset.type || '').toLowerCase();
+        const team = (card.dataset.team || '').toLowerCase();
+        const color = (card.dataset.color || '').toLowerCase();
+        const fullText = card.dataset.fullSearchText || '';
+        const price = parseInt(card.dataset.priceVal || '0', 10);
+        const discount = parseInt(card.dataset.discountVal || '0', 10);
+        const gender = (card.dataset.gender || '').toLowerCase();
+
+        // 1. Category filter
+        if (activeFilters.category !== 'all') {
+          if (!cat.includes(activeFilters.category) && !fullText.includes(activeFilters.category)) {
+            matches = false;
+          }
+        }
+
+        // 2. Type / Silhouette filter
+        if (matches && activeFilters.type !== 'all') {
+          if (!type.includes(activeFilters.type) && !fullText.includes(activeFilters.type)) {
+            matches = false;
+          }
+        }
+
+        // 3. Team / Collab filter
+        if (matches && activeFilters.team !== 'all') {
+          if (!team.includes(activeFilters.team) && !fullText.includes(activeFilters.team)) {
+            matches = false;
+          }
+        }
+
+        // 4. Color filter
+        if (matches && activeFilters.color !== 'all') {
+          if (!color.includes(activeFilters.color) && !fullText.includes(activeFilters.color)) {
+            matches = false;
+          }
+        }
+
+        // 5. Price range filter
+        if (matches && activeFilters.priceRange !== 'all') {
+          switch (activeFilters.priceRange) {
+            case 'under1500': if (price >= 1500) matches = false; break;
+            case '1500-3000': if (price < 1500 || price > 3000) matches = false; break;
+            case 'under2k':   if (price >= 2000) matches = false; break;
+            case '2k-4k':     if (price < 2000 || price > 4000) matches = false; break;
+            case 'under2500': if (price >= 2500) matches = false; break;
+            case '2500-3500': if (price < 2500 || price > 3500) matches = false; break;
+            case '3500-4500': if (price < 3500 || price > 4500) matches = false; break;
+            case 'under3k':   if (price >= 3000) matches = false; break;
+            case '3k-4k':     if (price < 3000 || price > 4000) matches = false; break;
+            case '3k-5k':     if (price < 3000 || price > 5000) matches = false; break;
+            case '3k-6k':     if (price < 3000 || price > 6000) matches = false; break;
+            case 'under4k':   if (price >= 4000) matches = false; break;
+            case '4k-8k':     if (price < 4000 || price > 8000) matches = false; break;
+            case 'under5k':   if (price >= 5000) matches = false; break;
+            case 'under6k':   if (price >= 6000) matches = false; break;
+            case '6k-10k':    if (price < 6000 || price > 10000) matches = false; break;
+            case 'over4500':  if (price <= 4500) matches = false; break;
+            case 'over5k':    if (price <= 5000) matches = false; break;
+            case 'over6k':    if (price <= 6000) matches = false; break;
+            case 'over8k':    if (price <= 8000) matches = false; break;
+            case 'over10k':   if (price <= 10000) matches = false; break;
+          }
+        }
+
+        // 6. Discount filter
+        if (matches && activeFilters.discount !== 'all') {
+          const reqDisc = parseInt(activeFilters.discount, 10);
+          if (discount < reqDisc) matches = false;
+        }
+
+        // 7. Gender filter
+        if (matches && activeFilters.gender !== 'all') {
+          if (!gender.includes(activeFilters.gender) && !gender.includes('unisex') && !fullText.includes(activeFilters.gender)) {
+            matches = false;
+          }
+        }
+
+        if (matches) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Handle editorial promotional cards
+      editorialCards.forEach(ec => {
+        ec.style.display = isFiltering ? 'none' : '';
+      });
+
+      // Update product count display
+      if (countEl) {
+        if (!isFiltering && countEl.dataset.originalCount) {
+          countEl.textContent = countEl.dataset.originalCount;
+        } else {
+          countEl.textContent = `${visibleCount} PRODUCTS`;
+        }
+      }
+
+      // Empty State Display
+      let emptyMsg = grid.querySelector('.filter-empty-state');
+      if (visibleCount === 0) {
+        if (!emptyMsg) {
+          emptyMsg = document.createElement('div');
+          emptyMsg.className = 'filter-empty-state';
+          emptyMsg.innerHTML = `
+            <h3 style="font-family: var(--font-display, sans-serif); font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.04em;">NO PRODUCTS FOUND</h3>
+            <p style="color: var(--text-muted, #707070); margin-bottom: 16px; font-size: 13.5px;">No products match your selected filters. Please adjust your criteria or reset filters.</p>
+            <button type="button" class="reset-filter-btn" style="background:#181818; color:#ffffff; padding:10px 24px; font-weight:700; font-size:12.5px; cursor:pointer; border:none; letter-spacing:0.06em;">RESET ALL FILTERS</button>
+          `;
+          emptyMsg.querySelector('.reset-filter-btn').addEventListener('click', resetAllFilters);
+          grid.appendChild(emptyMsg);
+        }
+        emptyMsg.style.display = 'block';
+      } else if (emptyMsg) {
+        emptyMsg.style.display = 'none';
+      }
+    }
+
+    function resetAllFilters() {
+      activeFilters.category = 'all';
+      activeFilters.type = 'all';
+      activeFilters.team = 'all';
+      activeFilters.color = 'all';
+      activeFilters.priceRange = 'all';
+      activeFilters.discount = 'all';
+      activeFilters.gender = 'all';
+
+      document.querySelectorAll('.filter-row, .ns-drop-row, .filter-option-label').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.filter-group-content, .ns-dropdown-panel').forEach(group => {
+        const first = group.querySelector('.filter-row, .ns-drop-row, .filter-option-label');
+        if (first && first.textContent.toLowerCase().includes('all')) first.classList.add('active');
+      });
+
+      updateFilterView();
+    }
+
+    // Sidebar Toggling Logic (Desktop & Mobile)
+    const sidebarCheckbox = document.getElementById('ls-sidebar-toggle') ||
+                            document.getElementById('ms-sidebar-toggle') ||
+                            document.getElementById('kids-sidebar-toggle') ||
+                            document.getElementById('women-sidebar-toggle') ||
+                            document.getElementById('men-sidebar-toggle') ||
+                            document.getElementById('sp-sidebar-toggle') ||
+                            document.getElementById('ns-sidebar-toggle') ||
+                            document.querySelector('input[id$="sidebar-toggle"]');
+
+    if (sidebarCheckbox) {
+      sidebarCheckbox.addEventListener('change', () => {
+        if (catalogWrap) {
+          catalogWrap.classList.toggle('sidebar-open', sidebarCheckbox.checked);
+        }
+      });
+    }
+
+    const toggleBtns = document.querySelectorAll('#lsFiltersBtn, .filter-toggle-btn, .ns-sliders-btn, label[for$="sidebar-toggle"]');
+    toggleBtns.forEach(btn => {
+      btn.style.cursor = 'pointer';
+      btn.addEventListener('click', (e) => {
+        if (catalogWrap && !sidebarCheckbox) {
+          catalogWrap.classList.toggle('sidebar-open');
+        }
+      });
+    });
+
+    const closeBtns = document.querySelectorAll('#lsCloseSidebarBtn, .filter-close-btn, .filter-close-mobile');
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (sidebarCheckbox) {
+          sidebarCheckbox.checked = false;
+        }
+        if (catalogWrap) {
+          catalogWrap.classList.remove('sidebar-open');
+        }
+      });
+    });
+
+    // Sorting Logic
+    document.querySelectorAll('.ns-dropdown-panel span, .ns-dropdown-panel a, .filter-option-label').forEach(opt => {
+      const text = opt.textContent.trim().toLowerCase();
+      if (text.includes('low to high') || text.includes('high to low') || text.includes('newest') || text.includes('recommended') || text.includes('discount')) {
+        opt.style.cursor = 'pointer';
+        opt.addEventListener('click', (e) => {
+          e.preventDefault();
+          const details = opt.closest('details');
+          const summary = details ? details.querySelector('summary') : null;
+
+          if (text.includes('low to high')) {
+            cards.sort((a, b) => parseInt(a.dataset.priceVal || 0, 10) - parseInt(b.dataset.priceVal || 0, 10));
+            if (summary) summary.textContent = 'PRICE: LOW TO HIGH';
+          } else if (text.includes('high to low')) {
+            cards.sort((a, b) => parseInt(b.dataset.priceVal || 0, 10) - parseInt(a.dataset.priceVal || 0, 10));
+            if (summary) summary.textContent = 'PRICE: HIGH TO LOW';
+          } else if (text.includes('discount')) {
+            cards.sort((a, b) => parseInt(b.dataset.discountVal || 0, 10) - parseInt(a.dataset.discountVal || 0, 10));
+            if (summary) summary.textContent = 'HIGHEST DISCOUNT';
+          } else {
+            originalOrder.forEach(c => grid.appendChild(c));
+            if (summary) summary.textContent = 'RECOMMENDED';
+            if (details) details.removeAttribute('open');
+            return;
+          }
+
+          cards.forEach(c => grid.appendChild(c));
+          if (details) details.removeAttribute('open');
+        });
+      }
+    });
+
+    // Filter Click Handlers
+    document.querySelectorAll('.filter-row, .ns-drop-row, .filter-group-content label, .filter-group-content span, .ns-filter-pills details a, .ns-filter-pills details span').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', (e) => {
+        const text = el.textContent.trim().toLowerCase();
+        if (text.includes('low to high') || text.includes('high to low') || text.includes('newest first')) return;
+
+        // Visual active state
+        const parent = el.closest('.filter-group-content, .ns-dropdown-panel');
+        if (parent) {
+          parent.querySelectorAll('.filter-row, .ns-drop-row, .filter-option-label, label, span').forEach(s => s.classList.remove('active'));
+          el.classList.add('active');
+        }
+
+        const parentDetails = el.closest('details.ns-dropdown');
+        if (parentDetails) parentDetails.removeAttribute('open');
+
+        // Resolve filter type
+        if (text.includes('all') || text.includes('reset')) {
+          const sectionHeader = (el.closest('details')?.querySelector('summary')?.textContent || '').toLowerCase();
+          if (sectionHeader.includes('team') || sectionHeader.includes('collab') || sectionHeader.includes('partner')) activeFilters.team = 'all';
+          else if (sectionHeader.includes('price')) activeFilters.priceRange = 'all';
+          else if (sectionHeader.includes('silhouette') || sectionHeader.includes('type')) activeFilters.type = 'all';
+          else if (sectionHeader.includes('color') || sectionHeader.includes('colour')) activeFilters.color = 'all';
+          else if (sectionHeader.includes('discount')) activeFilters.discount = 'all';
+          else if (sectionHeader.includes('gender')) activeFilters.gender = 'all';
+          else {
+            activeFilters.category = 'all';
+            activeFilters.type = 'all';
+          }
+        } else if (text.includes('palermo')) {
+          activeFilters.type = 'palermo';
+        } else if (text.includes('speedcat')) {
+          activeFilters.type = 'speedcat';
+        } else if (text.includes('ballet')) {
+          activeFilters.type = 'ballet';
+        } else if (text.includes('t7') || text.includes('tracksuit') || text.includes('jacket') || text.includes('outerwear') || text.includes('apparel') || text.includes('clothing') || text.includes("kids' clothing")) {
+          activeFilters.category = 'clothing';
+        } else if (text.includes('footwear') || text.includes('sneaker') || text.includes('shoe')) {
+          activeFilters.category = 'shoes';
+        } else if (text.includes('backpack') || text.includes('bag') || text.includes('cap') || text.includes('headwear') || text.includes('accessories')) {
+          activeFilters.category = 'accessories';
+        } else if (text.includes('ferrari')) {
+          activeFilters.team = 'ferrari';
+        } else if (text.includes('bmw')) {
+          activeFilters.team = 'bmw';
+        } else if (text.includes('mclaren')) {
+          activeFilters.team = 'mclaren';
+        } else if (text.includes('porsche')) {
+          activeFilters.team = 'porsche';
+        } else if (text.includes('aston')) {
+          activeFilters.team = 'aston-martin';
+        } else if (text.includes('under 1,500') || text.includes('under ₹1,500')) {
+          activeFilters.priceRange = 'under1500';
+        } else if (text.includes('1,500 - 3,000') || text.includes('1,500 - ₹3,000')) {
+          activeFilters.priceRange = '1500-3000';
+        } else if (text.includes('under 2,000') || text.includes('under ₹2,000') || text.includes('under 2k')) {
+          activeFilters.priceRange = 'under2k';
+        } else if (text.includes('under 2,500') || text.includes('under ₹2,500')) {
+          activeFilters.priceRange = 'under2500';
+        } else if (text.includes('2,500 - 3,500') || text.includes('2,500 - ₹3,500')) {
+          activeFilters.priceRange = '2500-3500';
+        } else if (text.includes('3,500 - 4,500') || text.includes('3,500 - ₹4,500')) {
+          activeFilters.priceRange = '3500-4500';
+        } else if (text.includes('under 3,000') || text.includes('under ₹3,000') || text.includes('under 3k')) {
+          activeFilters.priceRange = 'under3k';
+        } else if (text.includes('under 4,000') || text.includes('under ₹4,000') || text.includes('under 4k')) {
+          activeFilters.priceRange = 'under4k';
+        } else if (text.includes('under 5,000') || text.includes('under ₹5,000')) {
+          activeFilters.priceRange = 'under5k';
+        } else if (text.includes('under 6,000') || text.includes('under ₹6,000') || text.includes('under 6k')) {
+          activeFilters.priceRange = 'under6k';
+        } else if (text.includes('4,000 - 8,000') || text.includes('4,000 - ₹8,000') || text.includes('4k - 8k') || text.includes('4k-8k')) {
+          activeFilters.priceRange = '4k-8k';
+        } else if (text.includes('2,000 - 4,000') || text.includes('2,000 - ₹4,000') || text.includes('2k - 4k')) {
+          activeFilters.priceRange = '2k-4k';
+        } else if (text.includes('3,000 - 4,000') || text.includes('3,000 - ₹4,000') || text.includes('3k - 4k')) {
+          activeFilters.priceRange = '3k-4k';
+        } else if (text.includes('3,000 - 5,000') || text.includes('3,000 - ₹5,000')) {
+          activeFilters.priceRange = '3k-5k';
+        } else if (text.includes('3,000 - 6,000') || text.includes('3,000 - ₹6,000')) {
+          activeFilters.priceRange = '3k-6k';
+        } else if (text.includes('over 4,500') || text.includes('over ₹4,500')) {
+          activeFilters.priceRange = 'over4500';
+        } else if (text.includes('over 5,000') || text.includes('over ₹5,000')) {
+          activeFilters.priceRange = 'over5k';
+        } else if (text.includes('over 6,000') || text.includes('over ₹6,000') || text.includes('over 6k')) {
+          activeFilters.priceRange = 'over6k';
+        } else if (text.includes('over 8,000') || text.includes('over ₹8,000') || text.includes('over 8k')) {
+          activeFilters.priceRange = 'over8k';
+        } else if (text.includes('over 10,000') || text.includes('over ₹10,000') || text.includes('over 10k')) {
+          activeFilters.priceRange = 'over10k';
+        } else if (text.includes('black')) {
+          activeFilters.color = 'black';
+        } else if (text.includes('white')) {
+          activeFilters.color = 'white';
+        } else if (text.includes('red')) {
+          activeFilters.color = 'red';
+        } else if (text.includes('blue') || text.includes('navy')) {
+          activeFilters.color = 'blue';
+        } else if (text.includes('green') || text.includes('mint')) {
+          activeFilters.color = 'green';
+        } else if (text.includes('pink') || text.includes('lavender')) {
+          activeFilters.color = 'pink';
+        } else if (text.includes('brown') || text.includes('tan') || text.includes('beige')) {
+          activeFilters.color = 'brown';
+        } else if (text.includes('orange')) {
+          activeFilters.color = 'orange';
+        } else if (text.includes('52%')) {
+          activeFilters.discount = '52';
+        } else if (text.includes('50%')) {
+          activeFilters.discount = '50';
+        } else if (text.includes('45%')) {
+          activeFilters.discount = '45';
+        } else if (text.includes('40%')) {
+          activeFilters.discount = '40';
+        } else if (text.includes('30%')) {
+          activeFilters.discount = '30';
+        } else if (text.includes('20%')) {
+          activeFilters.discount = '20';
+        } else if (text.includes('women') || text.includes('girls')) {
+          activeFilters.gender = 'women';
+        } else if (text.includes('men') || text.includes('boys')) {
+          activeFilters.gender = 'men';
+        }
+
+        updateFilterView();
+      });
+    });
+
+    // Check URL parameters
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('team')) {
+        activeFilters.team = urlParams.get('team').toLowerCase();
+        updateFilterView();
+      } else if (urlParams.has('cat')) {
+        activeFilters.category = urlParams.get('cat').toLowerCase();
+        updateFilterView();
+      }
+    } catch (e) {}
+  }
+
+  // Initialize Storefront Filters across all pages
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStoreFilters);
+  } else {
+    initStoreFilters();
+  }
+
 })();
 

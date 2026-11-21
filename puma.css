@@ -1393,6 +1393,14 @@ ol {
   transform: translateY(-1px);
 }
 
+.explore-app-card img {
+  width: 28px;
+  height: auto;
+  max-height: 20px;
+  display: block;
+  object-fit: contain;
+}
+
 .explore-app-card {
   display: inline-flex;
   flex-direction: column;
@@ -1830,7 +1838,11 @@ ol {
 #ms-grid-2:checked~.ns-meta-bar label[for='ms-grid-2'],
 #ms-grid-4:checked~.ns-meta-bar label[for='ms-grid-4'],
 #ls-grid-2:checked~.ns-meta-bar label[for='ls-grid-2'],
-#ls-grid-4:checked~.ns-meta-bar label[for='ls-grid-4'] {
+#ls-grid-4:checked~.ns-meta-bar label[for='ls-grid-4'],
+#kids-grid-2:checked~.ns-meta-bar label[for='kids-grid-2'],
+#kids-grid-4:checked~.ns-meta-bar label[for='kids-grid-4'],
+#kids-grid-2:checked~.ns-count-row label[for='kids-grid-2'],
+#kids-grid-4:checked~.ns-count-row label[for='kids-grid-4'] {
   color: var(--text-primary);
   border-color: var(--text-primary);
 }
@@ -1857,7 +1869,8 @@ ol {
 #men-sidebar-toggle:checked~.ns-catalog-wrap,
 #women-sidebar-toggle:checked~.ns-catalog-wrap,
 #ms-sidebar-toggle:checked~.ns-catalog-wrap,
-#ls-sidebar-toggle:checked~.ns-catalog-wrap {
+#ls-sidebar-toggle:checked~.ns-catalog-wrap,
+#kids-sidebar-toggle:checked~.ns-catalog-wrap {
   grid-template-columns: 268px minmax(0, 1fr);
   gap: 28px;
 }
@@ -1867,7 +1880,8 @@ ol {
 #men-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar,
 #women-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar,
 #ms-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar,
-#ls-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar {
+#ls-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar,
+#kids-sidebar-toggle:checked~.ns-catalog-wrap .ns-sidebar {
   opacity: 1;
   visibility: visible;
   padding-right: 20px;
@@ -1884,7 +1898,10 @@ ol {
 #men-grid-2:checked~.ns-catalog-wrap .ns-grid,
 #women-grid-2:checked~.ns-catalog-wrap .ns-grid,
 #ms-grid-2:checked~.ns-catalog-wrap .ns-grid,
-#ls-grid-2:checked~.ns-catalog-wrap .ns-grid {
+#ls-grid-2:checked~.ns-catalog-wrap .ns-grid,
+#kids-grid-2:checked~.ns-catalog-wrap .ns-grid,
+#kids-grid-2:checked~* .ns-grid,
+.ns-grid.grid-2-col {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 32px 24px;
 }
@@ -3263,4 +3280,78 @@ ol {
 .ns-editorial-btn:hover {
   background: #000000;
   border-color: #ffffff;
+}
+/* ==========================================================================
+   Universal Storefront Filter & Sort Styles
+   ========================================================================== */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 6px 0;
+  font-size: 13.5px;
+  color: var(--text-secondary, #505050);
+  transition: color 140ms ease;
+}
+
+.filter-row:hover {
+  color: var(--text-primary, #181818);
+}
+
+.filter-row.active {
+  font-weight: 700;
+  color: var(--text-primary, #181818);
+}
+
+.filter-row.active .filter-indicator {
+  background-color: var(--text-primary, #181818);
+  border-color: var(--text-primary, #181818);
+}
+
+.ns-drop-row.active,
+.filter-option-label.active {
+  font-weight: 700 !important;
+  color: var(--text-primary, #181818) !important;
+}
+
+.filter-empty-state {
+  grid-column: 1 / -1;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #fafafa;
+  border: 1px dashed #d0d0d0;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+/* Sidebar open state */
+.ns-catalog-wrap.sidebar-open {
+  grid-template-columns: 268px minmax(0, 1fr) !important;
+  gap: 28px !important;
+}
+
+.ns-catalog-wrap.sidebar-open .ns-sidebar {
+  opacity: 1 !important;
+  visibility: visible !important;
+  padding-right: 20px !important;
+}
+
+@media (max-width: 1024px) {
+  .ns-catalog-wrap.sidebar-open {
+    grid-template-columns: 1fr !important;
+  }
+  .ns-catalog-wrap.sidebar-open .ns-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: min(320px, 86vw) !important;
+    background-color: #ffffff !important;
+    z-index: 900 !important;
+    padding: 24px !important;
+    overflow-y: auto !important;
+    box-shadow: 12px 0 32px rgba(0, 0, 0, 0.25) !important;
+  }
 }

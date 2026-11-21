@@ -374,7 +374,7 @@
       <!-- Filter Toolbar Row (Matches Screenshot 1: FILTERS button on left, RECOMMENDED on right) -->
       <div class="ns-toolbar" style="margin-bottom: 24px;">
         <div class="ns-filter-pills">
-          <label for="ls-sidebar-toggle" class="button" style="background:#ffffff; border:1px solid #181818; color:#181818; padding:8px 16px; font-size:12.5px; font-weight:700; letter-spacing:0.06em; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+          <label for="ls-sidebar-toggle" id="lsFiltersBtn" class="button" style="background:#ffffff; border:1px solid #181818; color:#181818; padding:8px 16px; font-size:12.5px; font-weight:700; letter-spacing:0.06em; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
             <span>FILTERS</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="4" y1="7" x2="20" y2="7" />
@@ -429,42 +429,60 @@
 
       <!-- Collapsible Left Product Filter Sidebar + Product Grid -->
       <div class="ns-catalog-wrap">
-        <aside class="ns-sidebar" aria-label="Lifestyle Product Filter Sidebar">
-          <div class="filter-sidebar-top">
-            <span class="filter-sidebar-title">Filter Results</span>
-            <label for="ls-sidebar-toggle" class="filter-close-mobile" style="display: inline-flex" aria-label="Close sidebar">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <aside class="ns-sidebar" id="lifestyleSidebar" aria-label="Lifestyle Product Filter Sidebar">
+          <div class="filter-sidebar-top" style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle, #e0e0e0); margin-bottom: 16px;">
+            <span class="filter-sidebar-title" style="font-family: var(--font-display, sans-serif); font-size: 16px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Filter Results</span>
+            <button type="button" class="filter-close-btn" id="lsCloseSidebarBtn" style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;" aria-label="Close sidebar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 6 6 18" />
                 <path d="m6 6 12 12" />
               </svg>
-            </label>
+            </button>
           </div>
 
+          <!-- Filter Group 1: Silhouette -->
           <details class="filter-group" open>
             <summary class="filter-group-header">Iconic Silhouette</summary>
             <div class="filter-group-content">
-              <label for="ls-cat-all" class="filter-row"><span class="filter-indicator"></span><span>All Silhouettes</span></label>
-              <label for="ls-cat-shoes" class="filter-row"><span class="filter-indicator"></span><span>Palermo</span></label>
-              <label for="ls-cat-shoes" class="filter-row"><span class="filter-indicator"></span><span>Speedcat OG &amp; Ballet</span></label>
-              <label for="ls-cat-clothing" class="filter-row"><span class="filter-indicator"></span><span>T7 ALWAYS ON Tracksuits</span></label>
+              <span class="filter-row active"><span class="filter-indicator"></span><span>All Silhouettes</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Palermo</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Speedcat OG &amp; Ballet</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>T7 ALWAYS ON Tracksuits</span></span>
             </div>
           </details>
 
+          <!-- Filter Group 2: Category -->
           <details class="filter-group" open>
             <summary class="filter-group-header">Category</summary>
             <div class="filter-group-content">
-              <label for="ls-cat-all" class="filter-row"><span class="filter-indicator"></span><span>All Categories</span></label>
-              <label for="ls-cat-shoes" class="filter-row"><span class="filter-indicator"></span><span>Footwear &amp; Sneakers</span></label>
-              <label for="ls-cat-clothing" class="filter-row"><span class="filter-indicator"></span><span>Track Jackets &amp; Apparel</span></label>
+              <span class="filter-row active"><span class="filter-indicator"></span><span>All Categories</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Footwear &amp; Sneakers</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Track Jackets &amp; Apparel</span></span>
             </div>
           </details>
 
+          <!-- Filter Group 3: Price -->
           <details class="filter-group" open>
             <summary class="filter-group-header">Price</summary>
             <div class="filter-group-content">
+              <span class="filter-row active"><span class="filter-indicator"></span><span>All Prices</span></span>
               <span class="filter-row"><span class="filter-indicator"></span><span>Under ₹4,000</span></span>
               <span class="filter-row"><span class="filter-indicator"></span><span>₹4,000 - ₹8,000</span></span>
               <span class="filter-row"><span class="filter-indicator"></span><span>Over ₹8,000</span></span>
+            </div>
+          </details>
+
+          <!-- Filter Group 4: Colour -->
+          <details class="filter-group" open>
+            <summary class="filter-group-header">Colour</summary>
+            <div class="filter-group-content">
+              <span class="filter-row active"><span class="filter-indicator"></span><span>All Colours</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Black</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>White</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Blue</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Green</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Pink</span></span>
+              <span class="filter-row"><span class="filter-indicator"></span><span>Brown</span></span>
             </div>
           </details>
         </aside>
@@ -873,12 +891,12 @@
             <div class="social-row">
               <a href="index.html#footer-support" class="social-link" aria-label="PUMA on YouTube">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
                 </svg>
               </a>
               <a href="index.html#footer-support" class="social-link" aria-label="PUMA on X">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
               <a href="index.html#footer-support" class="social-link" aria-label="PUMA on Pinterest">
@@ -902,9 +920,7 @@
 
             <h2 class="footer-col-title">EXPLORE</h2>
             <a href="index.html" class="explore-app-card" aria-label="PUMA App">
-              <svg width="26" height="16" viewBox="0 0 64 38" fill="currentColor" aria-hidden="true">
-                <path d="M58.4 4.1c-2.2-1.8-5.2-1.4-7.2.4-2.1 1.9-5.8 5.2-11.2 7.1-4.8 1.7-9.6 1.9-14.2 3.1-4.5 1.1-8.8 3.6-12.1 7.1-2.5 2.7-4.8 5.4-7.4 7.7-1.4 1.2-3.5 1.8-5.1 1-.6-.3-1.2.1-1.1.8.2 1.6 1.8 2.8 3.6 2.8 3.1 0 6.1-2.4 8.7-4.9 3.6-3.4 7.3-6.6 12-7.8 2.2-.5 4.4-.6 6.6-.5-.7 2.4-2.3 5.2-4.6 7.5-1.1 1.1-.3 2.8 1.2 2.4 3.3-.9 6.6-4.1 8.5-7.6 1.8-3.3 2.9-6.6 5.2-8.7 2.7-2.5 5.4-4.2 8.7-5.6 1.5-.6 2.9.6 2.3 2.1-.6 1.6-2 3.8-4.1 6-.8.8-.1 2.2 1.1 1.9 3.4-.8 6.8-4.1 8.1-7.8.8-2.2 1.1-5.1-1.1-7z" />
-              </svg>
+              <img src="assets/aistudio/image_b6153493.png" alt="PUMA" width="28" height="20" style="object-fit: contain; display: block;" />
               <span>APP</span>
             </a>
           </div>

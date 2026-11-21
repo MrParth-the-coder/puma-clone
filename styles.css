@@ -1,3 +1,32 @@
+
+/* Screen reader skip navigation link */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  z-index: 99999;
+  background: #000000;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  outline: 2px solid #ba9b54;
+}
 :root {
   --bg: #ffffff;
   --surface: #f6f6f6;
